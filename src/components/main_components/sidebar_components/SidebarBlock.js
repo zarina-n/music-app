@@ -1,0 +1,48 @@
+import {
+  StyledSidebarBlock,
+  SidebarList,
+  SidebarListItem,
+  SidebarLink,
+  SidebarImg,
+} from "../../../styles/Sidebar.styled";
+import DAILY_PLAYLIST from "../../../dummy-data/daily-playlist-data";
+import { useState, useEffect } from "react";
+import SkeletonDailyplaylist from "../../../skeletons/SkeletonDailyplaylist";
+
+function SidebarBlock() {
+  return (
+    <StyledSidebarBlock>
+      <SidebarItem />
+    </StyledSidebarBlock>
+  );
+}
+
+export default SidebarBlock;
+
+function SidebarItem() {
+  const [sidebarPlaylist, setSidebarPlaylist] = useState();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSidebarPlaylist(DAILY_PLAYLIST);
+    }, 5000);
+  });
+
+  return (
+    <SidebarList>
+      {sidebarPlaylist &&
+        sidebarPlaylist.map(({ link, imgSrc, alt, id }) => (
+          <SidebarListItem key={id}>
+            <SidebarLink href={link}>
+              <SidebarImg src={imgSrc} alt={alt}></SidebarImg>
+            </SidebarLink>
+          </SidebarListItem>
+        ))}
+
+      {!sidebarPlaylist &&
+        Array.from({ length: 3 }).map((item) => (
+          <SkeletonDailyplaylist key={item} />
+        ))}
+    </SidebarList>
+  );
+}
