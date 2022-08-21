@@ -1,5 +1,5 @@
 import MENU_DATA from "../../../dummy-data/menu-data";
-import { Menu } from "../../../styles/Navigation.styled";
+import { Menu } from "./Navigation.styled";
 
 function NavMenu({ open }) {
   return (

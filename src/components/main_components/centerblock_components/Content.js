@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledContent } from "../../../styles/Centerblock.styled";
+import { StyledContent } from "./Centerblock.styled";
 import ContentTitle from "./ContentTitle";
 import Playlist from "./Playlist";
 

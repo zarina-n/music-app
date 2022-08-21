@@ -1,52 +1,34 @@
-import { Controls, ControlButton } from "../../styles/Bar.styled";
+import { Controls, ControlButton, ControlSvg } from "./Bar.styled";
 
 function PlayerControls() {
   return (
     <Controls>
       <ControlButton>
-        <svg width={"15px"} height={"14px"} alt="prev">
+        <ControlSvg alt="prev">
           <use href="img/icon/sprite.svg#icon-prev"></use>
-        </svg>
+        </ControlSvg>
       </ControlButton>
 
       <ControlButton>
-        <svg
-          width={"22px"}
-          height={"20px"}
-          fill={"#transparent"}
-          stroke={"#696969"}
-          alt="play"
-        >
+        <ControlSvg width="22px" height="20px" alt="play">
           <use href="img/icon/sprite.svg#icon-play"></use>
-        </svg>
+        </ControlSvg>
       </ControlButton>
 
       <ControlButton>
-        <svg
-          width={"15px"}
-          height={"14px"}
-          fill={"inherit"}
-          stroke={"#d9d9d9"}
-          alt="next"
-        >
+        <ControlSvg fill="inherit" stroke="#d9d9d9" alt="next">
           <use href="img/icon/sprite.svg#icon-next"></use>
-        </svg>
+        </ControlSvg>
       </ControlButton>
 
       <ControlButton>
-        <svg
-          width={"18px"}
-          height={"22px"}
-          fill={"transparent"}
-          stroke={"#696969"}
-          alt="repeat"
-        >
+        <ControlSvg width="18px" height="22px" alt="repeat">
           <use href="img/icon/sprite.svg#icon-repeat"></use>
-        </svg>
+        </ControlSvg>
       </ControlButton>
 
       <ControlButton>
-        <svg
+        <ControlSvg
           width={"19px"}
           height={"12px"}
           fill={"transparent"}
@@ -54,7 +36,7 @@ function PlayerControls() {
           alt="shuffle"
         >
           <use href="img/icon/sprite.svg#icon-shuffle"></use>
-        </svg>
+        </ControlSvg>
       </ControlButton>
     </Controls>
   );

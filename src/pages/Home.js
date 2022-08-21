@@ -1,7 +1,7 @@
-import Container from "../styles/Container.styles";
+import Container from "./Container.styles";
 import Main from "../components/Main";
 import Bar from "../components/Bar";
-import Footer from "../components/Footer";
+//import Footer from "../components/Footer";
 
 function Home() {
   return (

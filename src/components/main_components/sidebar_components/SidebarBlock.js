@@ -4,7 +4,7 @@ import {
   SidebarListItem,
   SidebarLink,
   SidebarImg,
-} from "../../../styles/Sidebar.styled";
+} from "./Sidebar.styled";
 import DAILY_PLAYLIST from "../../../dummy-data/daily-playlist-data";
 import { useState, useEffect } from "react";
 import SkeletonDailyplaylist from "../../../skeletons/SkeletonDailyplaylist";
@@ -23,10 +23,12 @@ function SidebarItem() {
   const [sidebarPlaylist, setSidebarPlaylist] = useState();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setSidebarPlaylist(DAILY_PLAYLIST);
     }, 5000);
-  });
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <SidebarList>

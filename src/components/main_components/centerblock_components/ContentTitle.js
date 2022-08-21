@@ -1,7 +1,4 @@
-import {
-  StyledContentTitle,
-  ContentColumn,
-} from "../../../styles/Centerblock.styled";
+import { StyledContentTitle, ContentColumn } from "./Centerblock.styled";
 
 function ContentTitle() {
   return (

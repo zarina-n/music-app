@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  StyledSearch,
-  SearchSvg,
-  SearchInput,
-} from "../../../styles/Centerblock.styled";
+import { StyledSearch, SearchSvg, SearchInput } from "./Centerblock.styled";
 
 function Search() {
   return (

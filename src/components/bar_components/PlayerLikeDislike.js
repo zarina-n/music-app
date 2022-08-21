@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { LikeDislikeDiv, LikeDislikeIcons } from "./Bar.styled";
 
 function PlayerLikeDislike() {
   return (
@@ -18,39 +18,3 @@ function PlayerLikeDislike() {
 }
 
 export default PlayerLikeDislike;
-
-const LikeDislikeDiv = styled.div`
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 16%;
-`;
-
-const LikeDislikeIcons = styled.div`
-  padding: 5px;
-
-  svg {
-    width: 14px;
-    height: 12px;
-    fill: transparent;
-    stroke: #696969;
-    cursor: pointer;
-    margin-right: 28.5px;
-  }
-
-  svg:hover {
-    stroke: #acacac;
-  }
-
-  svg:active {
-    fill: #696969;
-    stroke: #ffffff;
-  }
-`;

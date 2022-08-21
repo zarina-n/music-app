@@ -1,4 +1,4 @@
-import { StyledSidebar } from "../../styles/Sidebar.styled";
+import { StyledSidebar } from "./sidebar_components/Sidebar.styled";
 import Personal from "./sidebar_components/Personal";
 import SidebarBlock from "./sidebar_components/SidebarBlock";
 

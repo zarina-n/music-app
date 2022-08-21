@@ -1,4 +1,4 @@
-import { StyledNav, Logo } from "../../styles/Navigation.styled";
+import { StyledNav, Logo } from "./nav_components/Navigation.styled";
 import Burger from "./nav_components/Burger";
 
 function Navigation() {

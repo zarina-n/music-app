@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavBurger } from "../../../styles/Navigation.styled";
+import { NavBurger } from "./Navigation.styled";
 import NavMenu from "./NavMenu";
 
 function Burger() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledFilter, FilterTitle } from "../../../styles/Centerblock.styled";
+import { StyledFilter, FilterTitle } from "./Centerblock.styled";
 import FilterButtons from "./FilterButtons";
 
 function Filter() {

@@ -1,7 +1,7 @@
 import {
   StyledCenterBlock,
   CenterblockHeading,
-} from "../../styles/Centerblock.styled";
+} from "./centerblock_components/Centerblock.styled";
 import Search from "./centerblock_components/Search";
 import Filter from "./centerblock_components/Filter";
 import Content from "./centerblock_components/Content";

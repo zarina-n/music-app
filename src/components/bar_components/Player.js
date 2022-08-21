@@ -3,7 +3,7 @@ import PlayerTrack from "./PlayerTrack";
 import PlayerLikeDislike from "./PlayerLikeDislike";
 import Volume from "./Volume";
 
-import { PlayerBlock, ControlLikeContainer } from "../../styles/Bar.styled";
+import { PlayerBlock, ControlLikeContainer } from "./Bar.styled";
 
 function Player() {
   return (

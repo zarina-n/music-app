@@ -68,3 +68,19 @@ export const SidebarImg = styled.img`
   width: 100%;
   height: auto;
 `;
+
+export const Name = styled.p`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  margin-right: 16px;
+`;
+
+export const Avatar = styled.div`
+  width: 43px;
+  height: 43px;
+  background-color: #313131;
+  border-radius: 50%;
+`;

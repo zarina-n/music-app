@@ -2,7 +2,7 @@ import {
   StyledBar,
   StyledBarContent,
   PlayerProgress,
-} from "../styles/Bar.styled";
+} from "./bar_components/Bar.styled";
 import Player from "./bar_components/Player";
 
 function Bar() {

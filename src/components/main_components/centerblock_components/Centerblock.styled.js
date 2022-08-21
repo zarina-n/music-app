@@ -112,6 +112,60 @@ export const FilterTitle = styled.div`
   line-height: 24px;
   margin-right: 15px;
 `;
+export const FilterButton = styled.button`
+  font-style: normal;
+  font-size: 16px;
+  border: 1px solid;
+  border-radius: 60px;
+  padding: 6px 20px;
+  position: relative;
+  background-color: #181818;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    border-color: #d9b6ff;
+    color: #d9b6ff;
+    cursor: pointer;
+  }
+`;
+
+export const FilterOptions = styled.ul`
+  position: absolute;
+  background: #313131;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 12px;
+  width: 424px;
+  height: 138px;
+
+  left: 0;
+  top: 30px;
+  padding: 36px 34px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 28px;
+  column-gap: 20px;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-column-gap: 20px;
+  -webkit-font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  li:first-child {
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+    color: #b672ff;
+  }
+`;
 
 export const StyledContent = styled.div`
   display: -webkit-box;
@@ -136,7 +190,7 @@ export const StyledContentTitle = styled.div`
   align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 24px;
 
   svg {
@@ -185,7 +239,7 @@ export const StyledContentPlaylist = styled.div`
   overflow-y: auto;
 `;
 
-export const PlaylistItem = styled.div`
+export const PlaylistItemContainer = styled.div`
   width: 100%;
   display: block;
   margin-bottom: 12px;
@@ -253,6 +307,7 @@ export const TitleText = styled.div`
     span {
       font-size: 16px;
       color: #4e4e4e;
+      margin-left: 10px;
     }
   }
 `;
