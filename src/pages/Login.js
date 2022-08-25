@@ -4,12 +4,12 @@ import {
   EnterContainer,
   ModalBlock,
 } from "../components/enter_components/EnterForm.styled";
-function Login() {
+function Login({ user, onButtonClick }) {
   return (
     <StyledWrapper>
       <EnterContainer>
         <ModalBlock>
-          <LoginForm />
+          <LoginForm user={user} onButtonClick={onButtonClick} />
         </ModalBlock>
       </EnterContainer>
     </StyledWrapper>

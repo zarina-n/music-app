@@ -1,8 +1,11 @@
-import { Outlet } from "react-router-dom";
-import Login from "./Login";
+import { Navigate, Outlet } from "react-router-dom";
 
-function ProtectedRoute({ isAllowed }) {
-  return isAllowed ? <Outlet /> : <Login />;
+function ProtectedRoute({ redirectPath = "/login", isAllowed }) {
+  if (isAllowed === false) {
+    return <Navigate to={redirectPath} replace={true} />;
+  }
+
+  return <Outlet />;
 }
 
 export default ProtectedRoute;

@@ -6,7 +6,7 @@ import {
   SignupButton,
 } from "./EnterForm.styled";
 
-function LoginForm({ user, onButtonClick }) {
+function LoginForm() {
   return (
     <ModalForm>
       <ModalLogo>
@@ -25,11 +25,13 @@ function LoginForm({ user, onButtonClick }) {
         id="formpassword"
         placeholder="Пароль"
       ></input>
-      <ModalButton margintop="60px" onClick={onButtonClick}>
+
+      <ModalButton margintop="60px">
         <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={"/"}>
-          {user ? "Войти" : "No user"}
+          Войти
         </ModalLink>
       </ModalButton>
+
       <SignupButton>
         <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={"/signup"}>
           Зарегистрироваться
