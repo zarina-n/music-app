@@ -10,7 +10,7 @@ import {
 
 function PlaylistItem(props) {
   const playlistData = props.playlistData;
-  console.log(props, playlistData);
+
   return (
     <>
       {playlistData.map(({ name, id, description, author, album, time }) => (

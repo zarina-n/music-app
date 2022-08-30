@@ -8,9 +8,9 @@ function Burger() {
   return (
     <>
       <NavBurger open={open} onClick={() => setOpen(!open)}>
-        {Array.from({ length: 3 }).map(() => (
-          <span />
-        ))}
+        <span key={1} />
+        <span key={2} />
+        <span key={3} />
       </NavBurger>
       <NavMenu open={open} />
     </>

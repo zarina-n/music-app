@@ -33,17 +33,17 @@ function SidebarItem() {
   return (
     <SidebarList>
       {sidebarPlaylist &&
-        sidebarPlaylist.map(({ link, imgSrc, alt, id }) => (
+        sidebarPlaylist.map(({ name, imgSrc, alt, id }) => (
           <SidebarListItem key={id}>
-            <SidebarLink href={link}>
+            <SidebarLink to={`/compilations/${name}`}>
               <SidebarImg src={imgSrc} alt={alt}></SidebarImg>
             </SidebarLink>
           </SidebarListItem>
         ))}
 
       {!sidebarPlaylist &&
-        Array.from({ length: 3 }).map((item) => (
-          <SkeletonDailyplaylist key={item} />
+        Array.from({ length: 3 }).map((item, index) => (
+          <SkeletonDailyplaylist key={`${index} + 1`} />
         ))}
     </SidebarList>
   );
