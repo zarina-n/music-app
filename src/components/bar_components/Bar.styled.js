@@ -21,7 +21,12 @@ export const StyledBarContent = styled.div`
 export const PlayerProgress = styled.div`
   width: 100%;
   height: 5px;
-  background: #2e2e2e;
+  cursor: pointer;
+
+  div {
+    background: #2e2e2e;
+    height: 5px;
+  }
 `;
 
 export const PlayerBlock = styled.div`
