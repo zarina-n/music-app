@@ -1,6 +1,10 @@
 import { Controls, ControlButton, ControlSvg } from "./Bar.styled";
 
-function PlayerControls() {
+function PlayerControls({ isPlaying, setIsPlaying }) {
+  const playPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <Controls>
       <ControlButton>
@@ -9,10 +13,16 @@ function PlayerControls() {
         </ControlSvg>
       </ControlButton>
 
-      <ControlButton>
-        <ControlSvg width="22px" height="20px" alt="play">
-          <use href="img/icon/sprite.svg#icon-play"></use>
-        </ControlSvg>
+      <ControlButton onClick={playPause}>
+        {isPlaying ? (
+          <ControlSvg width="22px" height="20px" alt="play">
+            <use href="img/icon/sprite.svg#icon-pause"></use>
+          </ControlSvg>
+        ) : (
+          <ControlSvg width="22px" height="20px" alt="play">
+            <use href="img/icon/sprite.svg#icon-play"></use>
+          </ControlSvg>
+        )}
       </ControlButton>
 
       <ControlButton>

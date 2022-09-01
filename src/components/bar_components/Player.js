@@ -5,11 +5,15 @@ import Volume from "./Volume";
 
 import { PlayerBlock, ControlLikeContainer } from "./Bar.styled";
 
-function Player() {
+function Player({ isPlaying, setIsPlaying, audioRef }) {
   return (
     <PlayerBlock>
       <ControlLikeContainer>
-        <PlayerControls />
+        <PlayerControls
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          audioRef={audioRef}
+        />
         <PlayerTrack author="Ты та..." album="Баста" />
         <PlayerLikeDislike />
       </ControlLikeContainer>
