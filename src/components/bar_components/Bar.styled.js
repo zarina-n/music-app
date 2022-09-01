@@ -5,7 +5,7 @@ export const StyledBar = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(28, 28, 28, 0.5);
+  background: ${({ theme }) => theme.colors.bar};
 `;
 
 export const StyledBarContent = styled.div`
@@ -24,7 +24,7 @@ export const PlayerProgress = styled.div`
   cursor: pointer;
 
   div {
-    background: #2e2e2e;
+    background: ${({ theme }) => theme.colors.progressBar};
     height: 5px;
   }
 `;
@@ -81,12 +81,12 @@ export const ControlButton = styled.div`
 
   &:hover svg {
     fill: transparent;
-    stroke: #acacac;
+    stroke: ${({ theme }) => theme.colors.controlsHover};
   }
 
   &:active svg {
     fill: transparent;
-    stroke: #ffffff;
+    stroke: ${({ theme }) => theme.colors.controlsActive};
   }
 `;
 
@@ -94,16 +94,16 @@ export const ControlSvg = styled.svg`
   width: ${({ width }) => width || " 15px"};
   height: ${({ height }) => height || "14px"};
   fill: ${({ fill }) => fill || "transparent"};
-  stroke: ${({ stroke }) => stroke || "#696969"};
+  stroke: ${({ stroke, theme }) => stroke || theme.colors.controls};
 
-  &:hover {
-    fill: transparent;
-    stroke: #acacac;
+  &:hover svg {
+    fill: ${({ theme }) => theme.colors.controlsHover};
+    stroke: ${({ theme }) => theme.colors.controlsHover};
   }
 
-  &:active {
-    fill: transparent;
-    stroke: #ffffff;
+  &:active svg {
+    fill: ${({ theme }) => theme.colors.controlsActive};
+    stroke: ${({ theme }) => theme.colors.controlsActive};
   }
 `;
 
@@ -143,7 +143,7 @@ export const VolumeImage = styled.div`
   svg {
     width: 13px;
     height: 18px;
-    fill: transparent;
+    fill: ${({ theme }) => theme.colors.controls};
   }
 `;
 
@@ -170,7 +170,7 @@ export const ContainContainer = styled.div`
 export const ContainImage = styled.div`
   width: 51px;
   height: 51px;
-  background-color: #313131;
+  background-color: ${({ theme }) => theme.colors.svgBgC};
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,17 +237,17 @@ export const LikeDislikeIcons = styled.div`
     width: 14px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+    stroke: ${({ theme }) => theme.colors.controls};
     cursor: pointer;
     margin-right: 28.5px;
   }
 
   svg:hover {
-    stroke: #acacac;
+    stroke: ${({ theme }) => theme.colors.controlsHover};
   }
 
   svg:active {
-    fill: #696969;
+    fill: ${({ theme }) => theme.colors.likeDislikeActive};
     stroke: #ffffff;
   }
 `;

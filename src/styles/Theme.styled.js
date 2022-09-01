@@ -1,0 +1,41 @@
+export const dark = {
+  name: "dark-theme",
+  colors: {
+    backGrC: "#383838",
+    text: "#FFFFFF",
+    navBackGrC: "#1c1c1c",
+    svgBgC: "#313131",
+    controls: "#D9D9D9",
+    filterHoverColor: "#D9B6FF",
+    filterActiveColor: "#AD61FF",
+    burgerSpanColor: "#d3d3d3",
+    progressBar: "#2e2e2e",
+    bar: "rgba(28, 28, 28, 0.5)",
+    containerColor: "#181818",
+    centerBlockLinks: "#383838",
+    controlsHover: "#acacac",
+    controlsActive: " #ffffff",
+    likeDislike: "#696969",
+  },
+};
+
+export const light = {
+  name: "light-theme",
+  colors: {
+    backGrC: "#FFF",
+    text: "#000000",
+    navBackGrC: "#F6F5F3",
+    svgBgC: "#F6F4F4",
+    controls: "#B1B1B1",
+    filterHoverColor: "#580EA2",
+    filterActiveColor: "#AD61FF",
+    burgerSpanColor: "#000",
+    progressBar: "#D9D9D9",
+    bar: "rgba(255, 255, 255, 0.5)",
+    containerColor: "#fff",
+    centerBlockLinks: "#b1b1b1",
+    controlsHover: "#707070",
+    controlsActive: "#B1B1B1",
+    likeDislikeActive: "#AD61FF",
+  },
+};

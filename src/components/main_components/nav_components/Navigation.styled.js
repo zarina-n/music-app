@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const StyledNav = styled.nav`
   width: 244px;
-  background-color: #1c1c1c;
+  background-color: ${({ theme }) => theme.colors.navBackGrC};
   padding: 20px 0 20px 36px;
 `;
 
@@ -34,7 +34,7 @@ export const NavBurger = styled.div`
   span {
     width: 100%;
     height: 1px;
-    background-color: #d3d3d3;
+    background-color: ${({ theme }) => theme.colors.burgerSpanColor};
     transform-origin: 1px;
     transition: all 0.3s linear;
     display: inline-block;
@@ -68,8 +68,12 @@ export const Menu = styled.div`
 `;
 
 export const MenuLink = styled(NavLink)`
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+`;
+
+export const ThemeButton = styled.div`
+  cursor: pointer;
 `;

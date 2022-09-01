@@ -42,7 +42,7 @@ function PlayerControls({ isPlaying, setIsPlaying }) {
           width={"19px"}
           height={"12px"}
           fill={"transparent"}
-          stroke={"#696969"}
+          // stroke={"#696969"}
           alt="shuffle"
         >
           <use href="img/icon/sprite.svg#icon-shuffle"></use>

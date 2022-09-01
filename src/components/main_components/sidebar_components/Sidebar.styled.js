@@ -75,13 +75,14 @@ export const Name = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.text};
+
   margin-right: 16px;
 `;
 
 export const Avatar = styled.div`
   width: 43px;
   height: 43px;
-  background-color: #313131;
+  background-color: ${({ theme }) => theme.colors.svgBgC};
   border-radius: 50%;
 `;

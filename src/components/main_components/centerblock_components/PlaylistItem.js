@@ -4,7 +4,7 @@ import {
   TitleText,
   Author,
   Album,
-  Time,
+  SongTime,
   PlaylistItemContainer,
 } from "./Centerblock.styled";
 
@@ -38,12 +38,12 @@ function PlaylistItem(props) {
               <a href="http://">{album}</a>
             </Album>
 
-            <Time>
+            <SongTime>
               <svg alt="time">
                 <use href="img/icon/sprite.svg#icon-like" />
               </svg>
               <span>{time}</span>
-            </Time>
+            </SongTime>
           </div>
         </PlaylistItemContainer>
       ))}

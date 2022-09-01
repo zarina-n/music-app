@@ -28,7 +28,7 @@ export const SearchSvg = styled.svg`
   width: 17px;
   height: 17px;
   margin-right: 5px;
-  stroke: #ffffff;
+  stroke: ${({ theme }) => theme.colors.text};
   fill: transparent;
 `;
 
@@ -43,11 +43,11 @@ export const SearchInput = styled.input`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.text};
 
   &::placeholder {
     background-color: transparent;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.text};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -56,7 +56,7 @@ export const SearchInput = styled.input`
 
   &::-webkit-input-placeholder {
     background-color: transparent;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.text};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -65,7 +65,7 @@ export const SearchInput = styled.input`
 
   &:-ms-input-placeholder {
     background-color: transparent;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.text};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -74,7 +74,7 @@ export const SearchInput = styled.input`
 
   &::-ms-input-placeholder {
     background-color: transparent;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.text};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -119,27 +119,33 @@ export const FilterButton = styled.button`
   border-radius: 60px;
   padding: 6px 20px;
   position: relative;
-  background-color: #181818;
+  background-color: ${({ theme }) => theme.colors.containerColor};
+  color: ${({ id, clickedId, theme }) =>
+    clickedId === id ? theme.colors.filterActiveColor : theme.colors.text};
+  border-color: ${({ id, clickedId, theme }) =>
+    clickedId === id ? theme.colors.filterActiveColor : theme.colors.text};
 
   &:not(:last-child) {
     margin-right: 10px;
   }
 
   &:hover {
-    border-color: #d9b6ff;
-    color: #d9b6ff;
+    border-color: ${({ theme }) => theme.colors.filterHoverColor};
+    color: ${({ theme }) => theme.colors.filterHoverColor};
     cursor: pointer;
   }
 `;
 
 export const FilterOptions = styled.ul`
   position: absolute;
-  background: #313131;
-  color: #ffffff;
+  background: ${({ theme }) => theme.colors.svgBgC};
+  color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
   border-radius: 12px;
   width: 424px;
   height: 138px;
+  visibility: ${({ id, clickedId }) =>
+    clickedId === id ? "visible" : "hidden"};
 
   left: 0;
   top: 30px;
@@ -207,7 +213,7 @@ export const ContentColumn = styled.div`
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 2px;
-  color: #696969;
+  color: ${({ theme }) => theme.colors.centerBlockLinks};
   text-transform: uppercase;
 
   &:first-child {
@@ -279,7 +285,7 @@ export const TitleImage = styled.div`
   width: 51px;
   height: 51px;
   padding: 16px;
-  background: #313131;
+  background: ${({ theme }) => theme.colors.svgBgC};
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,11 +308,11 @@ export const TitleImage = styled.div`
 export const TitleText = styled.div`
   a {
     font-size: 16px;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.text};
 
     span {
       font-size: 16px;
-      color: #4e4e4e;
+      color: ${({ theme }) => theme.colors.centerBlockLinks};
       margin-left: 10px;
     }
   }
@@ -323,7 +329,7 @@ export const Author = styled.div`
 
   a {
     font-size: 16px;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.text};
     text-align: left;
   }
 `;
@@ -333,22 +339,24 @@ export const Album = styled.div`
 
   a {
     font-size: 16px;
-    color: #696969;
+    color: ${({ theme }) => theme.colors.centerBlockLinks};
   }
 `;
 
-export const Time = styled.div`
+export const SongTime = styled.div`
+  color: ${({ theme }) => theme.colors.centerBlockLinks};
+
   svg {
     width: 14px;
     height: 12px;
     margin-right: 17px;
     fill: transparent;
-    stroke: #696969;
+    stroke: ${({ theme }) => theme.colors.centerBlockLinks};
 
     span {
       font-size: 16px;
       text-align: right;
-      color: #696969;
+      color: ${({ theme }) => theme.colors.centerBlockLinks};
     }
   }
 `;
