@@ -30,7 +30,6 @@ a:visited {
   text-decoration: none;
   font-family: 'Stratos LC Web', sans-serif;
   cursor: pointer;
-  color:  ${({ theme }) => theme.colors.text};
   font-style: normal;
     font-weight: 400;
     line-height: 24px;
@@ -45,19 +44,19 @@ ul li {
   list-style: none;
 }
 
-/* @font-face {
+@font-face {
     font-family: 'Stratos LC Web';
-    src: url('StratosLCWeb-Light.eot');
-    src: local('Stratos LC Web Light'), local('StratosLCWeb-Light'),
-        url('StratosLCWeb-Light.eot?#iefix') format('embedded-opentype'),
-        url('StratosLCWeb-Light.woff2') format('woff2'),
-        url('StratosLCWeb-Light.woff') format('woff'),
-        url('StratosLCWeb-Light.ttf') format('truetype');
+    src: url('../fonts/StratosLCWeb-Light.eot');
+    src: local('../fonts/Stratos LC Web Light'), local('StratosLCWeb-Light'),
+        url('../fonts/StratosLCWeb-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/StratosLCWeb-Light.woff2') format('woff2'),
+        url('../fonts/StratosLCWeb-Light.woff') format('woff'),
+        url('../fonts/StratosLCWeb-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
-}
+} 
 
-@font-face {
+ /* @font-face {
     font-family: 'Stratos LC Web';
     src: url('StratosLCWeb-Bold.eot');
     src: local('Stratos LC Web Bold'), local('StratosLCWeb-Bold'),
@@ -79,9 +78,9 @@ ul li {
         url('StratosLCWeb-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
-} */
+} 
 
-/* @font-face {
+ @font-face {
     font-family: 'Stratos LC Web';
     src: url('./fonts/StratosLCWeb-Regular.eot');
     src: local('./fonts/Stratos LC Web'), local('./fonts/StratosLCWeb-Regular'),
@@ -91,7 +90,7 @@ ul li {
         url('./fonts/StratosLCWeb-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}*/
+} */
 `;
 
 export default GlobalStyles;

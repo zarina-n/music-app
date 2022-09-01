@@ -15,7 +15,7 @@ function PlayerControls({ isPlaying, setIsPlaying }) {
 
       <ControlButton onClick={playPause}>
         {isPlaying ? (
-          <ControlSvg width="22px" height="20px" alt="play">
+          <ControlSvg width="22px" height="20px" alt="pause">
             <use href="img/icon/sprite.svg#icon-pause"></use>
           </ControlSvg>
         ) : (
@@ -32,7 +32,7 @@ function PlayerControls({ isPlaying, setIsPlaying }) {
       </ControlButton>
 
       <ControlButton>
-        <ControlSvg width="18px" height="22px" alt="repeat">
+        <ControlSvg width="18px" height="22px" stroke={"#696969"} alt="repeat">
           <use href="img/icon/sprite.svg#icon-repeat"></use>
         </ControlSvg>
       </ControlButton>
@@ -42,7 +42,7 @@ function PlayerControls({ isPlaying, setIsPlaying }) {
           width={"19px"}
           height={"12px"}
           fill={"transparent"}
-          // stroke={"#696969"}
+          stroke={"#696969"}
           alt="shuffle"
         >
           <use href="img/icon/sprite.svg#icon-shuffle"></use>

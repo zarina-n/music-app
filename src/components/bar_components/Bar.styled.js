@@ -203,6 +203,7 @@ export const ContainAuthor = styled.div`
   a {
     font-size: 16px;
     white-space: nowrap;
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 
@@ -213,6 +214,7 @@ export const ContainAlbum = styled.div`
   min-width: 49px;
   a {
     font-size: 13px;
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 

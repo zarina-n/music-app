@@ -6,9 +6,10 @@ import { ThemeContext } from "../../App";
 
 function Navigation() {
   const { darkTheme } = useContext(ThemeContext);
+  const logo = darkTheme ? "img/logo.png" : "img/logo_modal.png";
   return (
     <StyledNav>
-      <Logo src={darkTheme ? "img/logo.png" : "img/logo_modal.png"} />
+      <Logo src={logo} />
       <Burger />
     </StyledNav>
   );

@@ -5,7 +5,7 @@ import SkeletonPlaylistItem from "../../../skeletons/SkeletonPlaylistItem";
 import PlaylistItem from "./PlaylistItem";
 
 function Playlist() {
-  const [playlistData, setPlaylistData] = useState([]);
+  const [playlistData, setPlaylistData] = useState();
 
   useEffect(() => {
     const timer = setTimeout(() => {
