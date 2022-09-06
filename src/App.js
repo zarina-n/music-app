@@ -7,21 +7,19 @@ import GlobalStyles from "./styles/GlobalStyles";
 export const ThemeContext = React.createContext("theme");
 
 function App() {
-  const cookieValue = document.cookie;
-
-  //const cookieValue = false;
+  const user = true;
 
   const [darkTheme, setDarkTheme] = useState(true);
 
+  const themeValue = useMemo(() => {
+    return { darkTheme, setDarkTheme };
+  }, [darkTheme, setDarkTheme]);
+
   return (
-    <ThemeContext.Provider
-      value={useMemo(() => {
-        return { darkTheme, setDarkTheme };
-      }, [darkTheme, setDarkTheme])}
-    >
+    <ThemeContext.Provider value={themeValue}>
       <ThemeProvider theme={darkTheme ? dark : light}>
         <GlobalStyles />
-        <AppRoutes user={cookieValue} />
+        <AppRoutes user={user} />
       </ThemeProvider>
     </ThemeContext.Provider>
   );
