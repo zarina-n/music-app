@@ -8,6 +8,8 @@ import {
 import DAILY_PLAYLIST from "../../../dummy-data/daily-playlist-data";
 import { useState, useEffect } from "react";
 import SkeletonDailyplaylist from "../../../skeletons/SkeletonDailyplaylist";
+import { useContext } from "react";
+import { ThemeContext } from "../../../App";
 
 function SidebarBlock() {
   return (
@@ -20,6 +22,8 @@ function SidebarBlock() {
 export default SidebarBlock;
 
 function SidebarItem() {
+  const { darkTheme } = useContext(ThemeContext);
+
   const [sidebarPlaylist, setSidebarPlaylist] = useState();
 
   useEffect(() => {
@@ -43,7 +47,10 @@ function SidebarItem() {
 
       {!sidebarPlaylist &&
         Array.from({ length: 3 }).map((item, index) => (
-          <SkeletonDailyplaylist key={`${index} + 1`} />
+          <SkeletonDailyplaylist
+            key={`${index} + 1`}
+            theme={darkTheme ? "dark" : "light"}
+          />
         ))}
     </SidebarList>
   );

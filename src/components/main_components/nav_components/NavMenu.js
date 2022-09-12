@@ -1,6 +1,8 @@
 import { Menu, MenuLink, ThemeButton } from "./Navigation.styled";
 import { useContext } from "react";
 import { ThemeContext } from "../../../App";
+import Dark from "../../../assets/Dark";
+import Light from "../../../assets/Light";
 
 function NavMenu({ open }) {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
@@ -23,15 +25,7 @@ function NavMenu({ open }) {
         </li>
         <li>
           <ThemeButton onClick={toggleTheme}>
-            {darkTheme ? (
-              <svg>
-                <use xlinkHref="img/icon/sprite.svg#icon-theme" />
-              </svg>
-            ) : (
-              <svg>
-                <use xlinkHref="img/icon/sprite.svg#icon-theme-light" />
-              </svg>
-            )}
+            {darkTheme ? <Dark /> : <Light />}
           </ThemeButton>
         </li>
       </ul>

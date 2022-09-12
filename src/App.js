@@ -11,9 +11,10 @@ function App() {
 
   const [darkTheme, setDarkTheme] = useState(true);
 
-  const themeValue = useMemo(() => {
-    return { darkTheme, setDarkTheme };
-  }, [darkTheme, setDarkTheme]);
+  const themeValue = useMemo(
+    () => ({ darkTheme, setDarkTheme }),
+    [darkTheme, setDarkTheme]
+  );
 
   return (
     <ThemeContext.Provider value={themeValue}>

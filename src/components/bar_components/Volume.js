@@ -4,25 +4,15 @@ import {
   VolumeImage,
   VolumeProgress,
 } from "./Bar.styled";
-import { useContext } from "react";
-import { ThemeContext } from "../../App";
+
+import VolumeIcon from "../../assets/VolumeIcon";
 
 function Volume() {
-  const { darkTheme } = useContext(ThemeContext);
-
   return (
     <BarVolumeBlock>
       <VolumeContent>
         <VolumeImage>
-          {darkTheme ? (
-            <svg>
-              <use xlinkHref="img/icon/sprite.svg#icon-volume" />
-            </svg>
-          ) : (
-            <svg>
-              <use xlinkHref="img/icon/sprite.svg#icon-volume-light" />
-            </svg>
-          )}
+          <VolumeIcon alt="volume" />
         </VolumeImage>
         <VolumeProgress>
           <input type="range" name="range" />

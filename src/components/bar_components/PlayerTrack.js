@@ -5,13 +5,13 @@ import {
   ContainAlbum,
 } from "./Bar.styled";
 
+import Note from "../../assets/Note";
+
 function PlayerTrack(props) {
   return (
     <ContainContainer>
       <ContainImage>
-        <svg alt="music">
-          <use xlinkHref="img/icon/sprite.svg#icon-note" />
-        </svg>
+        <Note alt="music" />
       </ContainImage>
       <ContainAuthor>
         <a href="http://">{props.author}</a>

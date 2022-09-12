@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCenterBlock = styled.nav`
+export const StyledCenterBlock = styled.div`
   width: auto;
   -webkit-box-flex: 3;
   -ms-flex-positive: 3;

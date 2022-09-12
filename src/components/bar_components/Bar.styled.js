@@ -42,6 +42,7 @@ export const PlayerBlock = styled.div`
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  height: 100%;
 `;
 
 export const ControlLikeContainer = styled.div`
@@ -58,6 +59,7 @@ export const Controls = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 73px;
 
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -79,33 +81,44 @@ export const ControlButton = styled.div`
   align-items: center;
   cursor: pointer;
 
-  &:hover svg {
-    fill: transparent;
-    stroke: ${({ theme }) => theme.colors.controlsHover};
-  }
+  svg {
+    fill: ${({ theme }) => theme.colors.controls};
 
-  &:active svg {
-    fill: transparent;
-    stroke: ${({ theme }) => theme.colors.controlsActive};
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.controlsHover};
+    }
+
+    &:active {
+      stroke: ${({ theme }) => theme.colors.controlsActive};
+    }
+  }
+`;
+
+export const ShuffleRepeatButton = styled.div`
+  padding: 5px;
+  margin-right: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    fill: ${({ theme }) => theme.colors.shuffleRepeatSvg};
+
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.shuffleRepeatSvgHover};
+    }
+
+    &:active {
+      stroke: ${({ theme }) => theme.colors.shuffleRepeatSvgActive};
+    }
   }
 `;
 
-export const ControlSvg = styled.svg`
-  width: ${({ width }) => width || " 15px"};
-  height: ${({ height }) => height || "14px"};
-  fill: ${({ fill }) => fill || "transparent"};
-  stroke: ${({ stroke, theme }) => stroke || theme.colors.controls};
-
-  &:hover svg {
-    fill: ${({ theme }) => theme.colors.controlsHover};
-    stroke: ${({ theme }) => theme.colors.controlsHover};
-  }
-
-  &:active svg {
-    fill: ${({ theme }) => theme.colors.controlsActive};
-    stroke: ${({ theme }) => theme.colors.controlsActive};
-  }
-`;
+export const ControlSvg = styled.svg``;
 
 export const BarVolumeBlock = styled.div`
   width: auto;
@@ -141,9 +154,7 @@ export const VolumeImage = styled.div`
   margin-right: 17px;
 
   svg {
-    width: 13px;
-    height: 18px;
-    fill: ${({ theme }) => theme.colors.controls};
+    stroke: ${({ theme }) => theme.colors.controlsActive};
   }
 `;
 
@@ -170,7 +181,7 @@ export const ContainContainer = styled.div`
 export const ContainImage = styled.div`
   width: 51px;
   height: 51px;
-  background-color: ${({ theme }) => theme.colors.svgBgC};
+  background-color: ${({ theme }) => theme.colors.noteSvgBackground};
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,13 +196,6 @@ export const ContainImage = styled.div`
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: image;
-
-  svg {
-    width: 18px;
-    height: 17px;
-    fill: transparent;
-    stroke: #4e4e4e;
-  }
 `;
 
 export const ContainAuthor = styled.div`
@@ -230,26 +234,20 @@ export const LikeDislikeDiv = styled.div`
   -ms-flex-align: center;
   align-items: center;
   margin-left: 16%;
-`;
-
-export const LikeDislikeIcons = styled.div`
-  padding: 5px;
+  gap: 30px;
 
   svg {
-    width: 14px;
-    height: 12px;
-    fill: transparent;
-    stroke: ${({ theme }) => theme.colors.controls};
+    stroke: ${({ theme }) => theme.colors.likeDislike};
     cursor: pointer;
-    margin-right: 28.5px;
-  }
 
-  svg:hover {
-    stroke: ${({ theme }) => theme.colors.controlsHover};
-  }
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.controlsHover};
+    }
 
-  svg:active {
-    fill: ${({ theme }) => theme.colors.likeDislikeActive};
-    stroke: #ffffff;
+    &:active {
+      fill: ${({ theme }) => theme.colors.likeDislikeActive};
+      stroke: ${({ theme }) => theme.colors.controlsHover};
+      fill: ${({ theme }) => theme.colors.likeDislike};
+    }
   }
 `;

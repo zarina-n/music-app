@@ -14,7 +14,7 @@ body {
   height: 100%;
   font-family: 'Stratos LC Web', sans-serif;
   color:  ${({ theme }) => theme.colors.text};
-  background-color:  ${({ theme }) => theme.colors.backGrC};
+  background-color:  ${({ theme }) => theme.colors.backGrColor};
   
 
 }

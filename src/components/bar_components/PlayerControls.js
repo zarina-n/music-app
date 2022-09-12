@@ -1,4 +1,11 @@
-import { Controls, ControlButton, ControlSvg } from "./Bar.styled";
+import { Controls, ControlButton, ShuffleRepeatButton } from "./Bar.styled";
+
+import Repeat from "../../assets/Repeat";
+import Shuffle from "../../assets/Shuffle";
+import Prev from "../../assets/Prev";
+import Play from "../../assets/Play";
+import Pause from "../../assets/Pause";
+import Next from "../../assets/Next";
 
 function PlayerControls({ isPlaying, setIsPlaying }) {
   const playPause = () => {
@@ -8,46 +15,24 @@ function PlayerControls({ isPlaying, setIsPlaying }) {
   return (
     <Controls>
       <ControlButton>
-        <ControlSvg alt="prev">
-          <use href="img/icon/sprite.svg#icon-prev"></use>
-        </ControlSvg>
+        <Prev alt="prev" />
       </ControlButton>
 
       <ControlButton onClick={playPause}>
-        {isPlaying ? (
-          <ControlSvg width="22px" height="20px" alt="pause">
-            <use href="img/icon/sprite.svg#icon-pause"></use>
-          </ControlSvg>
-        ) : (
-          <ControlSvg width="22px" height="20px" alt="play">
-            <use href="img/icon/sprite.svg#icon-play"></use>
-          </ControlSvg>
-        )}
+        {isPlaying ? <Pause alt="pause" /> : <Play alt="play" />}
       </ControlButton>
 
       <ControlButton>
-        <ControlSvg fill="inherit" stroke="#d9d9d9" alt="next">
-          <use href="img/icon/sprite.svg#icon-next"></use>
-        </ControlSvg>
+        <Next alt="next" />
       </ControlButton>
 
-      <ControlButton>
-        <ControlSvg width="18px" height="22px" stroke={"#696969"} alt="repeat">
-          <use href="img/icon/sprite.svg#icon-repeat"></use>
-        </ControlSvg>
-      </ControlButton>
+      <ShuffleRepeatButton>
+        <Repeat alt="repeat" />
+      </ShuffleRepeatButton>
 
-      <ControlButton>
-        <ControlSvg
-          width={"19px"}
-          height={"12px"}
-          fill={"transparent"}
-          stroke={"#696969"}
-          alt="shuffle"
-        >
-          <use href="img/icon/sprite.svg#icon-shuffle"></use>
-        </ControlSvg>
-      </ControlButton>
+      <ShuffleRepeatButton>
+        <Shuffle alt="shuffle" />
+      </ShuffleRepeatButton>
     </Controls>
   );
 }

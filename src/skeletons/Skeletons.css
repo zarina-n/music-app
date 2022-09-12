@@ -2,6 +2,11 @@
   background-color: #313131;
 }
 
+.skeleton-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .skeleton-playlist-item {
   display: flex;
   flex-direction: row;
@@ -35,4 +40,41 @@
   width: 250px;
   height: 150px;
   margin: 30px;
+}
+
+.skeleton-wrapper.dark .skeleton {
+  background-color: #313131;
+}
+
+.skeleton-wrapper.light .skeleton {
+  background-color: grey;
+}
+
+.shimmer-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  animation: loading 3s infinite;
+}
+
+.shimmer {
+  width: 50%;
+  height: 100%;
+  background: rgba(24, 24, 24, 0.5);
+  transform: skewX(-20deg);
+  box-shadow: 0 0 30px 30px rgba(24, 24, 24, 0.05);
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-150deg);
+  }
+  50% {
+    transform: translateX(-60deg);
+  }
+  100% {
+    transform: translateX(150deg);
+  }
 }

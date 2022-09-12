@@ -12,6 +12,10 @@ function Bar() {
   const audioRef = useRef();
   const progressRef = useRef();
 
+  function getSongProgress(time, duration) {
+    return (time / duration) * 100;
+  }
+
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
@@ -25,13 +29,13 @@ function Bar() {
     const currentTime = audioRef.current.currentTime;
 
     setSongProgress({
-      progress: (currentTime / duration) * 100,
+      progress: getSongProgress(currentTime, duration),
       length: duration,
     });
   };
 
   const getWidth = (event) => {
-    let width = progressRef.current.clientWidth;
+    const width = progressRef.current.clientWidth;
 
     const offset = event.nativeEvent.offsetX;
 

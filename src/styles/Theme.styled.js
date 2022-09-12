@@ -1,10 +1,10 @@
 export const dark = {
   name: "dark-theme",
   colors: {
-    backGrC: "#383838",
+    backGrColor: "#383838",
     text: "#FFFFFF",
-    navBackGrC: "#1c1c1c",
-    svgBgC: "#313131",
+    navBackGrColor: "#1c1c1c",
+    noteSvgBackground: "#313131",
     controls: "#D9D9D9",
     filterHoverColor: "#D9B6FF",
     filterActiveColor: "#AD61FF",
@@ -16,16 +16,19 @@ export const dark = {
     controlsHover: "#acacac",
     controlsActive: " #ffffff",
     likeDislike: "#696969",
+    shuffleRepeatSvg: "#696969",
+    shuffleRepeatSvgHover: "#ACACAC",
+    shuffleRepeatSvgActive: "#FFFFFF",
   },
 };
 
 export const light = {
   name: "light-theme",
   colors: {
-    backGrC: "#FFF",
+    backGrColor: "#FFF",
     text: "#000000",
-    navBackGrC: "#F6F5F3",
-    svgBgC: "#F6F4F4",
+    navBackGrColor: "#F6F5F3",
+    noteSvgBackground: "#F6F4F4",
     controls: "#B1B1B1",
     filterHoverColor: "#580EA2",
     filterActiveColor: "#AD61FF",
@@ -36,6 +39,9 @@ export const light = {
     centerBlockLinks: "#b1b1b1",
     controlsHover: "#707070",
     controlsActive: "#B1B1B1",
-    likeDislikeActive: "#AD61FF",
+    likeDislike: "#AD61FF",
+    shuffleRepeatSvg: "#B1B1B1",
+    shuffleRepeatSvgHover: "#707070",
+    shuffleRepeatSvgActive: "#000000",
   },
 };
