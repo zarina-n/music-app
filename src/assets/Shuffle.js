@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgShuffle = (props) => (
+const Shuffle = (props) => (
   <svg width={20} height={18} x mlns="http://www.w3.org/2000/svg" {...props}>
     <path
       d="m19.5 15-5-2.887v5.774l5-2.887Zm-9.337-2.917-.454.209.454-.209ZM7.337 5.917l-.455.208.455-.208ZM.5 3.5h2.292v-1H.5v1Zm6.382 2.625 2.827 6.167.909-.417L7.79 5.708l-.909.417ZM14.71 15.5H15v-1h-.291v1Zm-5-3.208a5.5 5.5 0 0 0 5 3.208v-1a4.5 4.5 0 0 1-4.091-2.625l-.91.417ZM2.792 3.5a4.5 4.5 0 0 1 4.09 2.625l.91-.417a5.5 5.5 0 0 0-5-3.208v1Z"
@@ -13,4 +11,4 @@ const SvgShuffle = (props) => (
   </svg>
 );
 
-export default SvgShuffle;
+export default Shuffle;

@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgDislike = (props) => (
+const Dislike = (props) => (
   <svg
     width={16}
     height={14}
@@ -12,4 +10,4 @@ const SvgDislike = (props) => (
   </svg>
 );
 
-export default SvgDislike;
+export default Dislike;

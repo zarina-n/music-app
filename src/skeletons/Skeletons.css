@@ -1,5 +1,10 @@
+:root {
+  --dark-background-color: #313131;
+  --light-background-color: #888888;
+}
+
 .skeleton {
-  background-color: #313131;
+  background-color: var(--dark-background-color);
 }
 
 .skeleton-wrapper {
@@ -16,38 +21,43 @@
   width: 356px;
   height: 19px;
   margin: 15px;
+  border-radius: 5px;
 }
 
 .skeleton.author-text {
   width: 251px;
   height: 19px;
   margin: 15px;
+  border-radius: 5px;
 }
 
 .skeleton.album-text {
   width: 305px;
   height: 19px;
   margin: 15px;
+  border-radius: 5px;
 }
 
 .skeleton.image {
   width: 51px;
   height: 51px;
   margin: 10px;
+  border-radius: 5px;
 }
 
 .skeleton.playlist-image {
   width: 250px;
   height: 150px;
   margin: 30px;
+  border-radius: 5px;
 }
 
 .skeleton-wrapper.dark .skeleton {
-  background-color: #313131;
+  background-color: var(--dark-background-color);
 }
 
 .skeleton-wrapper.light .skeleton {
-  background-color: grey;
+  background-color: var(--light-background-color);
 }
 
 .shimmer-wrapper {
@@ -63,18 +73,18 @@
   width: 50%;
   height: 100%;
   background: rgba(24, 24, 24, 0.5);
-  transform: skewX(-20deg);
+  transform: skewX(-10deg);
   box-shadow: 0 0 30px 30px rgba(24, 24, 24, 0.05);
 }
 
 @keyframes loading {
   0% {
-    transform: translateX(-150deg);
+    transform: translateX(-150%);
   }
   50% {
-    transform: translateX(-60deg);
+    transform: translateX(-60%);
   }
   100% {
-    transform: translateX(150deg);
+    transform: translateX(150%);
   }
 }

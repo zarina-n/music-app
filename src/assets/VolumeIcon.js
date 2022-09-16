@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgVolume = (props) => (
+const Volume = (props) => (
   <svg
     width={14}
     height={18}
@@ -20,4 +18,4 @@ const SvgVolume = (props) => (
   </svg>
 );
 
-export default SvgVolume;
+export default Volume;

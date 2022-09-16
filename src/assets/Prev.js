@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgPrev = (props) => (
+const Prev = (props) => (
   <svg
     width={15}
     height={14}
@@ -13,4 +11,4 @@ const SvgPrev = (props) => (
   </svg>
 );
 
-export default SvgPrev;
+export default Prev;

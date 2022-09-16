@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgNote = (props) => (
+const Note = (props) => (
   <svg
     width={20}
     height={19}
@@ -14,4 +12,4 @@ const SvgNote = (props) => (
   </svg>
 );
 
-export default SvgNote;
+export default Note;

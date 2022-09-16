@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgLight = (props) => (
+const Light = (props) => (
   <svg
     width={40}
     height={40}
@@ -16,4 +14,4 @@ const SvgLight = (props) => (
   </svg>
 );
 
-export default SvgLight;
+export default Light;

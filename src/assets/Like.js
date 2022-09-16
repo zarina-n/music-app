@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgLike = (props) => (
+const Like = (props) => (
   <svg
     width={16}
     height={14}
@@ -12,4 +10,4 @@ const SvgLike = (props) => (
   </svg>
 );
 
-export default SvgLike;
+export default Like;

@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgWatch = (props) => (
+const Watch = (props) => (
   <svg
     width={12}
     height={12}
@@ -13,4 +11,4 @@ const SvgWatch = (props) => (
   </svg>
 );
 
-export default SvgWatch;
+export default Watch;

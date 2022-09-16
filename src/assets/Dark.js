@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgDark = (props) => (
+const Dark = (props) => (
   <svg
     width={40}
     height={40}
@@ -16,4 +14,4 @@ const SvgDark = (props) => (
   </svg>
 );
 
-export default SvgDark;
+export default Dark;

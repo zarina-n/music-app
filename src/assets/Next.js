@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgNext = (props) => (
+const Next = (props) => (
   <svg
     width={15}
     height={14}
@@ -13,4 +11,4 @@ const SvgNext = (props) => (
   </svg>
 );
 
-export default SvgNext;
+export default Next;

@@ -1,4 +1,5 @@
 import SkeletonElement from "./SkeletonElement";
+import Shimmer from "./Shimmer";
 
 function SkeletonDailyplaylist({ theme }) {
   const themeClass = theme;
@@ -7,6 +8,7 @@ function SkeletonDailyplaylist({ theme }) {
       <div className="skeleton-playlist-item">
         <SkeletonElement type="playlist-image" />
       </div>
+      <Shimmer />
     </div>
   );
 }

@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgPlay = (props) => (
+const Play = (props) => (
   <svg
     width={22}
     height={20}
@@ -12,4 +10,4 @@ const SvgPlay = (props) => (
   </svg>
 );
 
-export default SvgPlay;
+export default Play;

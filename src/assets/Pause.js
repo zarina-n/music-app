@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const SvgPause = (props) => (
+const Pause = (props) => (
   <svg
     width={22}
     height={20}
@@ -13,4 +11,4 @@ const SvgPause = (props) => (
   </svg>
 );
 
-export default SvgPause;
+export default Pause;
