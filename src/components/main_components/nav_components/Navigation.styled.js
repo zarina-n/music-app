@@ -72,6 +72,10 @@ export const MenuLink = styled(NavLink)`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+
+  &.active {
+    border-bottom: 1px solid white;
+  }
 `;
 
 export const ThemeButton = styled.div`

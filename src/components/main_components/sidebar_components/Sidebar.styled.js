@@ -83,6 +83,6 @@ export const Name = styled.p`
 export const Avatar = styled.div`
   width: 43px;
   height: 43px;
-  background-color: ${({ theme }) => theme.colors.svgBgC};
+  background-color: ${({ theme }) => theme.colors.avatar};
   border-radius: 50%;
 `;

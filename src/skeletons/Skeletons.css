@@ -1,6 +1,6 @@
 :root {
   --dark-background-color: #313131;
-  --light-background-color: #888888;
+  --light-background-color: #f6f5f3;
 }
 
 .skeleton {
@@ -66,15 +66,20 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  animation: loading 3s infinite;
+  animation: loading 2s infinite;
 }
 
 .shimmer {
   width: 50%;
   height: 100%;
-  background: rgba(24, 24, 24, 0.5);
+  background: rgba(24, 24, 24, 0.2);
   transform: skewX(-10deg);
   box-shadow: 0 0 30px 30px rgba(24, 24, 24, 0.05);
+}
+
+.light .shimmer {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.05);
 }
 
 @keyframes loading {

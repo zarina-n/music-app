@@ -44,7 +44,7 @@ ul li {
   list-style: none;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Stratos LC Web';
     src: url('../fonts/StratosLCWeb-Light.eot');
     src: local('../fonts/Stratos LC Web Light'), local('StratosLCWeb-Light'),
@@ -54,7 +54,7 @@ ul li {
         url('../fonts/StratosLCWeb-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
-} 
+}  */
 
  /* @font-face {
     font-family: 'Stratos LC Web';

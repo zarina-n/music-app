@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const StyledWrapper = styled.div`
   width: 100%;
@@ -24,9 +23,10 @@ export const ModalBlock = styled.div`
 `;
 
 export const ModalForm = styled.form`
-  width: 366px;
-  height: 439px;
+  min-width: 366px;
+  min-height: 439px;
   background-color: #ffffff;
+  color: black;
   border-radius: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -40,8 +40,11 @@ export const ModalForm = styled.form`
   align-items: center;
   padding: 43px 47px 47px 40px;
 
-  input:first-child {
-    margin-bottom: 30px;
+  p {
+    color: salmon;
+    font-size: 15px;
+    margin-bottom: 10px;
+    width: 300px;
   }
 
   input {
@@ -50,7 +53,7 @@ export const ModalForm = styled.form`
     border-left: none;
     border-right: none;
     border-bottom: 1px solid #d0cece;
-    padding: 8px 1px;
+    padding: 8px 8px;
     margin-bottom: 30px;
   }
 
@@ -89,6 +92,11 @@ export const ModalForm = styled.form`
     letter-spacing: -0.05px;
     color: #d0cece;
   }
+
+  input:focus {
+    outline: none;
+    border-bottom: #000 solid 2px;
+  }
 `;
 
 export const ModalLogo = styled.div`
@@ -107,6 +115,7 @@ export const ModalButton = styled.button`
   width: 278px;
   height: 52px;
   background-color: #580ea2;
+  padding: ${({ padding }) => padding};
   border-radius: 6px;
   margin-top: ${({ margintop }) => margintop};
   margin-bottom: 20px;
@@ -137,7 +146,6 @@ export const SignupButton = styled.button`
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.05px;
-  color: #000000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -147,13 +155,14 @@ export const SignupButton = styled.button`
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  color: ${({ color }) => color};
 
   &:hover {
     background-color: #f4f5f6;
   }
 `;
 
-export const ModalLink = styled(Link)`
+export const ModalLink = styled.a`
   width: 100%;
   height: 100%;
   font-size: 18px;

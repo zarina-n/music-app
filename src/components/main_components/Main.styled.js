@@ -12,4 +12,5 @@ export const StyledMain = styled.div`
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  background-color: ${({ theme }) => theme.colors.containerColor};
 `;

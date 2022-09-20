@@ -7,13 +7,16 @@ import Signup from "./Signup";
 import NotFound from "./NotFound";
 import Login from "./Login";
 
-function AppRoutes({ user }) {
+import { useSelector } from "react-redux";
+import { selectCurrentToken } from "../features/auth/authSlice";
+
+function AppRoutes({ isAllowed }) {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
 
-      <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
+      <Route element={<ProtectedRoute />}>
         <Route path="/" element={<Home />} />
         <Route path="/my-tracks" element={<MyTracks />} />
         <Route path="/compilations/:name" element={<Compilations />} />

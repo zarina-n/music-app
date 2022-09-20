@@ -7,7 +7,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 export const ThemeContext = React.createContext("theme");
 
 function App() {
-  const user = true;
+  // const user = false;
 
   const [darkTheme, setDarkTheme] = useState(true);
 
@@ -20,7 +20,7 @@ function App() {
     <ThemeContext.Provider value={themeValue}>
       <ThemeProvider theme={darkTheme ? dark : light}>
         <GlobalStyles />
-        <AppRoutes user={user} />
+        <AppRoutes />
       </ThemeProvider>
     </ThemeContext.Provider>
   );

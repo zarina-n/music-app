@@ -19,6 +19,7 @@ export const dark = {
     shuffleRepeatSvg: "#696969",
     shuffleRepeatSvgHover: "#ACACAC",
     shuffleRepeatSvgActive: "#FFFFFF",
+    avatar: "#383838",
   },
 };
 
@@ -43,5 +44,6 @@ export const light = {
     shuffleRepeatSvg: "#B1B1B1",
     shuffleRepeatSvgHover: "#707070",
     shuffleRepeatSvgActive: "#000000",
+    avatar: "#f6f5f3",
   },
 };

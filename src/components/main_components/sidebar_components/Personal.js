@@ -1,10 +1,14 @@
 import { StyledPersonal, Name, Avatar } from "./Sidebar.styled";
-import styled from "styled-components";
+import { useSelector } from "react-redux";
+
+import { selectCurrentUser } from "../../../features/auth/authSlice";
 
 function Personal() {
+  const user = useSelector(selectCurrentUser);
+
   return (
     <StyledPersonal>
-      <Name>Sergey.Ivanov</Name>
+      <Name>{user.username}</Name>
       <Avatar />
     </StyledPersonal>
   );

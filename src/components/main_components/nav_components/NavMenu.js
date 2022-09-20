@@ -4,8 +4,12 @@ import { ThemeContext } from "../../../App";
 import Dark from "../../../assets/Dark";
 import Light from "../../../assets/Light";
 
+import { logOut } from "../../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
+
 function NavMenu({ open }) {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
+  const dispatch = useDispatch();
 
   function toggleTheme() {
     setDarkTheme((prevDarkTheme) => !prevDarkTheme);
@@ -21,7 +25,9 @@ function NavMenu({ open }) {
           <MenuLink to={"/my-tracks"}>Мой плейлист</MenuLink>
         </li>
         <li key={3}>
-          <MenuLink to={"/login"}>Выйти</MenuLink>
+          <MenuLink to={"/login"} onClick={() => dispatch(logOut())}>
+            Выйти
+          </MenuLink>
         </li>
         <li>
           <ThemeButton onClick={toggleTheme}>
