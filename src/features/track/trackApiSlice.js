@@ -1,11 +1,14 @@
-import { apiSlice } from "../api/apiSlice";
+import { apiSlice } from '../api/apiSlice'
 
 export const trackApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllTracks: builder.query({
-      query: () => "/catalog/track/all/",
+      query: () => '/catalog/track/all/',
+    }),
+    getTrackById: builder.mutation({
+      query: (id) => `/catalog/track/${id}`,
     }),
   }),
-});
+})
 
-export const { useGetAllTracksQuery } = trackApiSlice;
+export const { useGetAllTracksQuery, useGetTrackByIdMutation } = trackApiSlice

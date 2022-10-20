@@ -1,16 +1,16 @@
-import { useState, useCallback } from "react";
-import { FilterButton, FilterOptions } from "./Centerblock.styled";
-import FILTER_DATA from "../../../dummy-data/filter-data";
+import { useState, useCallback } from 'react'
+import { FilterButton, FilterOptions } from './Centerblock.styled'
+import FILTER_DATA from '../../dummy-data/filter-data'
 
 function FilterButtons() {
-  const [clickedId, setClickedId] = useState(0);
+  const [clickedId, setClickedId] = useState(0)
 
   const stateToggler = useCallback(
     (id) => {
-      setClickedId((prevId) => (prevId === id ? null : id));
+      setClickedId((prevId) => (prevId === id ? null : id))
     },
     [setClickedId]
-  );
+  )
 
   return (
     <>
@@ -31,7 +31,7 @@ function FilterButtons() {
         </FilterButton>
       ))}
     </>
-  );
+  )
 }
 
-export default FilterButtons;
+export default FilterButtons

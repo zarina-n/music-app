@@ -3,67 +3,71 @@ import {
   ModalLogo,
   ModalButton,
   ModalLink,
-} from "./EnterForm.styled";
+} from './EnterForm.styled'
 
-import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { signUp } from "../../features/auth/authSlice";
-import { useSignUserUpMutation } from "../../features/auth/authApiSlice";
+import { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { signUp } from '../../features/auth/authSlice'
+import { useSignUserUpMutation } from '../../features/auth/authApiSlice'
 
-function LoginForm() {
-  const userRef = useRef();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
+function SignUpForm() {
+  const userRef = useRef()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [email, setEmail] = useState('')
+  const [username, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
+  const [errMsg, setErrMsg] = useState('')
 
-  const [signUserUp] = useSignUserUpMutation();
+  const [signUserUp] = useSignUserUpMutation()
 
   useEffect(() => {
-    userRef.current.focus();
-  }, []);
+    userRef.current.focus()
+  }, [])
 
-  const handleEmail = (event) => setEmail(event.target.value);
-  const handleLogin = (event) => setUserName(event.target.value);
-  const handlePassword = (event) => setPassword(event.target.value);
-  const handleRepeatPassword = (event) => setRepeatPassword(event.target.value);
+  const handleEmail = (event) => setEmail(event.target.value)
+  const handleLogin = (event) => setUserName(event.target.value)
+  const handlePassword = (event) => setPassword(event.target.value)
+  const handleRepeatPassword = (event) => setRepeatPassword(event.target.value)
 
-  const isValid = password === repeatPassword;
-  let wrongPassword;
+  const isValid = password === repeatPassword
+  let wrongPasswordError
 
   if (isValid) {
-    wrongPassword = "";
+    wrongPasswordError = ''
   } else {
-    wrongPassword = "Пароли не совпадают";
+    wrongPasswordError = 'Пароли не совпадают'
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    try {
-      const userData = await signUserUp({
-        email,
-        password,
-        username,
-      }).unwrap();
+    if (isValid) {
+      try {
+        const userData = await signUserUp({
+          email,
+          password,
+          username,
+        }).unwrap()
 
-      dispatch(signUp({ ...userData }));
+        dispatch(signUp({ ...userData }))
 
-      setEmail("");
-      setUserName("");
-      setPassword("");
-      setRepeatPassword("");
-      setErrMsg("");
-      navigate("/login");
-    } catch (err) {
-      setErrMsg(err);
-      console.log(err);
+        setEmail('')
+        setUserName('')
+        setPassword('')
+        setRepeatPassword('')
+        setErrMsg('')
+        navigate('/login')
+      } catch (err) {
+        setErrMsg(err)
+        console.log(err)
+      }
+    } else {
+      event.currentTarget.disabled = true
     }
-  };
+  }
 
   return (
     <ModalForm>
@@ -113,15 +117,15 @@ function LoginForm() {
         autoComplete="off"
       ></input>
 
-      <p>{wrongPassword}</p>
+      <p>{wrongPasswordError}</p>
 
-      <ModalButton padding={"30px"} onClick={handleSubmit}>
-        <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={"#"}>
+      <ModalButton padding={'30px'} onClick={handleSubmit}>
+        <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
           Зарегистрироваться
         </ModalLink>
       </ModalButton>
     </ModalForm>
-  );
+  )
 }
 
-export default LoginForm;
+export default SignUpForm

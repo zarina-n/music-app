@@ -1,4 +1,4 @@
-import { StyledContentTitle, ContentColumn } from "./Centerblock.styled";
+import { StyledContentTitle, ContentColumn } from './Centerblock.styled'
 
 function ContentTitle() {
   return (
@@ -12,7 +12,7 @@ function ContentTitle() {
         </svg>
       </ContentColumn>
     </StyledContentTitle>
-  );
+  )
 }
 
-export default ContentTitle;
+export default ContentTitle

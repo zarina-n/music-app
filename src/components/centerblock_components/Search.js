@@ -1,10 +1,11 @@
-import React from "react";
-import { StyledSearch, SearchSvg, SearchInput } from "./Centerblock.styled";
-import { useContext } from "react";
-import { ThemeContext } from "../../../App";
+import React from 'react'
+import { StyledSearch, SearchSvg, SearchInput } from './Centerblock.styled'
+import { useContext } from 'react'
+import { ThemeContext } from '../../App'
+// import { SearchSvg} from '../../../assets/SearchSvg'
 
 function Search() {
-  const { darkTheme } = useContext(ThemeContext);
+  const { darkTheme } = useContext(ThemeContext)
 
   return (
     <StyledSearch>
@@ -17,7 +18,7 @@ function Search() {
           <svg>
             <use xlinkHref="img/icon/sprite.svg#icon-search-light" />
           </svg>
-        )}{" "}
+        )}
       </SearchSvg>
       <SearchInput
         placeholder="Поиск"
@@ -25,7 +26,7 @@ function Search() {
         type="search"
       ></SearchInput>
     </StyledSearch>
-  );
+  )
 }
 
-export default Search;
+export default Search

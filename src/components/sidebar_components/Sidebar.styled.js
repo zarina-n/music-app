@@ -1,10 +1,11 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const StyledSidebar = styled.div`
   max-width: 418px;
   padding: 20px 90px 20px 78px;
-`;
+  grid-area: 1 / 3 / 2 / 4;
+`
 
 export const StyledPersonal = styled.div`
   display: -webkit-box;
@@ -21,7 +22,7 @@ export const StyledPersonal = styled.div`
   -ms-flex-pack: end;
   justify-content: flex-end;
   padding: 12px 0 15px 0;
-`;
+`
 
 export const StyledSidebarBlock = styled.div`
   height: 100%;
@@ -36,7 +37,7 @@ export const StyledSidebarBlock = styled.div`
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-`;
+`
 
 export const SidebarList = styled.div`
   display: -webkit-box;
@@ -49,7 +50,7 @@ export const SidebarList = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-`;
+`
 
 export const SidebarListItem = styled.div`
   width: 250px;
@@ -58,17 +59,17 @@ export const SidebarListItem = styled.div`
   &:not(:last-child) {
     margin-bottom: 30px;
   }
-`;
+`
 
 export const SidebarLink = styled(Link)`
   width: 100%;
   height: 100%;
-`;
+`
 
 export const SidebarImg = styled.img`
   width: 100%;
   height: auto;
-`;
+`
 
 export const Name = styled.p`
   font-style: normal;
@@ -78,11 +79,11 @@ export const Name = styled.p`
   color: ${({ theme }) => theme.colors.text};
 
   margin-right: 16px;
-`;
+`
 
-export const Avatar = styled.div`
+export const Avatar = styled.img`
   width: 43px;
   height: 43px;
   background-color: ${({ theme }) => theme.colors.avatar};
   border-radius: 50%;
-`;
+`

@@ -1,12 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledCenterBlock = styled.div`
   width: auto;
-  -webkit-box-flex: 3;
+  /* -webkit-box-flex: 3;
   -ms-flex-positive: 3;
-  flex-grow: 3;
+  flex-grow: 3; */
+  grid-area: 1 / 2 / 2 / 3;
   padding: 20px 40px 20px 111px;
-`;
+`
 
 export const StyledSearch = styled.div`
   width: 100%;
@@ -22,7 +23,7 @@ export const StyledSearch = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-`;
+`
 
 export const SearchSvg = styled.svg`
   width: 17px;
@@ -30,7 +31,7 @@ export const SearchSvg = styled.svg`
   margin-right: 5px;
   stroke: ${({ theme }) => theme.colors.text};
   fill: transparent;
-`;
+`
 
 export const SearchInput = styled.input`
   -webkit-box-flex: 100;
@@ -80,7 +81,7 @@ export const SearchInput = styled.input`
     font-size: 16px;
     line-height: 24px;
   }
-`;
+`
 
 export const CenterblockHeading = styled.h2`
   font-style: normal;
@@ -89,7 +90,7 @@ export const CenterblockHeading = styled.h2`
   line-height: 72px;
   letter-spacing: -0.8px;
   margin-bottom: 45px;
-`;
+`
 
 export const StyledFilter = styled.div`
   display: -webkit-box;
@@ -103,7 +104,7 @@ export const StyledFilter = styled.div`
   -ms-flex-align: center;
   align-items: center;
   margin-bottom: 51px;
-`;
+`
 
 export const FilterTitle = styled.div`
   font-style: normal;
@@ -111,7 +112,7 @@ export const FilterTitle = styled.div`
   font-size: 16px;
   line-height: 24px;
   margin-right: 15px;
-`;
+`
 export const FilterButton = styled.button`
   font-style: normal;
   font-size: 16px;
@@ -134,7 +135,7 @@ export const FilterButton = styled.button`
     color: ${({ theme }) => theme.colors.filterHoverColor};
     cursor: pointer;
   }
-`;
+`
 
 export const FilterOptions = styled.ul`
   position: absolute;
@@ -145,7 +146,7 @@ export const FilterOptions = styled.ul`
   width: 424px;
   height: 138px;
   visibility: ${({ id, clickedId }) =>
-    clickedId === id ? "visible" : "hidden"};
+    clickedId === id ? 'visible' : 'hidden'};
 
   left: 0;
   top: 30px;
@@ -163,15 +164,15 @@ export const FilterOptions = styled.ul`
   -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-column-gap: 20px;
-  -webkit-font-feature-settings: "pnum" on, "lnum" on;
-  font-feature-settings: "pnum" on, "lnum" on;
+  -webkit-font-feature-settings: 'pnum' on, 'lnum' on;
+  font-feature-settings: 'pnum' on, 'lnum' on;
 
   li:first-child {
     -webkit-text-decoration-line: underline;
     text-decoration-line: underline;
     color: #b672ff;
   }
-`;
+`
 
 export const StyledContent = styled.div`
   display: -webkit-box;
@@ -181,7 +182,7 @@ export const StyledContent = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-`;
+`
 
 export const StyledContentTitle = styled.div`
   display: -webkit-box;
@@ -205,7 +206,7 @@ export const StyledContentTitle = styled.div`
     fill: transparent;
     stroke: #696969;
   }
-`;
+`
 
 export const ContentColumn = styled.div`
   font-style: normal;
@@ -232,7 +233,7 @@ export const ContentColumn = styled.div`
     width: 60px;
     text-align: end;
   }
-`;
+`
 
 export const StyledContentPlaylist = styled.div`
   display: -webkit-box;
@@ -243,7 +244,7 @@ export const StyledContentPlaylist = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
-`;
+`
 
 export const PlaylistItemContainer = styled.div`
   width: 100%;
@@ -265,7 +266,7 @@ export const PlaylistItemContainer = styled.div`
     -ms-flex-align: center;
     align-items: center;
   }
-`;
+`
 
 export const Title = styled.div`
   display: -webkit-box;
@@ -279,7 +280,7 @@ export const Title = styled.div`
   -ms-flex-align: center;
   align-items: center;
   width: 447px;
-`;
+`
 
 export const TitleImage = styled.div`
   width: 51px;
@@ -303,7 +304,7 @@ export const TitleImage = styled.div`
     fill: transparent;
     stroke: #4e4e4e;
   }
-`;
+`
 
 export const TitleText = styled.div`
   a {
@@ -316,7 +317,7 @@ export const TitleText = styled.div`
       margin-left: 10px;
     }
   }
-`;
+`
 
 export const Author = styled.div`
   width: 321px;
@@ -332,7 +333,7 @@ export const Author = styled.div`
     color: ${({ theme }) => theme.colors.text};
     text-align: left;
   }
-`;
+`
 
 export const Album = styled.div`
   width: 245px;
@@ -341,22 +342,35 @@ export const Album = styled.div`
     font-size: 16px;
     color: ${({ theme }) => theme.colors.centerBlockLinks};
   }
-`;
+`
 
 export const SongTime = styled.div`
   color: ${({ theme }) => theme.colors.centerBlockLinks};
 
   svg {
-    width: 14px;
-    height: 12px;
+    width: 18px;
+    height: 15px;
     margin-right: 17px;
-    fill: transparent;
-    stroke: ${({ theme }) => theme.colors.centerBlockLinks};
+    cursor: pointer;
+    fill: ${({ liked, theme }) =>
+      liked ? theme.colors.likeDislike : 'transparent'};
 
-    span {
-      font-size: 16px;
-      text-align: right;
-      color: ${({ theme }) => theme.colors.centerBlockLinks};
+    stroke: ${({ theme }) => theme.colors.likeDislike};
+    cursor: pointer;
+
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.controlsHover};
+    }
+
+    &:active {
+      stroke: ${({ theme }) => theme.colors.controlsHover};
+      fill: ${({ theme }) => theme.colors.likeDislike};
     }
   }
-`;
+
+  span {
+    font-size: 16px;
+    text-align: right;
+    color: ${({ theme }) => theme.colors.centerBlockLinks};
+  }
+`

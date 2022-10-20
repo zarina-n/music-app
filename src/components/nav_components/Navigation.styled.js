@@ -1,11 +1,12 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const StyledNav = styled.nav`
+  grid-area: 1 / 1 / 2 / 2;
   width: 244px;
   background-color: ${({ theme }) => theme.colors.navBackGrColor};
   padding: 20px 0 20px 36px;
-`;
+`
 
 export const Logo = styled.img`
   width: 113.33px;
@@ -13,7 +14,7 @@ export const Logo = styled.img`
   color: #181818;
   background-color: transparent;
   margin-bottom: 20px;
-`;
+`
 
 export const NavBurger = styled.div`
   width: 20px;
@@ -40,21 +41,21 @@ export const NavBurger = styled.div`
     display: inline-block;
 
     &:nth-child(1) {
-      transform: ${({ open }) => (open ? "rotate(30deg) " : "rotate(0)")};
+      transform: ${({ open }) => (open ? 'rotate(30deg) ' : 'rotate(0)')};
     }
     &:nth-child(2) {
-      transform: ${({ open }) => (open ? "scale(0.1)" : "")};
+      transform: ${({ open }) => (open ? 'scale(0.1)' : '')};
       opacity: ${({ open }) => (open ? 0 : 1)};
     }
     &:nth-child(3) {
-      transform: ${({ open }) => (open ? "rotate(-30deg)" : "rotate(0)")};
+      transform: ${({ open }) => (open ? 'rotate(-30deg)' : 'rotate(0)')};
     }
   }
-`;
+`
 
 export const Menu = styled.div`
   display: block;
-  visibility: ${({ open }) => (open ? "visible" : "hidden")};
+  visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
   transition: visibility 0.3s linear;
 
   ul {
@@ -65,7 +66,7 @@ export const Menu = styled.div`
     padding: 5px 0;
     margin-bottom: 16px;
   }
-`;
+`
 
 export const MenuLink = styled(NavLink)`
   color: ${({ theme }) => theme.colors.text};
@@ -76,8 +77,8 @@ export const MenuLink = styled(NavLink)`
   &.active {
     border-bottom: 1px solid white;
   }
-`;
+`
 
 export const ThemeButton = styled.div`
   cursor: pointer;
-`;
+`

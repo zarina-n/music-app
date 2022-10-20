@@ -1,15 +1,14 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectCurrentToken } from "../features/auth/authSlice";
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectCurrentToken } from '../features/auth/authSlice'
 
 const ProtectedRoute = () => {
-  const token = useSelector(selectCurrentToken);
-  const location = useLocation();
+  const token = useSelector(selectCurrentToken)
+  const location = useLocation()
 
-  return token !== null && token.access ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/login" state={{ from: location }} replace />
-  );
-};
-export default ProtectedRoute;
+  if (token === null && !token?.access)
+    return <Navigate to="/login" state={{ from: location }} replace />
+
+  return <Outlet />
+}
+export default ProtectedRoute

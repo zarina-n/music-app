@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { NavBurger } from "./Navigation.styled";
-import NavMenu from "./NavMenu";
+import { useState } from 'react'
+import { NavBurger } from './Navigation.styled'
+import NavMenu from './NavMenu'
 
 function Burger() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <>
@@ -14,7 +14,7 @@ function Burger() {
       </NavBurger>
       <NavMenu open={open} />
     </>
-  );
+  )
 }
 
-export default Burger;
+export default Burger

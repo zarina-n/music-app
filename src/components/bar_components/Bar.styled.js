@@ -1,12 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledBar = styled.div`
-  position: absolute;
+  grid-area: 2 / 1 / 3 / 4;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background: ${({ theme }) => theme.colors.bar};
-`;
+`
 
 export const StyledBarContent = styled.div`
   display: -webkit-box;
@@ -16,7 +17,7 @@ export const StyledBarContent = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-`;
+`
 
 export const PlayerProgress = styled.div`
   width: 100%;
@@ -27,7 +28,7 @@ export const PlayerProgress = styled.div`
     background: ${({ theme }) => theme.colors.progressBar};
     height: 5px;
   }
-`;
+`
 
 export const PlayerBlock = styled.div`
   height: 73px;
@@ -43,7 +44,7 @@ export const PlayerBlock = styled.div`
   -ms-flex-pack: justify;
   justify-content: space-between;
   height: 100%;
-`;
+`
 
 export const ControlLikeContainer = styled.div`
   display: -webkit-box;
@@ -53,7 +54,7 @@ export const ControlLikeContainer = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-`;
+`
 
 export const Controls = styled.div`
   display: -webkit-box;
@@ -68,7 +69,7 @@ export const Controls = styled.div`
   padding: 0 27px 0 31px;
 
   width: ${(props) => props.width};
-`;
+`
 
 export const ControlButton = styled.div`
   padding: 5px;
@@ -92,7 +93,7 @@ export const ControlButton = styled.div`
       stroke: ${({ theme }) => theme.colors.controlsActive};
     }
   }
-`;
+`
 
 export const ShuffleRepeatButton = styled.div`
   padding: 5px;
@@ -116,9 +117,9 @@ export const ShuffleRepeatButton = styled.div`
       stroke: ${({ theme }) => theme.colors.shuffleRepeatSvgActive};
     }
   }
-`;
+`
 
-export const ControlSvg = styled.svg``;
+export const ControlSvg = styled.svg``
 
 export const BarVolumeBlock = styled.div`
   width: auto;
@@ -130,7 +131,7 @@ export const BarVolumeBlock = styled.div`
   align-items: center;
   padding: 0 92px 0 0;
   justify-content: end;
-`;
+`
 
 export const VolumeContent = styled.div`
   display: -webkit-box;
@@ -146,7 +147,7 @@ export const VolumeContent = styled.div`
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: end;
-`;
+`
 
 export const VolumeImage = styled.div`
   width: 13px;
@@ -156,7 +157,7 @@ export const VolumeImage = styled.div`
   svg {
     stroke: ${({ theme }) => theme.colors.controlsActive};
   }
-`;
+`
 
 export const VolumeProgress = styled.div`
   width: 109px;
@@ -164,7 +165,7 @@ export const VolumeProgress = styled.div`
   input {
     width: 109px;
   }
-`;
+`
 
 export const ContainContainer = styled.div`
   width: auto;
@@ -172,11 +173,11 @@ export const ContainContainer = styled.div`
   display: grid;
   -ms-grid-columns: auto 1fr;
   grid-template-columns: auto 1fr;
-  grid-template-areas: "image author" "image album";
+  grid-template-areas: 'image author' 'image album';
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-`;
+`
 
 export const ContainImage = styled.div`
   width: 51px;
@@ -196,7 +197,7 @@ export const ContainImage = styled.div`
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: image;
-`;
+`
 
 export const ContainAuthor = styled.div`
   -ms-grid-row: 1;
@@ -209,7 +210,7 @@ export const ContainAuthor = styled.div`
     white-space: nowrap;
     color: ${({ theme }) => theme.colors.text};
   }
-`;
+`
 
 export const ContainAlbum = styled.div`
   -ms-grid-row: 2;
@@ -220,7 +221,7 @@ export const ContainAlbum = styled.div`
     font-size: 13px;
     color: ${({ theme }) => theme.colors.text};
   }
-`;
+`
 
 export const LikeDislikeDiv = styled.div`
   display: -webkit-box;
@@ -245,9 +246,8 @@ export const LikeDislikeDiv = styled.div`
     }
 
     &:active {
-      fill: ${({ theme }) => theme.colors.likeDislikeActive};
       stroke: ${({ theme }) => theme.colors.controlsHover};
       fill: ${({ theme }) => theme.colors.likeDislike};
     }
   }
-`;
+`

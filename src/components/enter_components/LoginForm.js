@@ -4,57 +4,57 @@ import {
   ModalButton,
   ModalLink,
   SignupButton,
-} from "./EnterForm.styled";
+} from './EnterForm.styled'
 
-import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setLogin, setToken } from "../../features/auth/authSlice";
+import { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setUser, setToken } from '../../features/auth/authSlice'
 import {
   useGetUserMutation,
   useGetTokenMutation,
-} from "../../features/auth/authApiSlice";
+} from '../../features/auth/authApiSlice'
 
 function LoginForm() {
-  const userRef = useRef();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-  const [getUser] = useGetUserMutation();
-  const [getToken] = useGetTokenMutation();
+  const userRef = useRef()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errMsg, setErrMsg] = useState('')
+  const [getUser] = useGetUserMutation()
+  const [getToken] = useGetTokenMutation()
 
   useEffect(() => {
-    userRef.current.focus();
-  }, []);
+    userRef.current.focus()
+  }, [])
 
-  const handleLogin = (event) => setEmail(event.target.value);
-  const handlePassword = (event) => setPassword(event.target.value);
+  const handleLogin = (event) => setEmail(event.target.value)
+  const handlePassword = (event) => setPassword(event.target.value)
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     try {
-      const userData = await getUser({ email, password }).unwrap();
-      const userToken = await getToken({ email, password }).unwrap();
+      const userData = await getUser({ email, password }).unwrap()
+      const userToken = await getToken({ email, password }).unwrap()
 
-      dispatch(setLogin({ ...userData }));
-      dispatch(setToken({ ...userToken }));
+      dispatch(setUser({ ...userData }))
+      dispatch(setToken({ ...userToken }))
 
-      setEmail("");
-      setPassword("");
-      setErrMsg("");
-      navigate("/");
+      setEmail('')
+      setPassword('')
+      setErrMsg('')
+      navigate('/')
     } catch (err) {
-      setErrMsg(err);
+      setErrMsg(err)
     }
-  };
+  }
 
   const handleSignUpButton = (event) => {
-    event.preventDefault();
-    navigate("/signup");
-  };
+    event.preventDefault()
+    navigate('/signup')
+  }
 
   return (
     <ModalForm>
@@ -89,19 +89,19 @@ function LoginForm() {
       {errMsg && <p>{errMsg.data.password}</p>}
       {errMsg && <p>{errMsg.data.non_field_errors}</p>}
 
-      <ModalButton onClick={handleSubmit} margintop="60px">
-        <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={"#"}>
+      <ModalButton onClick={handleSubmit}>
+        <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
           Войти
         </ModalLink>
       </ModalButton>
 
       <SignupButton onClick={handleSignUpButton}>
-        <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={"/signup"}>
+        <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={'/signup'}>
           Зарегистрироваться
         </ModalLink>
       </SignupButton>
     </ModalForm>
-  );
+  )
 }
 
-export default LoginForm;
+export default LoginForm

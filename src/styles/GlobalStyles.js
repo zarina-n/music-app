@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -15,9 +15,9 @@ body {
   font-family: 'Stratos LC Web', sans-serif;
   color:  ${({ theme }) => theme.colors.text};
   background-color:  ${({ theme }) => theme.colors.backGrColor};
-  
 
 }
+
 
 *:before,
 *:after {
@@ -91,6 +91,6 @@ ul li {
     font-weight: normal;
     font-style: normal;
 } */
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

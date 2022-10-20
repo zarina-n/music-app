@@ -1,14 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { apiSlice } from "../features/api/apiSlice";
-import authReducer from "../features/auth/authSlice";
+import { configureStore } from '@reduxjs/toolkit'
+import { apiSlice } from '../features/api/apiSlice'
+import authReducer from '../features/auth/authSlice'
+import trackSlice from '../features/track/trackSlice'
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authReducer,
+    track: trackSlice,
   },
 
   middleware: (getDefaultMiddleWare) =>
     getDefaultMiddleWare().concat(apiSlice.middleware),
   devTools: true,
-});
+})
