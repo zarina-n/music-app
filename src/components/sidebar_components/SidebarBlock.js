@@ -28,7 +28,7 @@ function SidebarItem() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setSidebarPlaylist(DAILY_PLAYLIST)
-    }, 5000)
+    }, 100)
 
     return () => clearTimeout(timer)
   }, [])
@@ -38,7 +38,7 @@ function SidebarItem() {
       {sidebarPlaylist &&
         sidebarPlaylist.map(({ name, imgSrc, alt, id }) => (
           <SidebarListItem key={id}>
-            <SidebarLink to={`/compilations/${name}`}>
+            <SidebarLink to={`/compilations/${id}`}>
               <SidebarImg src={imgSrc} alt={alt}></SidebarImg>
             </SidebarLink>
           </SidebarListItem>

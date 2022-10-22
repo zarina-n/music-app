@@ -1,4 +1,5 @@
 import { StyledContentTitle, ContentColumn } from './Centerblock.styled'
+import Watch from '../../assets/Watch'
 
 function ContentTitle() {
   return (
@@ -7,9 +8,7 @@ function ContentTitle() {
       <ContentColumn>Исполнитель</ContentColumn>
       <ContentColumn>Альбом</ContentColumn>
       <ContentColumn>
-        <svg>
-          <use href="img/icon/sprite.svg#icon-watch"></use>
-        </svg>
+        <Watch />
       </ContentColumn>
     </StyledContentTitle>
   )

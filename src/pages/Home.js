@@ -4,18 +4,14 @@ import Bar from '../components/bar_components/Bar'
 import Navigation from '../components/nav_components/Navigation'
 import Centerblock from '../components/centerblock_components/Centerblock'
 import Sidebar from '../components/sidebar_components/Sidebar'
-import MyTracks from '../components/centerblock_components/MyTracks'
-import Compilations from '../components/centerblock_components/Compilations'
+// import MyTracks from '../components/centerblock_components/MyTracks'
+// import Compilations from '../components/centerblock_components/Compilations'
 
 function Home() {
   return (
     <HomeContainer>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<Centerblock />} />
-        <Route path="/my-tracks" element={<MyTracks />} />
-        <Route path="/compilations/:id" element={<Compilations />} />
-      </Routes>
+      <Centerblock />
 
       <Routes>
         <Route path="/" element={<Sidebar />} />

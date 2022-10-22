@@ -5,7 +5,9 @@ export const StyledBar = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  width: 100vw;
+  margin: 0 auto;
   background: ${({ theme }) => theme.colors.bar};
 `
 
@@ -107,15 +109,18 @@ export const ShuffleRepeatButton = styled.div`
   cursor: pointer;
 
   svg {
-    fill: ${({ theme }) => theme.colors.shuffleRepeatSvg};
+    fill: ${({ theme, repeat }) =>
+      repeat
+        ? theme.colors.shuffleRepeatSvgActive
+        : theme.colors.shuffleRepeatSvg};
 
     &:hover {
       stroke: ${({ theme }) => theme.colors.shuffleRepeatSvgHover};
     }
 
-    &:active {
+    /* &:active {
       stroke: ${({ theme }) => theme.colors.shuffleRepeatSvgActive};
-    }
+    } */
   }
 `
 

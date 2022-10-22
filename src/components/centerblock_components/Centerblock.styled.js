@@ -2,9 +2,6 @@ import styled from 'styled-components'
 
 export const StyledCenterBlock = styled.div`
   width: auto;
-  /* -webkit-box-flex: 3;
-  -ms-flex-positive: 3;
-  flex-grow: 3; */
   grid-area: 1 / 2 / 2 / 3;
   padding: 20px 40px 20px 111px;
 `
@@ -286,7 +283,8 @@ export const TitleImage = styled.div`
   width: 51px;
   height: 51px;
   padding: 16px;
-  background: ${({ theme }) => theme.colors.svgBgC};
+  background-color: ${({ theme }) => theme.colors.noteSvgBackground};
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -299,10 +297,8 @@ export const TitleImage = styled.div`
   margin-right: 17px;
 
   svg {
-    width: 18px;
-    height: 17px;
-    fill: transparent;
-    stroke: #4e4e4e;
+    width: 20px;
+    height: 18px;
   }
 `
 
@@ -352,8 +348,8 @@ export const SongTime = styled.div`
     height: 15px;
     margin-right: 17px;
     cursor: pointer;
-    fill: ${({ liked, theme }) =>
-      liked ? theme.colors.likeDislike : 'transparent'};
+    fill: ${({ id, likedId, theme }) =>
+      likedId === id ? theme.colors.likeDislike : 'transparent'};
 
     stroke: ${({ theme }) => theme.colors.likeDislike};
     cursor: pointer;

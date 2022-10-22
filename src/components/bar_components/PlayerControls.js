@@ -1,21 +1,29 @@
-import { Controls, ControlButton, ShuffleRepeatButton } from "./Bar.styled";
+import { Controls, ControlButton, ShuffleRepeatButton } from './Bar.styled'
 
-import Repeat from "../../assets/Repeat";
-import Shuffle from "../../assets/Shuffle";
-import Prev from "../../assets/Prev";
-import Play from "../../assets/Play";
-import Pause from "../../assets/Pause";
-import Next from "../../assets/Next";
+import Repeat from '../../assets/Repeat'
+import Shuffle from '../../assets/Shuffle'
+import Prev from '../../assets/Prev'
+import Play from '../../assets/Play'
+import Pause from '../../assets/Pause'
+import Next from '../../assets/Next'
 
-function PlayerControls({ isPlaying, setIsPlaying }) {
+function PlayerControls({
+  isPlaying,
+  setIsPlaying,
+  previousTrack,
+  nextTrack,
+  repeatTrack,
+  repeat,
+  shuffleTrack,
+}) {
   const playPause = () => {
-    setIsPlaying(!isPlaying);
-  };
+    setIsPlaying(!isPlaying)
+  }
 
   return (
     <Controls>
       <ControlButton>
-        <Prev alt="prev" />
+        <Prev alt="prev" onClick={previousTrack} />
       </ControlButton>
 
       <ControlButton onClick={playPause}>
@@ -23,18 +31,18 @@ function PlayerControls({ isPlaying, setIsPlaying }) {
       </ControlButton>
 
       <ControlButton>
-        <Next alt="next" />
+        <Next alt="next" onClick={nextTrack} />
       </ControlButton>
 
-      <ShuffleRepeatButton>
-        <Repeat alt="repeat" />
+      <ShuffleRepeatButton repeat={repeat}>
+        <Repeat alt="repeat" onClick={repeatTrack} />
       </ShuffleRepeatButton>
 
       <ShuffleRepeatButton>
-        <Shuffle alt="shuffle" />
+        <Shuffle alt="shuffle" onClick={shuffleTrack} />
       </ShuffleRepeatButton>
     </Controls>
-  );
+  )
 }
 
-export default PlayerControls;
+export default PlayerControls

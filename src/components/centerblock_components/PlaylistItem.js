@@ -9,11 +9,14 @@ import {
 } from './Centerblock.styled'
 
 import Like from '../../assets/Like'
+import Note from '../../assets/Note'
 import { getTrackData } from '../../features/track/trackSlice'
 import { useDispatch } from 'react-redux'
+import { useState, useCallback } from 'react'
 
 function PlaylistItem({ playlistData }) {
   const dispatch = useDispatch()
+  const [likedId, setLikedId] = useState(0)
 
   function convertToMinutes(value) {
     return Math.floor(value / 60) + ':' + (value % 60 ? value % 60 : '00')
@@ -37,8 +40,17 @@ function PlaylistItem({ playlistData }) {
         track_file,
       })
     )
-    //console.log(track)
+    // console.log(id, name)
   }
+
+  const likeToggler = useCallback(
+    (id) => {
+      setLikedId((prevId) => (prevId === id ? null : id))
+      // console.log(likedId)
+      // console.log(id)
+    },
+    [setLikedId]
+  )
 
   return (
     <>
@@ -52,19 +64,22 @@ function PlaylistItem({ playlistData }) {
           duration_in_seconds,
           track_file,
         }) => (
-          <PlaylistItemContainer
-            key={id}
-            id={id}
-            onClick={() =>
-              getTrack(name, id, author, album, duration_in_seconds, track_file)
-            }
-          >
+          <PlaylistItemContainer key={id} id={id}>
             <div>
               <Title>
-                <TitleImage>
-                  <svg>
-                    <use href="img/icon/sprite.svg#icon-note"></use>
-                  </svg>
+                <TitleImage
+                  onClick={() =>
+                    getTrack(
+                      name,
+                      id,
+                      author,
+                      album,
+                      duration_in_seconds,
+                      track_file
+                    )
+                  }
+                >
+                  <Note alt="music-icon" />
                 </TitleImage>
 
                 <TitleText>
@@ -77,8 +92,8 @@ function PlaylistItem({ playlistData }) {
 
               <Album>{album}</Album>
 
-              <SongTime>
-                <Like />
+              <SongTime likedId={likedId} id={id}>
+                <Like onClick={() => likeToggler(id)} />
 
                 <span>{convertToMinutes(duration_in_seconds)}</span>
               </SongTime>
