@@ -6,9 +6,12 @@ import { useContext } from 'react'
 import { ThemeContext } from '../../../App'
 
 import { useGetAllTracksQuery } from '../../../features/track/trackApiSlice'
+import { getTrackData } from '../../../features/track/trackSlice'
+import { useDispatch } from 'react-redux'
 
 function Playlist() {
   const { darkTheme } = useContext(ThemeContext)
+  const dispatch = useDispatch()
 
   const {
     data = [],
@@ -25,7 +28,8 @@ function Playlist() {
       <SkeletonPlaylistItem key={i} theme={darkTheme ? 'dark' : 'light'} />
     ))
   } else if (isSuccess) {
-    content = data.results
+    content = data
+    dispatch(getTrackData(content))
     // console.log(content)
 
     return <PlaylistItem playlistData={content} />

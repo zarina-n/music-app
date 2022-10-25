@@ -19,7 +19,13 @@ function PlaylistItem({ playlistData }) {
   const [likedId, setLikedId] = useState(0)
 
   function convertToMinutes(value) {
-    return Math.floor(value / 60) + ':' + (value % 60 ? value % 60 : '00')
+    const mins = ~~((value % 3600) / 60)
+    const secs = ~~value % 60
+    let result = ''
+
+    result += '' + mins + ':' + (secs < 10 ? '0' : '')
+    result += '' + secs
+    return result
   }
 
   const getTrack = (

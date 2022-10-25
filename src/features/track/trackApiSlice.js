@@ -11,9 +11,6 @@ export const trackApiSlice = apiSlice.injectEndpoints({
     getCompilationById: builder.query({
       query: (id) => `/catalog/selection/${id}`,
     }),
-    setFavoriteTrack:builder.mutation({
-      query: (id) => 
-    })
   }),
 })
 
@@ -22,3 +19,7 @@ export const {
   useGetTrackByIdMutation,
   useGetCompilationByIdQuery,
 } = trackApiSlice
+
+// setFavoriteTrack:builder.mutation({
+//   query: (id) =>
+// })

@@ -27,6 +27,7 @@ const Compilations = () => {
   } else if (isSuccess) {
     content = data.items
     // console.log(content)
+    console.log(content[0].genre)
 
     return <PlaylistItem playlistData={content} />
   } else if (isError) {

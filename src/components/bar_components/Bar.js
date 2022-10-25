@@ -66,11 +66,18 @@ function Bar() {
   const [tracks, setTracks] = useState(allTracks)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTrack, setCurrentTrack] = useState(allTracks[2])
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [repeat, setRepeat] = useState(false)
+  const [volume, setVolume] = useState(30)
 
   const audioRef = useRef()
   const progressRef = useRef()
+
+  useEffect(() => {
+    if (audioRef) {
+      audioRef.current.volume = volume / 100
+      console.log(audioRef.current.volume)
+    }
+  }, [volume])
 
   function getTrackProgress(time, duration) {
     return (time / duration) * 100
@@ -152,7 +159,7 @@ function Bar() {
     <StyledBar>
       <StyledBarContent>
         <audio ref={audioRef} onTimeUpdate={onPlaying}>
-          <source src={currentTrack.track_file} type="audio/mpeg" />
+          <source src="/music/Баста – Ты та….mp3" type="audio/mpeg" />
         </audio>
         <PlayerProgress onClick={getWidth} ref={progressRef}>
           <div style={{ width: `${currentTrack.progress}%` }} />
@@ -168,6 +175,8 @@ function Bar() {
           repeatTrack={repeatTrack}
           repeat={repeat}
           shuffleTrack={shuffleTrack}
+          volume={volume}
+          setVolume={setVolume}
         />
       </StyledBarContent>
     </StyledBar>

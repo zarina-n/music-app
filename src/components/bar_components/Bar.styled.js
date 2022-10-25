@@ -169,6 +169,32 @@ export const VolumeProgress = styled.div`
 
   input {
     width: 109px;
+    height: 22px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    // width: 100%;
+    background-color: transparent;
+
+    &::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 1px;
+      cursor: pointer;
+      animate: 0.2s;
+      background: #d9d9d9;
+      border-radius: 1px;
+      border: 1px solid #d9d9d9;
+    }
+
+    &::-webkit-slider-thumb {
+      border: 2px solid #ffffff;
+      height: 14px;
+      width: 13px;
+      border-radius: 18px;
+      background: #1a1a1a;
+      /* cursor: auto; */
+      -webkit-appearance: none;
+      margin-top: -8px;
+    }
   }
 `
 

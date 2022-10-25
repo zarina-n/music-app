@@ -3,11 +3,12 @@ import {
   VolumeContent,
   VolumeImage,
   VolumeProgress,
-} from "./Bar.styled";
+} from './Bar.styled'
 
-import VolumeIcon from "../../assets/VolumeIcon";
+import VolumeIcon from '../../assets/VolumeIcon'
 
-function Volume() {
+function Volume({ volume, setVolume }) {
+  console.log(volume)
   return (
     <BarVolumeBlock>
       <VolumeContent>
@@ -15,11 +16,18 @@ function Volume() {
           <VolumeIcon alt="volume" />
         </VolumeImage>
         <VolumeProgress>
-          <input type="range" name="range" />
+          <input
+            max={100}
+            min={0}
+            value={volume}
+            onChange={(event, value) => setVolume(value)}
+            type="range"
+            name="range"
+          />
         </VolumeProgress>
       </VolumeContent>
     </BarVolumeBlock>
-  );
+  )
 }
 
-export default Volume;
+export default Volume

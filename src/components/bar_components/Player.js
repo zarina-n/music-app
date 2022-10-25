@@ -18,6 +18,8 @@ function Player({
   repeatTrack,
   repeat,
   shuffleTrack,
+  volume,
+  setVolume,
 }) {
   return (
     <PlayerBlock>
@@ -35,7 +37,7 @@ function Player({
         <PlayerTrack album={album} name={name} />
         <PlayerLikeDislike />
       </ControlLikeContainer>
-      <Volume />
+      <Volume volume={volume} setVolume={setVolume} />
     </PlayerBlock>
   )
 }

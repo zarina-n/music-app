@@ -20,4 +20,4 @@ export const { getTrackData, setFavoriteTrack } = trackSlice.actions
 
 export default trackSlice.reducer
 
-export const selectCurrentTrack = (state) => state.track.track
+export const selectAllTracks = (state) => state.track.tracks
