@@ -16,6 +16,6 @@ const Volume = (props) => (
     />
     <path d="M11 13c1.105 0 2-1.79 2-4s-.895-4-2-4" />
   </svg>
-);
+)
 
-export default Volume;
+export default Volume

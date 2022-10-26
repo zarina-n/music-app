@@ -69,7 +69,7 @@ function Bar() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTrack, setCurrentTrack] = useState({})
   const [repeat, setRepeat] = useState(false)
-  const [volume, setVolume] = useState(30)
+  const [volume, setVolume] = useState(50)
 
   useEffect(() => {
     if (allTracks) {
@@ -78,15 +78,13 @@ function Bar() {
     }
   }, [allTracks])
 
-  console.log(tracks)
-
   const audioRef = useRef()
   const progressRef = useRef()
 
   useEffect(() => {
     if (audioRef) {
       audioRef.current.volume = volume / 100
-      console.log(audioRef.current.volume)
+      // console.log(audioRef.current.volume)
     }
   }, [volume])
 
@@ -122,7 +120,6 @@ function Bar() {
 
     const newCurrentTime = (divProgress / 100) * currentTrack.length
 
-    console.log(newCurrentTime)
     audioRef.current.currentTime = newCurrentTime
   }
 
@@ -135,7 +132,7 @@ function Bar() {
       setCurrentTrack(tracks[index - 1])
     }
 
-    console.log(currentTrack.track_file)
+    // console.log(currentTrack.track_file)
 
     audioRef.current.currentTime = 0
   }
@@ -149,7 +146,7 @@ function Bar() {
       setCurrentTrack(tracks[index + 1])
     }
 
-    console.log(audioRef.current.currentSrc)
+    // console.log(audioRef.current.currentSrc)
 
     audioRef.current.currentTime = 0
   }
@@ -165,13 +162,13 @@ function Bar() {
     audioRef.current.currentTime = 0
     console.log(currentTrack.track_file)
   }
-  console.log(currentTrack.track_file)
+  // console.log(currentTrack.track_file)
 
   return (
     <StyledBar>
       <StyledBarContent>
         <audio ref={audioRef} onTimeUpdate={onPlaying}>
-          <source src={currentTrack.track_file} type="audio/mpeg" />
+          <source src="/music/Баста – Ты та….mp3" type="audio/mpeg" />
         </audio>
         <PlayerProgress onClick={getWidth} ref={progressRef}>
           <div style={{ width: `${currentTrack.progress}%` }} />

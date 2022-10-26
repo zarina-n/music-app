@@ -9,7 +9,7 @@ function Personal() {
   return (
     <StyledPersonal>
       <Name>{user.username}</Name>
-      <Avatar src="img/avatar.png" />
+      <Avatar src="/img/avatar.jfif" />
     </StyledPersonal>
   )
 }

@@ -179,7 +179,6 @@ export const VolumeProgress = styled.div`
       width: 100%;
       height: 1px;
       cursor: pointer;
-      animate: 0.2s;
       background: #d9d9d9;
       border-radius: 1px;
       border: 1px solid #d9d9d9;
@@ -224,15 +223,11 @@ export const ContainImage = styled.div`
   -ms-flex-pack: center;
   justify-content: center;
   margin-right: 12px;
-  -ms-grid-row: 1;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
   grid-area: image;
 `
 
 export const ContainAuthor = styled.div`
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: author;
   min-width: 49px;
 
@@ -244,8 +239,6 @@ export const ContainAuthor = styled.div`
 `
 
 export const ContainAlbum = styled.div`
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: album;
   min-width: 49px;
   a {

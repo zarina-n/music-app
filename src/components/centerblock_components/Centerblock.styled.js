@@ -136,12 +136,13 @@ export const FilterButton = styled.button`
 
 export const FilterOptions = styled.ul`
   position: absolute;
-  background: ${({ theme }) => theme.colors.svgBgC};
+  background: ${({ theme }) => theme.colors.noteSvgBackground};
   color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
   border-radius: 12px;
   width: 424px;
   height: 138px;
+  /* overflow: auto; */
   visibility: ${({ id, clickedId }) =>
     clickedId === id ? 'visible' : 'hidden'};
 
@@ -150,19 +151,11 @@ export const FilterOptions = styled.ul`
   padding: 36px 34px;
   margin-top: 10px;
   display: flex;
+  /* flex-direction: column; */
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   row-gap: 28px;
   column-gap: 20px;
-
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-column-gap: 20px;
-  -webkit-font-feature-settings: 'pnum' on, 'lnum' on;
-  font-feature-settings: 'pnum' on, 'lnum' on;
 
   li:first-child {
     -webkit-text-decoration-line: underline;

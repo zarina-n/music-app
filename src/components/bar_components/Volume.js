@@ -6,13 +6,14 @@ import {
 } from './Bar.styled'
 
 import VolumeIcon from '../../assets/VolumeIcon'
+import Mute from '../../assets/Mute'
 
 function Volume({ volume, setVolume }) {
   return (
     <BarVolumeBlock>
       <VolumeContent>
         <VolumeImage>
-          <VolumeIcon alt="volume" />
+          {volume > 0 ? <VolumeIcon alt="volume" /> : <Mute alt="mute" />}
         </VolumeImage>
         <VolumeProgress>
           <input
