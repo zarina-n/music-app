@@ -69,6 +69,7 @@ export const SidebarLink = styled(Link)`
 export const SidebarImg = styled.img`
   width: 100%;
   height: auto;
+  border-radius: 5px;
 `
 
 export const Name = styled.p`

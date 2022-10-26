@@ -51,7 +51,7 @@ function FilterButtons() {
     }
     byAuthor[authors[i]] = [tracksArray]
   }
-  console.log(byAuthor)
+  // console.log(byAuthor)
 
   const stateToggler = useCallback(
     (id) => {

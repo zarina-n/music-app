@@ -8,7 +8,6 @@ import {
 import VolumeIcon from '../../assets/VolumeIcon'
 
 function Volume({ volume, setVolume }) {
-  console.log(volume)
   return (
     <BarVolumeBlock>
       <VolumeContent>
@@ -17,12 +16,11 @@ function Volume({ volume, setVolume }) {
         </VolumeImage>
         <VolumeProgress>
           <input
-            max={100}
-            min={0}
+            max="100"
+            min="0"
             value={volume}
-            onChange={(event, value) => setVolume(value)}
+            onChange={(event) => setVolume(event.target.value)}
             type="range"
-            name="range"
           />
         </VolumeProgress>
       </VolumeContent>
