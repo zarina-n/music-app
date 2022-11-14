@@ -2,68 +2,9 @@ import { StyledBar, StyledBarContent, PlayerProgress } from './Bar.styled'
 import Player from './Player'
 import { useState, useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { selectAllTracks } from '../../features/track/trackSlice'
-
-// const allTracks = [
-//   {
-//     album: 'Chase',
-//     author: 'Alexander Nakarada',
-//     duration_in_seconds: 205,
-//     genre: 'Классическая музыка',
-//     id: 8,
-//     name: 'Chase',
-//     release_date: '2005-06-11',
-//     track_file:
-//       'http://51.250.95.23:8000/django_media/music_files/Alexander_Nakarada_-_Chase.mp3',
-//   },
-//   {
-//     album: 'Open Sea epic',
-//     author: 'Frank Schroter',
-//     duration_in_seconds: 165,
-//     genre: 'Классическая музыка',
-//     id: 9,
-//     name: 'Open Sea epic',
-//     release_date: '2019-06-12',
-//     track_file:
-//       'http://51.250.95.23:8000/django_media/music_files/Frank_Schroter_-_Open_Sea_epic.mp3',
-//   },
-//   {
-//     album: 'Sneaky Snitch',
-//     author: 'Kevin Macleod',
-//     duration_in_seconds: 305,
-//     genre: 'Классическая музыка',
-//     id: 10,
-//     name: 'Sneaky Snitch',
-//     release_date: '2022-04-16',
-//     track_file:
-//       'http://51.250.95.23:8000/django_media/music_files/Kevin_Macleod_-_Sneaky_Snitch.mp3',
-//   },
-//   {
-//     album: 'Secret Garden',
-//     author: 'Mixkit',
-//     duration_in_seconds: 324,
-//     genre: 'Классическая музыка',
-//     id: 11,
-//     name: 'Secret Garden',
-//     release_date: '1972-06-06',
-//     track_file:
-//       'http://51.250.95.23:8000/django_media/music_files/Mixkit_-_Secret_Garden.mp3',
-//   },
-//   {
-//     album: '-',
-//     author: '-',
-//     duration_in_seconds: 255,
-//     genre: 'Классическая музыка',
-//     id: 12,
-//     name: 'A journey of successfull winners',
-//     release_date: '1985-02-02',
-//     track_file:
-//       'http://51.250.95.23:8000/django_media/music_files/Musiclfiles_-_A_Journey_For_Successful_Winners.mp',
-//   },
-// ]
 
 function Bar() {
-  const allTracks = useSelector(selectAllTracks)
+  const allTracks = useSelector((state) => state.track.tracks)
 
   const [tracks, setTracks] = useState([])
   const [isPlaying, setIsPlaying] = useState(false)
@@ -74,9 +15,13 @@ function Bar() {
   useEffect(() => {
     if (allTracks) {
       setTracks(allTracks)
-      setCurrentTrack(allTracks[2])
+      setCurrentTrack(tracks[0])
+    } else {
+      return
     }
-  }, [allTracks])
+  }, [tracks, allTracks])
+
+  //console.log(currentTrack)
 
   const audioRef = useRef()
   const progressRef = useRef()
@@ -152,7 +97,8 @@ function Bar() {
   }
 
   const repeatTrack = () => {
-    audioRef.loop = () => setRepeat(!repeat)
+    audioRef.current.loop = repeat
+    setRepeat(!repeat)
     console.log(repeat)
   }
 
@@ -162,23 +108,23 @@ function Bar() {
     audioRef.current.currentTime = 0
     console.log(currentTrack.track_file)
   }
-  // console.log(currentTrack.track_file)
+  //console.log(currentTrack?.track_file)
 
   return (
     <StyledBar>
       <StyledBarContent>
         <audio ref={audioRef} onTimeUpdate={onPlaying}>
-          <source src="/music/Баста – Ты та….mp3" type="audio/mpeg" />
+          <source src={currentTrack?.track_file} type="audio/mpeg" />
         </audio>
         <PlayerProgress onClick={getWidth} ref={progressRef}>
-          <div style={{ width: `${currentTrack.progress}%` }} />
+          <div style={{ width: `${currentTrack?.progress}%` }} />
         </PlayerProgress>
         <Player
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}
           audioRef={audioRef}
-          album={currentTrack.album}
-          name={currentTrack.name}
+          album={currentTrack?.album}
+          name={currentTrack?.name}
           nextTrack={nextTrack}
           previousTrack={previousTrack}
           repeatTrack={repeatTrack}

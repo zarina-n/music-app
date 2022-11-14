@@ -5,10 +5,10 @@ import {
   SidebarLink,
   SidebarImg,
 } from './Sidebar.styled'
-import DAILY_PLAYLIST from '../../dummy-data/daily-playlist-data'
-import { useState, useEffect, useContext } from 'react'
-import SkeletonDailyplaylist from '../../skeletons/SkeletonDailyplaylist'
+import { useContext } from 'react'
+import SkeletonDailyPlaylist from '../../skeletons/SkeletonDailyPlaylist'
 import { ThemeContext } from '../../App'
+import { useSelector } from 'react-redux'
 
 function SidebarBlock() {
   return (
@@ -22,21 +22,12 @@ export default SidebarBlock
 
 function SidebarItem() {
   const { darkTheme } = useContext(ThemeContext)
-
-  const [sidebarPlaylist, setSidebarPlaylist] = useState()
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSidebarPlaylist(DAILY_PLAYLIST)
-    }, 100)
-
-    return () => clearTimeout(timer)
-  }, [])
+  const playlistData = useSelector((state) => state.track.playlists)
 
   return (
     <SidebarList>
-      {sidebarPlaylist &&
-        sidebarPlaylist.map(({ name, imgSrc, alt, id }) => (
+      {playlistData &&
+        playlistData.map(({ imgSrc, alt, id }) => (
           <SidebarListItem key={id}>
             <SidebarLink to={`/compilations/${id}`}>
               <SidebarImg src={imgSrc} alt={alt}></SidebarImg>
@@ -44,9 +35,9 @@ function SidebarItem() {
           </SidebarListItem>
         ))}
 
-      {!sidebarPlaylist &&
+      {!playlistData &&
         Array.from({ length: 3 }).map((item, index) => (
-          <SkeletonDailyplaylist
+          <SkeletonDailyPlaylist
             key={`${index} + 1`}
             theme={darkTheme ? 'dark' : 'light'}
           />

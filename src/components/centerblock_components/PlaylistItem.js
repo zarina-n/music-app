@@ -8,23 +8,25 @@ import {
   PlaylistItemContainer,
 } from './Centerblock.styled'
 
+import {
+  useAddFavoriteMutation,
+  useDeleteFavoriteMutation,
+} from '../../features/track/trackApiSlice'
+
 import Like from '../../assets/Like'
 import Note from '../../assets/Note'
-import { getTrackData } from '../../features/track/trackSlice'
-import { useDispatch } from 'react-redux'
-import { useState, useCallback } from 'react'
 
 function PlaylistItem({ playlistData }) {
-  const dispatch = useDispatch()
-  const [likedId, setLikedId] = useState(0)
+  // const [liked, setLiked] = useState()
+
+  // const [addTrack] = useAddFavoriteMutation()
+  // const [deleteTrack] = useDeleteFavoriteMutation()
 
   function convertToMinutes(value) {
     const mins = ~~((value % 3600) / 60)
     const secs = ~~value % 60
-    let result = ''
+    let result = mins + ':' + (secs < 10 ? '0' : '') + secs
 
-    result += '' + mins + ':' + (secs < 10 ? '0' : '')
-    result += '' + secs
     return result
   }
 
@@ -34,29 +36,35 @@ function PlaylistItem({ playlistData }) {
     author,
     album,
     duration_in_seconds,
-    track_file
+    track_file,
+    favorite
   ) => {
-    dispatch(
-      getTrackData({
-        name,
-        id,
-        author,
-        album,
-        duration_in_seconds,
-        track_file,
-      })
-    )
-    // console.log(id, name)
+    const trackData = {
+      name,
+      id,
+      author,
+      album,
+      duration_in_seconds,
+      track_file,
+      favorite,
+    }
+
+    if (trackData.favorite === false) {
+      trackData.favorite = true
+    } else {
+      trackData.favorite = false
+    }
+
+    console.log(trackData)
   }
 
-  const likeToggler = useCallback(
-    (id) => {
-      setLikedId((prevId) => (prevId === id ? null : id))
-      // console.log(likedId)
-      // console.log(id)
-    },
-    [setLikedId]
-  )
+  // const likeToggler = useCallback(
+  //   (id, event) => {
+  //     console.log(event.target)
+  //     setLikedId((prevId) => (prevId === id ? null : id))
+  //   },
+  //   [setLikedId]
+  // )
 
   return (
     <>
@@ -69,6 +77,8 @@ function PlaylistItem({ playlistData }) {
           album,
           duration_in_seconds,
           track_file,
+          logo,
+          favorite,
         }) => (
           <PlaylistItemContainer key={id} id={id}>
             <div>
@@ -81,11 +91,16 @@ function PlaylistItem({ playlistData }) {
                       author,
                       album,
                       duration_in_seconds,
-                      track_file
+                      track_file,
+                      favorite
                     )
                   }
                 >
-                  <Note alt="music-icon" />
+                  {logo !== null ? (
+                    <img src={logo} alt="logo" />
+                  ) : (
+                    <Note alt="logo" />
+                  )}
                 </TitleImage>
 
                 <TitleText>
@@ -98,8 +113,8 @@ function PlaylistItem({ playlistData }) {
 
               <Album>{album}</Album>
 
-              <SongTime likedId={likedId} id={id}>
-                <Like onClick={() => likeToggler(id)} />
+              <SongTime favorite={favorite} id={id}>
+                <Like />
 
                 <span>{convertToMinutes(duration_in_seconds)}</span>
               </SongTime>

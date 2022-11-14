@@ -110,9 +110,11 @@ export const FilterTitle = styled.div`
   line-height: 24px;
   margin-right: 15px;
 `
-export const FilterButton = styled.button`
-  font-style: normal;
-  font-size: 16px;
+export const FilterButton = styled.div`
+  label {
+    cursor: pointer;
+  }
+
   border: 1px solid;
   border-radius: 60px;
   padding: 6px 20px;
@@ -140,9 +142,10 @@ export const FilterOptions = styled.ul`
   color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
   border-radius: 12px;
-  width: 424px;
-  height: 138px;
-  /* overflow: auto; */
+  width: 248px;
+  max-height: 305px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   visibility: ${({ id, clickedId }) =>
     clickedId === id ? 'visible' : 'hidden'};
 
@@ -151,13 +154,51 @@ export const FilterOptions = styled.ul`
   padding: 36px 34px;
   margin-top: 10px;
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
   row-gap: 28px;
   column-gap: 20px;
 
-  li:first-child {
+  div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #4b4949;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ededed;
+    border-radius: 10px;
+    border: 4px solid #ffffff;
+  }
+
+  * {
+    scrollbar-width: none;
+    scrollbar-color: #ededed #4b4949;
+  }
+
+  a {
+    color: white;
+  }
+
+  a.active {
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+    color: #b672ff;
+  }
+
+  a:hover {
     -webkit-text-decoration-line: underline;
     text-decoration-line: underline;
     color: #b672ff;
@@ -341,8 +382,8 @@ export const SongTime = styled.div`
     height: 15px;
     margin-right: 17px;
     cursor: pointer;
-    fill: ${({ id, likedId, theme }) =>
-      likedId === id ? theme.colors.likeDislike : 'transparent'};
+    fill: ${({ favorite, theme }) =>
+      favorite === true ? theme.colors.likeDislike : 'transparent'};
 
     stroke: ${({ theme }) => theme.colors.likeDislike};
     cursor: pointer;
