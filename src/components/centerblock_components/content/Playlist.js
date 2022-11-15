@@ -46,6 +46,7 @@ function Playlist() {
       }
       return track
     })
+    // console.log(content)
 
     dispatch(getTrackData(content))
 

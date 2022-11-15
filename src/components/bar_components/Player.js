@@ -1,11 +1,18 @@
-import PlayerControls from './PlayerControls'
+// import PlayerControls from './PlayerControls'
 import PlayerTrack from './PlayerTrack'
 import PlayerLikeDislike from './PlayerLikeDislike'
 import Volume from './Volume'
-// import { useSelector } from 'react-redux'
-// import { selectCurrentTrack } from '../../features/track/trackSlice'
+import { Controls, ControlButton, ShuffleRepeatButton } from './Bar.styled'
+
+import Repeat from '../../assets/Repeat'
+import Shuffle from '../../assets/Shuffle'
+import Prev from '../../assets/Prev'
+import Play from '../../assets/Play'
+import Pause from '../../assets/Pause'
+import Next from '../../assets/Next'
 
 import { PlayerBlock, ControlLikeContainer } from './Bar.styled'
+import { useEffect } from 'react'
 
 function Player({
   isPlaying,
@@ -13,27 +20,37 @@ function Player({
   audioRef,
   album,
   name,
-  nextTrack,
-  previousTrack,
-  repeatTrack,
-  repeat,
-  shuffleTrack,
   volume,
   setVolume,
 }) {
+  const playPause = () => {
+    setIsPlaying((prev) => !prev)
+  }
+
   return (
     <PlayerBlock>
       <ControlLikeContainer>
-        <PlayerControls
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying}
-          audioRef={audioRef}
-          nextTrack={nextTrack}
-          previousTrack={previousTrack}
-          repeatTrack={repeatTrack}
-          repeat={repeat}
-          shuffleTrack={shuffleTrack}
-        />
+        <Controls>
+          <ControlButton>
+            <Prev alt="prev" />
+          </ControlButton>
+
+          <ControlButton onClick={playPause}>
+            {isPlaying ? <Pause alt="pause" /> : <Play alt="play" />}
+          </ControlButton>
+
+          <ControlButton>
+            <Next alt="next" />
+          </ControlButton>
+
+          <ShuffleRepeatButton>
+            <Repeat alt="repeat" />
+          </ShuffleRepeatButton>
+
+          <ShuffleRepeatButton>
+            <Shuffle alt="shuffle" />
+          </ShuffleRepeatButton>
+        </Controls>
         <PlayerTrack album={album} name={name} />
         <PlayerLikeDislike />
       </ControlLikeContainer>

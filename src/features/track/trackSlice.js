@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   tracks: null,
-  favorites: null,
+  currentTrack: null,
   // genres: null,
   // // genres: { filterBy: 'исполнителю', id: 1, options: [], clicked: false },
   // filtered: [
@@ -45,6 +45,9 @@ const trackSlice = createSlice({
     getTrackData(state, action) {
       state.tracks = action.payload
     },
+    getCurrentTrack(state, action) {
+      state.currentTrack = action.payload
+    },
     getFavoriteTracks(state, action) {
       state.favorites = action.payload
     },
@@ -54,10 +57,13 @@ const trackSlice = createSlice({
   },
 })
 
-export const { getTrackData, getFavoriteTracks, getFilteredTracksByGenre } =
-  trackSlice.actions
+export const {
+  getTrackData,
+  getFavoriteTracks,
+  getFilteredTracksByGenre,
+  getCurrentTrack,
+} = trackSlice.actions
 
 export default trackSlice.reducer
 
 export const allTracks = (state) => state.track.tracks
-// export const filters = (state) => state.tracks.filtered

@@ -7,20 +7,21 @@ import {
   SongTime,
   PlaylistItemContainer,
 } from './Centerblock.styled'
-
+import Like from '../../assets/Like'
+import Note from '../../assets/Note'
 import {
   useAddFavoriteMutation,
   useDeleteFavoriteMutation,
 } from '../../features/track/trackApiSlice'
-
-import Like from '../../assets/Like'
-import Note from '../../assets/Note'
+import { getCurrentTrack } from '../../features/track/trackSlice'
+import { useDispatch } from 'react-redux'
 
 function PlaylistItem({ playlistData }) {
   // const [liked, setLiked] = useState()
 
   // const [addTrack] = useAddFavoriteMutation()
   // const [deleteTrack] = useDeleteFavoriteMutation()
+  const dispatch = useDispatch()
 
   function convertToMinutes(value) {
     const mins = ~~((value % 3600) / 60)
@@ -56,6 +57,7 @@ function PlaylistItem({ playlistData }) {
     }
 
     console.log(trackData)
+    dispatch(getCurrentTrack(trackData))
   }
 
   // const likeToggler = useCallback(
