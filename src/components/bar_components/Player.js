@@ -12,7 +12,7 @@ import Pause from '../../assets/Pause'
 import Next from '../../assets/Next'
 
 import { PlayerBlock, ControlLikeContainer } from './Bar.styled'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 function Player({
   isPlaying,
@@ -24,7 +24,13 @@ function Player({
   setVolume,
 }) {
   const playPause = () => {
-    setIsPlaying((prev) => !prev)
+    const prevValue = isPlaying
+    setIsPlaying(!prevValue)
+    if (!prevValue) {
+      audioRef.current.play()
+    } else {
+      audioRef.current.pause()
+    }
   }
 
   return (

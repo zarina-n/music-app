@@ -1,26 +1,27 @@
-import { StyledBar, StyledBarContent } from './Bar.styled'
+import { StyledBar, StyledBarContent, PlayerProgress } from './Bar.styled'
 import Player from './Player'
 import { useState, useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 function Bar() {
-  const allTracks = useSelector((state) => state.track?.tracks)
+  // const allTracks = useSelector((state) => state.track?.tracks)
   const selectedTrack = useSelector((state) => state.track?.currentTrack)
 
-  const [tracks, setTracks] = useState([])
-  const [currentTrack, setCurrentTrack] = useState({})
+  // const [tracks, setTracks] = useState([])
   const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(50)
+  const [duration, setDuration] = useState(0)
+  const [volume, setVolume] = useState(20)
+
   const audioRef = useRef()
+  const progressRef = useRef()
 
   useEffect(() => {
-    if (allTracks) {
-      setTracks(allTracks)
-      setCurrentTrack(selectedTrack)
-    }
-  }, [allTracks, selectedTrack, currentTrack])
+    progressRef.current.max = selectedTrack?.duration_in_seconds
+  }, [selectedTrack])
 
-  // console.log(currentTrack?.track_file)
+  // useEffect(() => {
+  //   audioRef.current = new Audio(selectedTrack?.track_file)
+  // }, [selectedTrack])
 
   useEffect(() => {
     if (audioRef) {
@@ -28,29 +29,42 @@ function Bar() {
     }
   }, [volume])
 
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play()
-    } else {
-      audioRef.current.pause()
-    }
-  }, [isPlaying])
+  // useEffect(() => {
+  //   if (isPlaying) {
+  //     audioRef.current.play()
+  //   } else {
+  //     audioRef.current.pause()
+  //   }
+  // }, [isPlaying])
 
-  //console.log(audioRef.current.src)
+  const changeRange = (event) => {
+    audioRef.current.currentTime = progressRef.current.value
+    console.log(event.target.value)
+  }
+
+  const getTrackProgress = (time, duration) => {
+    return (time / duration) * 100
+  }
 
   return (
     <StyledBar>
+      <audio src={selectedTrack?.track_file} ref={audioRef} />
       <StyledBarContent>
-        <audio ref={audioRef}>
-          <source src={currentTrack?.track_file} type="audio/mpeg" />
-        </audio>
+        <PlayerProgress>
+          <input
+            type="range"
+            defaultValue={0}
+            ref={progressRef}
+            onChange={changeRange}
+          />
+        </PlayerProgress>
 
         <Player
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}
           audioRef={audioRef}
-          album={currentTrack?.album}
-          name={currentTrack?.name}
+          album={selectedTrack?.album}
+          name={selectedTrack?.name}
           volume={volume}
           setVolume={setVolume}
         />

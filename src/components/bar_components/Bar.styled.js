@@ -23,13 +23,17 @@ export const StyledBarContent = styled.div`
 
 export const PlayerProgress = styled.div`
   width: 100%;
-  height: 5px;
   cursor: pointer;
 
-  div {
-    background: ${({ theme }) => theme.colors.progressBar};
+  input {
+    width: 100%;
     height: 5px;
   }
+
+  /* div {
+    background: ${({ theme }) => theme.colors.progressBar};
+    height: 5px;
+  } */
 `
 
 export const PlayerBlock = styled.div`

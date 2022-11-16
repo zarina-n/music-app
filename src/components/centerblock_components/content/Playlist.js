@@ -23,6 +23,12 @@ function Playlist() {
 
   let content
 
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(getTrackData(content))
+    }
+  }, [content, isSuccess, dispatch])
+
   if (isLoading) {
     content = Array.from({ length: 10 }).map((item, i) => (
       <SkeletonPlaylistItem key={i} theme={darkTheme ? 'dark' : 'light'} />
@@ -48,7 +54,7 @@ function Playlist() {
     })
     // console.log(content)
 
-    dispatch(getTrackData(content))
+    // dispatch(getTrackData(content))
 
     return <PlaylistItem playlistData={content} />
   } else if (isError) {

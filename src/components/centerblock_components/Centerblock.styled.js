@@ -318,6 +318,7 @@ export const TitleImage = styled.div`
   height: 51px;
   padding: 16px;
   background-color: ${({ theme }) => theme.colors.noteSvgBackground};
+  cursor: pointer;
 
   display: -webkit-box;
   display: -ms-flexbox;

@@ -10,17 +10,15 @@ import {
 import Like from '../../assets/Like'
 import Note from '../../assets/Note'
 import {
-  useAddFavoriteMutation,
-  useDeleteFavoriteMutation,
+  useAddFavoriteTrackMutation,
+  useDeleteFavoriteTrackMutation,
 } from '../../features/track/trackApiSlice'
 import { getCurrentTrack } from '../../features/track/trackSlice'
 import { useDispatch } from 'react-redux'
 
 function PlaylistItem({ playlistData }) {
-  // const [liked, setLiked] = useState()
-
-  // const [addTrack] = useAddFavoriteMutation()
-  // const [deleteTrack] = useDeleteFavoriteMutation()
+  const [addTrack] = useAddFavoriteTrackMutation()
+  const [deleteTrack] = useDeleteFavoriteTrackMutation()
   const dispatch = useDispatch()
 
   function convertToMinutes(value) {
@@ -49,24 +47,17 @@ function PlaylistItem({ playlistData }) {
       track_file,
       favorite,
     }
-
-    if (trackData.favorite === false) {
-      trackData.favorite = true
-    } else {
-      trackData.favorite = false
-    }
-
     console.log(trackData)
     dispatch(getCurrentTrack(trackData))
   }
 
-  // const likeToggler = useCallback(
-  //   (id, event) => {
-  //     console.log(event.target)
-  //     setLikedId((prevId) => (prevId === id ? null : id))
-  //   },
-  //   [setLikedId]
-  // )
+  const favoriteToggle = (favorite, id) => {
+    if (favorite) {
+      deleteTrack(id)
+    } else if (favorite === undefined) {
+      addTrack(id)
+    }
+  }
 
   return (
     <>
@@ -116,7 +107,7 @@ function PlaylistItem({ playlistData }) {
               <Album>{album}</Album>
 
               <SongTime favorite={favorite} id={id}>
-                <Like />
+                <Like onClick={() => favoriteToggle(favorite, id)} />
 
                 <span>{convertToMinutes(duration_in_seconds)}</span>
               </SongTime>

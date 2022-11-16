@@ -15,12 +15,16 @@ export const trackApiSlice = apiSlice.injectEndpoints({
       query: () => `catalog/track/favorite/all/`,
     }),
     addFavoriteTrack: builder.mutation({
-      query: (id) => `catalog/track/${id}/favorite/`,
-      method: 'POST',
+      query: (id) => ({
+        url: `catalog/track/${id}/favorite/`,
+        method: 'POST',
+      }),
     }),
     deleteFavoriteTrack: builder.mutation({
-      query: (id) => `catalog/track/${id}/favorite/`,
-      method: 'DELETE',
+      query: (id) => ({
+        url: `catalog/track/${id}/favorite/`,
+        method: 'DELETE',
+      }),
     }),
   }),
 })
@@ -30,6 +34,6 @@ export const {
   useGetTrackByIdMutation,
   useGetCompilationByIdQuery,
   useGetFavoriteTracksQuery,
-  useAddFavoriteMutation,
-  useDeleteFavoriteMutation,
+  useAddFavoriteTrackMutation,
+  useDeleteFavoriteTrackMutation,
 } = trackApiSlice
