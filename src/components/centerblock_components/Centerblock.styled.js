@@ -6,7 +6,7 @@ export const StyledCenterBlock = styled.div`
   padding: 20px 40px 20px 111px;
 `
 
-export const StyledSearch = styled.div`
+export const StyledSearch = styled.form`
   width: 100%;
   border-bottom: 1px solid #4e4e4e;
   margin-bottom: 51px;
@@ -20,14 +20,14 @@ export const StyledSearch = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-`
 
-export const SearchSvg = styled.svg`
-  width: 17px;
-  height: 17px;
-  margin-right: 5px;
-  stroke: ${({ theme }) => theme.colors.text};
-  fill: transparent;
+  svg {
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+    stroke: ${({ theme }) => theme.colors.text};
+    fill: transparent;
+  }
 `
 
 export const SearchInput = styled.input`
@@ -119,11 +119,8 @@ export const FilterButton = styled.div`
   border-radius: 60px;
   padding: 6px 20px;
   position: relative;
+  color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.containerColor};
-  color: ${({ id, clickedId, theme }) =>
-    clickedId === id ? theme.colors.filterActiveColor : theme.colors.text};
-  border-color: ${({ id, clickedId, theme }) =>
-    clickedId === id ? theme.colors.filterActiveColor : theme.colors.text};
 
   &:not(:last-child) {
     margin-right: 10px;
@@ -144,8 +141,9 @@ export const FilterOptions = styled.ul`
   border-radius: 12px;
   width: 248px;
   max-height: 305px;
+  overflow: hidden;
   overflow-y: scroll;
-  overflow-x: hidden;
+
   visibility: ${({ id, clickedId }) =>
     clickedId === id ? 'visible' : 'hidden'};
 
@@ -154,16 +152,16 @@ export const FilterOptions = styled.ul`
   padding: 36px 34px;
   margin-top: 10px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
   row-gap: 28px;
   column-gap: 20px;
 
-  div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  li {
+    color: ${({ chosen, theme }) =>
+      chosen ? theme.colors.filterActiveColor : theme.colors.text};
+    text-decoration-line: ${({ chosen, theme }) =>
+      chosen ? 'underline' : 'none'};
   }
 
   &::-webkit-scrollbar {
@@ -188,17 +186,7 @@ export const FilterOptions = styled.ul`
     scrollbar-color: #ededed #4b4949;
   }
 
-  a {
-    color: white;
-  }
-
-  a.active {
-    -webkit-text-decoration-line: underline;
-    text-decoration-line: underline;
-    color: #b672ff;
-  }
-
-  a:hover {
+  li:hover {
     -webkit-text-decoration-line: underline;
     text-decoration-line: underline;
     color: #b672ff;

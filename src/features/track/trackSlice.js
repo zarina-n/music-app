@@ -3,18 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   tracks: null,
   currentTrack: null,
-  // genres: null,
-  // // genres: { filterBy: 'исполнителю', id: 1, options: [], clicked: false },
-  // filtered: [
-  //   { filterBy: 'исполнителю', id: 1, authors: [], clicked: false },
-  //   {
-  //     filterBy: 'году выпуска',
-  //     id: 2,
-  //     years: ['Более новые', 'Более старые'],
-  //     clicked: false,
-  //   },
-  //   { filterBy: 'жанру', id: 3, genres: [], clicked: false },
-  // ],
+  favoriteTracks: null,
+  playlistTracks: null,
+  filteredTracks: null,
+  filter: null,
+  options: null,
+  search: null,
 
   playlists: [
     {
@@ -45,14 +39,53 @@ const trackSlice = createSlice({
     getTrackData(state, action) {
       state.tracks = action.payload
     },
+    getFilteredTracks(state, action) {
+      state.filteredTracks = action.payload
+    },
     getCurrentTrack(state, action) {
       state.currentTrack = action.payload
     },
     getFavoriteTracks(state, action) {
-      state.favorites = action.payload
+      state.favoriteTracks = action.payload
     },
-    getFilteredTracksByGenre(state, action) {
-      state.genres = action.payload
+    getPlaylistTracks(state, action) {
+      state.playlistTracks = action.payload
+    },
+    setFavoriteTrack(state, action) {
+      state.tracks = state.tracks.map((track) =>
+        track.id === action.payload
+          ? { ...track, favorite: !track.favorite }
+          : track
+      )
+    },
+    setFilter(state, action) {
+      const { option, filterBy } = action.payload
+      state.filter = { option, filterBy }
+    },
+    setFilterOptions(state, action) {
+      state.options = action.payload
+    },
+
+    setChosenFilterOption(state, action) {
+      state.options = state.options.map((option) =>
+        option.option === action.payload
+          ? { ...option, chosen: true }
+          : { ...option, chosen: false }
+      )
+    },
+    resetFilter(state, action) {
+      state.filter = null
+    },
+    setSearchedValue(state, action) {
+      state.search = action.payload
+    },
+    resetSearchedValue(state, action) {
+      state.search = null
+    },
+    shuffleFilteredTracks(state, action) {
+      state.filteredTracks = [...state.filteredTracks].sort(
+        () => Math.random() - 0.5
+      )
     },
   },
 })
@@ -60,8 +93,19 @@ const trackSlice = createSlice({
 export const {
   getTrackData,
   getFavoriteTracks,
-  getFilteredTracksByGenre,
   getCurrentTrack,
+  getPlaylistTracks,
+  setFavoriteTrack,
+  setFilter,
+  resetFilter,
+  setFilterOptions,
+  setSearchedValue,
+  resetSearchedValue,
+  setChosenFilterOption,
+  setIsPlayingTrack,
+  setIsNotPlayingTrack,
+  getFilteredTracks,
+  shuffleFilteredTracks,
 } = trackSlice.actions
 
 export default trackSlice.reducer

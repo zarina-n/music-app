@@ -1,16 +1,19 @@
 import { StyledContentPlaylist } from '../Centerblock.styled'
 import SkeletonPlaylistItem from '../../../skeletons/SkeletonPlaylistItem'
 import PlaylistItem from '../PlaylistItem'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { ThemeContext } from '../../../App'
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getPlaylistTracks } from '../../../features/track/trackSlice'
 
 import { useGetCompilationByIdQuery } from '../../../features/track/trackApiSlice'
 const Compilations = () => {
   const { darkTheme } = useContext(ThemeContext)
   const { id } = useParams()
   const userEmail = useSelector((state) => state.auth.user.email)
+  const dispatch = useDispatch()
+  const playlistTracks = useSelector((state) => state.track.playlistTracks)
 
   const {
     data = [],
@@ -21,6 +24,12 @@ const Compilations = () => {
   } = useGetCompilationByIdQuery(id)
 
   let content
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(getPlaylistTracks(content))
+    }
+  }, [content, isSuccess, dispatch])
 
   if (isLoading) {
     content = Array.from({ length: 10 }).map((item, i) => (
@@ -46,7 +55,7 @@ const Compilations = () => {
       return track
     })
 
-    return <PlaylistItem playlistData={content} />
+    return <PlaylistItem playlistData={playlistTracks} />
   } else if (isError) {
     content = <p>{error}</p>
   }

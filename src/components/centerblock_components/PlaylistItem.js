@@ -13,7 +13,10 @@ import {
   useAddFavoriteTrackMutation,
   useDeleteFavoriteTrackMutation,
 } from '../../features/track/trackApiSlice'
-import { getCurrentTrack } from '../../features/track/trackSlice'
+import {
+  getCurrentTrack,
+  setFavoriteTrack,
+} from '../../features/track/trackSlice'
 import { useDispatch } from 'react-redux'
 
 function PlaylistItem({ playlistData }) {
@@ -36,7 +39,8 @@ function PlaylistItem({ playlistData }) {
     album,
     duration_in_seconds,
     track_file,
-    favorite
+    favorite,
+    isPlaying
   ) => {
     const trackData = {
       name,
@@ -46,6 +50,7 @@ function PlaylistItem({ playlistData }) {
       duration_in_seconds,
       track_file,
       favorite,
+      isPlaying,
     }
     console.log(trackData)
     dispatch(getCurrentTrack(trackData))
@@ -57,11 +62,13 @@ function PlaylistItem({ playlistData }) {
     } else if (favorite === undefined) {
       addTrack(id)
     }
+
+    dispatch(setFavoriteTrack(id))
   }
 
   return (
     <>
-      {playlistData.map(
+      {playlistData?.map(
         ({
           name,
           id,

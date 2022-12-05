@@ -12,32 +12,27 @@ import Pause from '../../assets/Pause'
 import Next from '../../assets/Next'
 
 import { PlayerBlock, ControlLikeContainer } from './Bar.styled'
-// import { useEffect } from 'react'
 
 function Player({
   isPlaying,
-  setIsPlaying,
-  audioRef,
   album,
   name,
   volume,
   setVolume,
+  playPause,
+  handleRepeat,
+  repeat,
+  nextTrack,
+  previousTrack,
+  shuffleTracks,
+  shuffle,
+  handleShuffle,
 }) {
-  const playPause = () => {
-    const prevValue = isPlaying
-    setIsPlaying(!prevValue)
-    if (!prevValue) {
-      audioRef.current.play()
-    } else {
-      audioRef.current.pause()
-    }
-  }
-
   return (
     <PlayerBlock>
       <ControlLikeContainer>
         <Controls>
-          <ControlButton>
+          <ControlButton onClick={previousTrack}>
             <Prev alt="prev" />
           </ControlButton>
 
@@ -45,15 +40,15 @@ function Player({
             {isPlaying ? <Pause alt="pause" /> : <Play alt="play" />}
           </ControlButton>
 
-          <ControlButton>
+          <ControlButton onClick={nextTrack}>
             <Next alt="next" />
           </ControlButton>
 
-          <ShuffleRepeatButton>
+          <ShuffleRepeatButton onClick={handleRepeat} repeat={repeat}>
             <Repeat alt="repeat" />
           </ShuffleRepeatButton>
 
-          <ShuffleRepeatButton>
+          <ShuffleRepeatButton onClick={handleShuffle} shuffle={shuffle}>
             <Shuffle alt="shuffle" />
           </ShuffleRepeatButton>
         </Controls>

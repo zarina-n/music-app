@@ -1,29 +1,35 @@
-import React from 'react'
-import { StyledSearch, SearchSvg, SearchInput } from './Centerblock.styled'
-import { useContext } from 'react'
-import { ThemeContext } from '../../App'
-// import { SearchSvg} from '../../../assets/SearchSvg'
+import React, { useState, useEffect } from 'react'
+import { StyledSearch, SearchInput } from './Centerblock.styled'
+import { useDispatch } from 'react-redux'
+import { setSearchedValue } from '../../features/track/trackSlice'
+
+import SearchSvg from '../../assets/SearchSvg'
 
 function Search() {
-  const { darkTheme } = useContext(ThemeContext)
+  const [search, setSearch] = useState('')
+  const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(setSearchedValue(search))
+  // }, [search, dispatch])
 
   return (
-    <StyledSearch>
-      <SearchSvg>
-        {darkTheme ? (
-          <svg>
-            <use xlinkHref="img/icon/sprite.svg#icon-search" />
-          </svg>
-        ) : (
-          <svg>
-            <use xlinkHref="img/icon/sprite.svg#icon-search-light" />
-          </svg>
-        )}
-      </SearchSvg>
+    <StyledSearch
+      onSubmit={(event) => {
+        event.preventDefault()
+        dispatch(setSearchedValue(search))
+        setSearch('')
+      }}
+    >
+      <SearchSvg />
       <SearchInput
         placeholder="Поиск"
         name="search"
         type="search"
+        value={search}
+        onChange={(event) => {
+          setSearch(event.target.value)
+        }}
       ></SearchInput>
     </StyledSearch>
   )

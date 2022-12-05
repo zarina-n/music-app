@@ -23,17 +23,13 @@ export const StyledBarContent = styled.div`
 
 export const PlayerProgress = styled.div`
   width: 100%;
+  height: 5px;
   cursor: pointer;
 
-  input {
-    width: 100%;
+  div {
+    background: #2e2e2e;
     height: 5px;
   }
-
-  /* div {
-    background: ${({ theme }) => theme.colors.progressBar};
-    height: 5px;
-  } */
 `
 
 export const PlayerBlock = styled.div`
@@ -113,18 +109,14 @@ export const ShuffleRepeatButton = styled.div`
   cursor: pointer;
 
   svg {
-    fill: ${({ theme, repeat }) =>
-      repeat
+    fill: ${({ theme, repeat, shuffle }) =>
+      repeat || shuffle
         ? theme.colors.shuffleRepeatSvgActive
         : theme.colors.shuffleRepeatSvg};
 
     &:hover {
       stroke: ${({ theme }) => theme.colors.shuffleRepeatSvgHover};
     }
-
-    /* &:active {
-      stroke: ${({ theme }) => theme.colors.shuffleRepeatSvgActive};
-    } */
   }
 `
 
@@ -176,7 +168,6 @@ export const VolumeProgress = styled.div`
     height: 22px;
     -webkit-appearance: none;
     margin: 10px 0;
-    // width: 100%;
     background-color: transparent;
 
     &::-webkit-slider-runnable-track {
@@ -194,7 +185,6 @@ export const VolumeProgress = styled.div`
       width: 13px;
       border-radius: 18px;
       background: #1a1a1a;
-      /* cursor: auto; */
       -webkit-appearance: none;
       margin-top: -8px;
     }
@@ -266,16 +256,14 @@ export const LikeDislikeDiv = styled.div`
   gap: 30px;
 
   svg {
-    stroke: ${({ theme }) => theme.colors.likeDislike};
     cursor: pointer;
+    fill: ${({ favorite, theme }) =>
+      favorite === true ? theme.colors.likeDislike : 'transparent'};
+
+    stroke: ${({ theme }) => theme.colors.likeDislike};
 
     &:hover {
       stroke: ${({ theme }) => theme.colors.controlsHover};
-    }
-
-    &:active {
-      stroke: ${({ theme }) => theme.colors.controlsHover};
-      fill: ${({ theme }) => theme.colors.likeDislike};
     }
   }
 `
