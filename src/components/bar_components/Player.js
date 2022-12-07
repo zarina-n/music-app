@@ -27,6 +27,7 @@ function Player({
   shuffleTracks,
   shuffle,
   handleShuffle,
+  currentTrack,
 }) {
   return (
     <PlayerBlock>
@@ -53,7 +54,7 @@ function Player({
           </ShuffleRepeatButton>
         </Controls>
         <PlayerTrack album={album} name={name} />
-        <PlayerLikeDislike />
+        <PlayerLikeDislike currentTrack={currentTrack} />
       </ControlLikeContainer>
       <Volume volume={volume} setVolume={setVolume} />
     </PlayerBlock>

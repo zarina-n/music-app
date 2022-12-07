@@ -155,6 +155,7 @@ function Bar() {
           nextTrack={nextTrack}
           previousTrack={previousTrack}
           shuffle={shuffle}
+          currentTrack={currentTrack}
         />
       </StyledBarContent>
     </StyledBar>

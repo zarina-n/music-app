@@ -254,11 +254,27 @@ export const LikeDislikeDiv = styled.div`
   align-items: center;
   margin-left: 16%;
   gap: 30px;
+`
 
+export const LikeContainer = styled.div`
   svg {
     cursor: pointer;
     fill: ${({ favorite, theme }) =>
       favorite === true ? theme.colors.likeDislike : 'transparent'};
+
+    stroke: ${({ theme }) => theme.colors.likeDislike};
+
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.controlsHover};
+    }
+  }
+`
+
+export const DislikeContainer = styled.div`
+  svg {
+    cursor: pointer;
+    fill: ${({ favorite, theme }) =>
+      favorite === false ? theme.colors.likeDislike : 'transparent'};
 
     stroke: ${({ theme }) => theme.colors.likeDislike};
 

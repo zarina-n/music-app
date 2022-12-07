@@ -5,7 +5,10 @@ import Dark from '../../assets/Dark'
 import Light from '../../assets/Light'
 
 import { logOut } from '../../features/auth/authSlice'
-import { resetSearchedValue } from '../../features/track/trackSlice'
+import {
+  resetSearchedValue,
+  resetFilter,
+} from '../../features/track/trackSlice'
 import { useDispatch } from 'react-redux'
 
 function NavMenu({ open }) {
@@ -20,7 +23,13 @@ function NavMenu({ open }) {
     <Menu open={open}>
       <ul>
         <li key={1}>
-          <MenuLink to="/" onClick={() => dispatch(resetSearchedValue())}>
+          <MenuLink
+            to="/"
+            onClick={() => {
+              dispatch(resetSearchedValue())
+              dispatch(resetFilter())
+            }}
+          >
             Главное
           </MenuLink>
         </li>

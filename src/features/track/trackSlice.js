@@ -58,6 +58,16 @@ const trackSlice = createSlice({
           : track
       )
     },
+    setFavoriteTrackInsidePlayer(state, action) {
+      state.tracks = state.tracks.map((track) =>
+        track.id === action.payload ? { ...track, favorite: true } : track
+      )
+    },
+    deleteFavoriteTrackInsidePlayer(state, action) {
+      state.tracks = state.tracks.map((track) =>
+        track.id === action.payload ? { ...track, favorite: false } : track
+      )
+    },
     setFilter(state, action) {
       const { option, filterBy } = action.payload
       state.filter = { option, filterBy }
@@ -106,6 +116,8 @@ export const {
   setIsNotPlayingTrack,
   getFilteredTracks,
   shuffleFilteredTracks,
+  setFavoriteTrackInsidePlayer,
+  deleteFavoriteTrackInsidePlayer,
 } = trackSlice.actions
 
 export default trackSlice.reducer

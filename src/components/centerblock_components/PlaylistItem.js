@@ -52,7 +52,6 @@ function PlaylistItem({ playlistData }) {
       favorite,
       isPlaying,
     }
-    console.log(trackData)
     dispatch(getCurrentTrack(trackData))
   }
 
