@@ -9,6 +9,7 @@ const initialState = {
   filter: null,
   options: null,
   search: null,
+  shuffle: null,
 
   playlists: [
     {
@@ -58,6 +59,13 @@ const trackSlice = createSlice({
           : track
       )
     },
+    setFavoriteTrackInsidePlaylist(state, action) {
+      state.playlistTracks = state.playlistTracks.map((track) =>
+        track.id === action.payload
+          ? { ...track, favorite: !track.favorite }
+          : track
+      )
+    },
     setFavoriteTrackInsidePlayer(state, action) {
       state.tracks = state.tracks.map((track) =>
         track.id === action.payload ? { ...track, favorite: true } : track
@@ -92,6 +100,9 @@ const trackSlice = createSlice({
     resetSearchedValue(state, action) {
       state.search = null
     },
+    setShuffleState(state, action) {
+      state.shuffle = action.payload
+    },
     shuffleFilteredTracks(state, action) {
       state.filteredTracks = [...state.filteredTracks].sort(
         () => Math.random() - 0.5
@@ -118,6 +129,8 @@ export const {
   shuffleFilteredTracks,
   setFavoriteTrackInsidePlayer,
   deleteFavoriteTrackInsidePlayer,
+  setFavoriteTrackInsidePlaylist,
+  setShuffleState,
 } = trackSlice.actions
 
 export default trackSlice.reducer

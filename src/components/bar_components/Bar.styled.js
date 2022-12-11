@@ -6,7 +6,7 @@ export const StyledBar = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100vw;
+  max-width: 1920px;
   margin: 0 auto;
   background: ${({ theme }) => theme.colors.bar};
 `
@@ -96,7 +96,6 @@ export const ControlButton = styled.div`
     }
   }
 `
-
 export const ShuffleRepeatButton = styled.div`
   padding: 5px;
   margin-right: 24px;
@@ -119,9 +118,6 @@ export const ShuffleRepeatButton = styled.div`
     }
   }
 `
-
-export const ControlSvg = styled.svg``
-
 export const BarVolumeBlock = styled.div`
   width: auto;
   display: -webkit-box;
@@ -192,14 +188,7 @@ export const VolumeProgress = styled.div`
 `
 
 export const ContainContainer = styled.div`
-  width: auto;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr;
-  grid-template-columns: auto 1fr;
-  grid-template-areas: 'image author' 'image album';
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  display: flex;
   align-items: center;
 `
 
@@ -217,28 +206,71 @@ export const ContainImage = styled.div`
   -ms-flex-pack: center;
   justify-content: center;
   margin-right: 12px;
-  -ms-grid-row-span: 2;
-  grid-area: image;
 `
 
-export const ContainAuthor = styled.div`
-  grid-area: author;
+export const NameAlbumContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
   min-width: 49px;
+  height: 80%;
+  white-space: nowrap;
 
-  a {
-    font-size: 16px;
-    white-space: nowrap;
-    color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
+
+  @-moz-keyframes my-animation {
+    from {
+      -moz-transform: translateX(100%);
+    }
+    to {
+      -moz-transform: translateX(-100%);
+    }
+  }
+
+  @-webkit-keyframes my-animation {
+    from {
+      -webkit-transform: translateX(100%);
+    }
+    to {
+      -webkit-transform: translateX(-100%);
+    }
+  }
+
+  @keyframes my-animation {
+    from {
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    to {
+      -moz-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+  }
+
+  div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+
+    -moz-animation: my-animation 15s linear infinite;
+    -webkit-animation: my-animation 15s linear infinite;
+    animation: my-animation 15s linear infinite;
   }
 `
 
-export const ContainAlbum = styled.div`
-  grid-area: album;
-  min-width: 49px;
-  a {
-    font-size: 13px;
-    color: ${({ theme }) => theme.colors.text};
-  }
+export const ContainAuthor = styled.p`
+  font-size: 16px;
+`
+
+export const ContainName = styled.p`
+  font-size: 13px;
 `
 
 export const LikeDislikeDiv = styled.div`
@@ -252,7 +284,7 @@ export const LikeDislikeDiv = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: 16%;
+  margin-left: 6%;
   gap: 30px;
 `
 

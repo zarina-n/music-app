@@ -55,6 +55,11 @@ export const SidebarList = styled.div`
 export const SidebarListItem = styled.div`
   width: 250px;
   height: 150px;
+  transition: all 0.5s linear;
+
+  &:hover {
+    transform: scale(1.04);
+  }
 
   &:not(:last-child) {
     margin-bottom: 30px;

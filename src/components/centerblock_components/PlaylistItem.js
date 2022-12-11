@@ -16,13 +16,15 @@ import {
 import {
   getCurrentTrack,
   setFavoriteTrack,
+  setFavoriteTrackInsidePlaylist,
 } from '../../features/track/trackSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 function PlaylistItem({ playlistData }) {
   const [addTrack] = useAddFavoriteTrackMutation()
   const [deleteTrack] = useDeleteFavoriteTrackMutation()
   const dispatch = useDispatch()
+  const currentTrack = useSelector((state) => state.track?.currentTrack)
 
   function convertToMinutes(value) {
     const mins = ~~((value % 3600) / 60)
@@ -63,6 +65,7 @@ function PlaylistItem({ playlistData }) {
     }
 
     dispatch(setFavoriteTrack(id))
+    dispatch(setFavoriteTrackInsidePlaylist(id))
   }
 
   return (
@@ -79,22 +82,30 @@ function PlaylistItem({ playlistData }) {
           logo,
           favorite,
         }) => (
-          <PlaylistItemContainer key={id} id={id}>
+          <PlaylistItemContainer
+            style={
+              id === currentTrack?.id
+                ? { border: '1px solid #888', scale: '1.05' }
+                : {}
+            }
+            key={id}
+            id={id}
+            currentTrack={currentTrack}
+            onClick={() =>
+              getTrack(
+                name,
+                id,
+                author,
+                album,
+                duration_in_seconds,
+                track_file,
+                favorite
+              )
+            }
+          >
             <div>
               <Title>
-                <TitleImage
-                  onClick={() =>
-                    getTrack(
-                      name,
-                      id,
-                      author,
-                      album,
-                      duration_in_seconds,
-                      track_file,
-                      favorite
-                    )
-                  }
-                >
+                <TitleImage>
                   {logo !== null ? (
                     <img src={logo} alt="logo" />
                   ) : (
@@ -113,7 +124,12 @@ function PlaylistItem({ playlistData }) {
               <Album>{album}</Album>
 
               <SongTime favorite={favorite} id={id}>
-                <Like onClick={() => favoriteToggle(favorite, id)} />
+                <Like
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    favoriteToggle(favorite, id)
+                  }}
+                />
 
                 <span>{convertToMinutes(duration_in_seconds)}</span>
               </SongTime>

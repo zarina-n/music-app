@@ -1,36 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { StyledSearch, SearchInput } from './Centerblock.styled'
+import React, { useState } from 'react'
+import {
+  StyledSearch,
+  SearchInput,
+  SearchButton,
+  CancelSearchButton,
+} from './Centerblock.styled'
 import { useDispatch } from 'react-redux'
-import { setSearchedValue } from '../../features/track/trackSlice'
+import {
+  setSearchedValue,
+  resetSearchedValue,
+  resetFilter,
+} from '../../features/track/trackSlice'
 
 import SearchSvg from '../../assets/SearchSvg'
+import Cross from '../../assets/Cross'
 
 function Search() {
   const [search, setSearch] = useState('')
   const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(setSearchedValue(search))
-  // }, [search, dispatch])
 
   return (
     <StyledSearch
       onSubmit={(event) => {
         event.preventDefault()
         dispatch(setSearchedValue(search))
-        setSearch('')
       }}
     >
-      <SearchSvg />
+      <SearchButton>
+        <SearchSvg />
+      </SearchButton>
       <SearchInput
         placeholder="Поиск"
         name="search"
-        type="search"
+        type="text"
         value={search}
         onChange={(event) => {
           setSearch(event.target.value)
         }}
-      ></SearchInput>
+      />
+      <CancelSearchButton
+        onClick={() => {
+          dispatch(resetSearchedValue())
+          dispatch(resetFilter())
+          setSearch('')
+        }}
+      >
+        <Cross />
+      </CancelSearchButton>
     </StyledSearch>
   )
 }

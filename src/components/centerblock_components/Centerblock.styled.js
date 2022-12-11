@@ -20,13 +20,32 @@ export const StyledSearch = styled.form`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
 
   svg {
     width: 17px;
     height: 17px;
-    margin-right: 5px;
     stroke: ${({ theme }) => theme.colors.text};
     fill: transparent;
+    cursor: pointer;
+  }
+`
+
+export const SearchButton = styled.button`
+  background-color: inherit;
+  border: none;
+  position: absolute;
+  left: 1%;
+`
+
+export const CancelSearchButton = styled.button`
+  background-color: inherit;
+  border: none;
+  position: absolute;
+  left: 95%;
+
+  svg {
+    fill: ${({ theme }) => theme.colors.text};
   }
 `
 
@@ -36,7 +55,7 @@ export const SearchInput = styled.input`
   flex-grow: 100;
   background-color: transparent;
   border: none;
-  padding: 13px 10px 14px;
+  padding: 13px 30px 14px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -269,6 +288,15 @@ export const PlaylistItemContainer = styled.div`
   width: 100%;
   display: block;
   margin-bottom: 12px;
+  padding-right: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 1s ease;
+
+  &:hover {
+    border: 1px solid #888;
+    scale: 1.03;
+  }
 
   div {
     display: -webkit-box;

@@ -15,7 +15,7 @@ import { PlayerBlock, ControlLikeContainer } from './Bar.styled'
 
 function Player({
   isPlaying,
-  album,
+  author,
   name,
   volume,
   setVolume,
@@ -53,7 +53,7 @@ function Player({
             <Shuffle alt="shuffle" />
           </ShuffleRepeatButton>
         </Controls>
-        <PlayerTrack album={album} name={name} />
+        <PlayerTrack author={author} name={name} />
         <PlayerLikeDislike currentTrack={currentTrack} />
       </ControlLikeContainer>
       <Volume volume={volume} setVolume={setVolume} />

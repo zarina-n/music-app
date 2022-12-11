@@ -5,7 +5,10 @@ import { useContext, useEffect } from 'react'
 import { ThemeContext } from '../../../App'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getPlaylistTracks } from '../../../features/track/trackSlice'
+import {
+  getPlaylistTracks,
+  getFilteredTracks,
+} from '../../../features/track/trackSlice'
 
 import { useGetCompilationByIdQuery } from '../../../features/track/trackApiSlice'
 const Compilations = () => {
@@ -14,6 +17,31 @@ const Compilations = () => {
   const userEmail = useSelector((state) => state.auth.user.email)
   const dispatch = useDispatch()
   const playlistTracks = useSelector((state) => state.track.playlistTracks)
+  const searchValue = useSelector((state) => state.track.search)
+  const tracks = useSelector((state) => state.track?.tracks)
+
+  let trackData
+  // console.log(
+  //   (trackData = tracks?.filter((track) =>
+  //     playlistTracks?.includes(track.name)
+  //   ))
+  // )
+
+  if (searchValue) {
+    trackData = playlistTracks?.filter(
+      (track) =>
+        track.author.toLowerCase().includes(searchValue?.toLowerCase()) ||
+        track.name.toLowerCase().includes(searchValue?.toLowerCase())
+    )
+  } else {
+    trackData = playlistTracks
+  }
+
+  useEffect(() => {
+    if (playlistTracks) {
+      dispatch(getFilteredTracks(trackData))
+    }
+  }, [playlistTracks, dispatch, trackData])
 
   const {
     data = [],
@@ -55,7 +83,9 @@ const Compilations = () => {
       return track
     })
 
-    return <PlaylistItem playlistData={playlistTracks} />
+    // content = data.items
+
+    return <PlaylistItem playlistData={trackData} />
   } else if (isError) {
     content = <p>{error}</p>
   }

@@ -18,6 +18,7 @@ function Playlist() {
   const allTracks = useSelector((state) => state.track?.tracks)
   const filter = useSelector((state) => state.track.filter)
   const searchValue = useSelector((state) => state.track.search)
+  const shuffleState = useSelector((state) => state.track.shuffle)
 
   let trackData
 
@@ -54,6 +55,12 @@ function Playlist() {
       dispatch(getFilteredTracks(trackData))
     }
   }, [allTracks, dispatch, trackData])
+
+  // if (shuffleState) {
+  //   trackData = [...allTracks].sort(() => Math.random() - 0.5)
+  // } else {
+  //   trackData = allTracks
+  // }
 
   const {
     data = [],

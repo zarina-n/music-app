@@ -56,7 +56,6 @@ export const NavBurger = styled.div`
 export const Menu = styled.div`
   display: block;
   visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
-  transition: visibility 0.3s linear;
 
   ul {
     padding: 18px 0 10px 0;

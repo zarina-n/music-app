@@ -39,16 +39,11 @@ function PlayerLikeDislike({ currentTrack }) {
   return (
     <LikeDislikeDiv>
       <LikeContainer favorite={favorite}>
-        <Like
-          alt="like"
-          favorite={favorite}
-          onClick={() => addFavoriteTrack(currentTrack?.id)}
-        />
+        <Like alt="like" onClick={() => addFavoriteTrack(currentTrack?.id)} />
       </LikeContainer>
       <DislikeContainer favorite={favorite}>
         <Dislike
           alt="dislike"
-          favorite={favorite}
           onClick={() => deleteFavoriteTrack(currentTrack?.id)}
         />
       </DislikeContainer>

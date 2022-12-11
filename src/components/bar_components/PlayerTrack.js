@@ -2,23 +2,24 @@ import {
   ContainContainer,
   ContainImage,
   ContainAuthor,
-  ContainAlbum,
+  ContainName,
+  NameAlbumContainer,
 } from './Bar.styled'
 
 import Note from '../../assets/Note'
 
-function PlayerTrack({ author, album }) {
+function PlayerTrack({ author, name }) {
   return (
     <ContainContainer>
       <ContainImage>
         <Note alt="music" />
       </ContainImage>
-      <ContainAuthor>
-        <a href="http://">{author}</a>
-      </ContainAuthor>
-      <ContainAlbum>
-        <a href="http://">{album}</a>
-      </ContainAlbum>
+      <NameAlbumContainer>
+        <div>
+          {author ? <ContainAuthor>{author}</ContainAuthor> : ''}
+          {name ? <ContainName>{name}</ContainName> : ''}
+        </div>
+      </NameAlbumContainer>
     </ContainContainer>
   )
 }

@@ -2,7 +2,10 @@ import { StyledBar, StyledBarContent, PlayerProgress } from './Bar.styled'
 import Player from './Player'
 import { useState, useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { shuffleFilteredTracks } from '../../features/track/trackSlice'
+import {
+  getCurrentTrack,
+  setShuffleState,
+} from '../../features/track/trackSlice'
 
 function Bar() {
   const dispatch = useDispatch()
@@ -38,13 +41,8 @@ function Bar() {
     }
 
     setCurrentTrack(track)
-  }, [route, allTracks, favoriteTracks, playlistTracks, track])
-
-  // useEffect(() => {
-  //   if (shuffle && route === '/') {
-  //     dispatch(shuffleFilteredTracks())
-  //   }
-  // }, [dispatch, route, shuffle])
+    dispatch(getCurrentTrack(track))
+  }, [route, allTracks, favoriteTracks, playlistTracks, track, dispatch])
 
   useEffect(() => {
     const index = tracks?.findIndex((track) => track.id === currentTrack?.id)
@@ -111,29 +109,27 @@ function Bar() {
   }, [repeat])
 
   useEffect(() => {
-    if (shuffle) {
-      console.log(tracks)
-    }
-  }, [shuffle, tracks])
+    dispatch(setShuffleState(shuffle))
+  }, [shuffle, dispatch])
 
   const nextTrack = () => {
     if (index === tracks?.length - 1) {
       setCurrentTrack(tracks[0])
+      dispatch(getCurrentTrack(tracks[0]))
     }
 
     setCurrentTrack(tracks[index + 1])
+    dispatch(getCurrentTrack(tracks[index + 1]))
   }
 
   const previousTrack = () => {
     if (index === 0) {
-      setCurrentTrack(tracks.length - 1)
+      setCurrentTrack(tracks[tracks.length - 1])
+      dispatch(getCurrentTrack(tracks[index - 1]))
     }
-    setCurrentTrack(tracks[index + 1])
+    setCurrentTrack(tracks[index - 1])
+    dispatch(getCurrentTrack(tracks[index - 1]))
   }
-
-  // const shuffleArray = (arr) => {
-  //   tracks = [...tracks].sort(() => Math.random() - 0.5)
-  // }
 
   return (
     <StyledBar>
@@ -145,7 +141,7 @@ function Bar() {
           isPlaying={isPlaying}
           playPause={() => setIsPlaying((isPlaying) => !isPlaying)}
           audioRef={audioRef}
-          album={currentTrack?.album}
+          author={currentTrack?.author}
           name={currentTrack?.name}
           volume={volume}
           setVolume={setVolume}

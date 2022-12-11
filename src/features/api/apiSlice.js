@@ -25,7 +25,6 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
       api,
       extraOptions
     )
-    // console.log(refreshResult)
     if (refreshResult?.data) {
       const user = api.getState().auth.user
       api.dispatch(setUser({ ...refreshResult, user }))
