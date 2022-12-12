@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledBar = styled.div`
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
   grid-area: 2 / 1 / 3 / 4;
   position: fixed;
   bottom: 0;

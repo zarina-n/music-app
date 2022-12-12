@@ -11,8 +11,11 @@ const MyTracks = () => {
   const { darkTheme } = useContext(ThemeContext)
   const dispatch = useDispatch()
   const tracks = useSelector((state) => state.track?.tracks)
-
   const favoriteTracks = tracks?.filter((track) => track.favorite)
+
+  useEffect(() => {
+    dispatch(getFavoriteTracks(favoriteTracks))
+  }, [favoriteTracks, dispatch, tracks])
 
   const searchValue = useSelector((state) => state.track.search)
 
@@ -25,7 +28,9 @@ const MyTracks = () => {
         track.name.toLowerCase().includes(searchValue?.toLowerCase())
     )
   } else {
-    trackData = favoriteTracks
+    trackData = tracks?.filter((track) =>
+      favoriteTracks?.some((favoriteTrack) => track.id === favoriteTrack.id)
+    )
   }
 
   const {

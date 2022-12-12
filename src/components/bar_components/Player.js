@@ -3,6 +3,7 @@ import PlayerTrack from './PlayerTrack'
 import PlayerLikeDislike from './PlayerLikeDislike'
 import Volume from './Volume'
 import { Controls, ControlButton, ShuffleRepeatButton } from './Bar.styled'
+import { PlayerBlock, ControlLikeContainer } from './Bar.styled'
 
 import Repeat from '../../assets/Repeat'
 import Shuffle from '../../assets/Shuffle'
@@ -11,7 +12,8 @@ import Play from '../../assets/Play'
 import Pause from '../../assets/Pause'
 import Next from '../../assets/Next'
 
-import { PlayerBlock, ControlLikeContainer } from './Bar.styled'
+import { useDispatch } from 'react-redux'
+import { getCurrentTrack } from '../../features/track/trackSlice'
 
 function Player({
   isPlaying,
@@ -22,13 +24,33 @@ function Player({
   playPause,
   handleRepeat,
   repeat,
-  nextTrack,
-  previousTrack,
-  shuffleTracks,
   shuffle,
   handleShuffle,
   currentTrack,
+  setCurrentTrack,
+  index,
+  tracks,
 }) {
+  const dispatch = useDispatch()
+
+  const nextTrack = () => {
+    if (index === tracks?.length - 1) {
+      setCurrentTrack(tracks[0])
+      dispatch(getCurrentTrack(tracks[0]))
+    }
+
+    setCurrentTrack(tracks[index + 1])
+    dispatch(getCurrentTrack(tracks[index + 1]))
+  }
+
+  const previousTrack = () => {
+    if (index === 0) {
+      setCurrentTrack(tracks[tracks.length - 1])
+      dispatch(getCurrentTrack(tracks[index - 1]))
+    }
+    setCurrentTrack(tracks[index - 1])
+    dispatch(getCurrentTrack(tracks[index - 1]))
+  }
   return (
     <PlayerBlock>
       <ControlLikeContainer>

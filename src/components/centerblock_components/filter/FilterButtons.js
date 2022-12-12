@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { FilterButton, FilterOptions } from '../Centerblock.styled'
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -8,6 +7,7 @@ import {
   setFilterOptions,
   setChosenFilterOption,
 } from '../../../features/track/trackSlice'
+import { getFilter } from './helper'
 
 function FilterButtons() {
   const dispatch = useDispatch()
@@ -18,27 +18,12 @@ function FilterButtons() {
   const filterOptions = useSelector((state) => state?.track.options)
   const filterToCheck = useSelector((state) => state?.track?.filter)
 
-  const getFilter = (tracks, { id, filterBy, filterByKey }) => {
-    const filters = [...new Set(tracks?.map((data) => data[filterByKey]))]
-    const filter = {
-      id,
-      filterBy,
-      filterByKey,
-      options: [],
-      clicked: false,
-    }
-
-    for (let i = 0; i < filters.length; i++) {
-      filter.options.push({ option: filters[i], chosen: false })
-    }
-    return filter
-  }
-
   const filterByGenre = getFilter(tracks, {
     id: 1,
     filterBy: 'жанру',
     filterByKey: 'genre',
   })
+
   const filterByAuthor = getFilter(tracks, {
     id: 2,
     filterBy: 'исполнителю',

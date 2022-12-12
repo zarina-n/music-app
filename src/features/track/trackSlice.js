@@ -53,14 +53,14 @@ const trackSlice = createSlice({
       state.playlistTracks = action.payload
     },
     setFavoriteTrack(state, action) {
-      state.tracks = state.tracks.map((track) =>
+      state.tracks = state.tracks?.map((track) =>
         track.id === action.payload
           ? { ...track, favorite: !track.favorite }
           : track
       )
     },
     setFavoriteTrackInsidePlaylist(state, action) {
-      state.playlistTracks = state.playlistTracks.map((track) =>
+      state.playlistTracks = state.playlistTracks?.map((track) =>
         track.id === action.payload
           ? { ...track, favorite: !track.favorite }
           : track

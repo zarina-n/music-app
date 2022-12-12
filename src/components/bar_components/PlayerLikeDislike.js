@@ -41,6 +41,7 @@ function PlayerLikeDislike({ currentTrack }) {
       <LikeContainer favorite={favorite}>
         <Like alt="like" onClick={() => addFavoriteTrack(currentTrack?.id)} />
       </LikeContainer>
+
       <DislikeContainer favorite={favorite}>
         <Dislike
           alt="dislike"

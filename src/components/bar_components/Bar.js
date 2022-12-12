@@ -13,7 +13,6 @@ function Bar() {
   const allTracks = useSelector((state) => state.track?.filteredTracks)
   const favoriteTracks = useSelector((state) => state.track?.favoriteTracks)
   const playlistTracks = useSelector((state) => state.track?.playlistTracks)
-
   const track = useSelector((state) => state.track?.currentTrack)
 
   const [tracks, setTracks] = useState([])
@@ -25,9 +24,14 @@ function Bar() {
   const [songProgress, setSongProgress] = useState(0)
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
+  const [visibleBar, setVisibleBar] = useState(false)
 
   const audioRef = useRef(null)
   const progressRef = useRef()
+
+  useEffect(() => {
+    currentTrack ? setVisibleBar(true) : setVisibleBar(false)
+  }, [currentTrack])
 
   useEffect(() => {
     if (route === '/') {
@@ -94,7 +98,8 @@ function Bar() {
         clearInterval(timeOut)
       }
     }
-  }, [track, currentTrack?.track_file, volume])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [track, currentTrack?.track_file])
 
   const getWidth = (event) => {
     const width = progressRef.current.clientWidth
@@ -112,27 +117,8 @@ function Bar() {
     dispatch(setShuffleState(shuffle))
   }, [shuffle, dispatch])
 
-  const nextTrack = () => {
-    if (index === tracks?.length - 1) {
-      setCurrentTrack(tracks[0])
-      dispatch(getCurrentTrack(tracks[0]))
-    }
-
-    setCurrentTrack(tracks[index + 1])
-    dispatch(getCurrentTrack(tracks[index + 1]))
-  }
-
-  const previousTrack = () => {
-    if (index === 0) {
-      setCurrentTrack(tracks[tracks.length - 1])
-      dispatch(getCurrentTrack(tracks[index - 1]))
-    }
-    setCurrentTrack(tracks[index - 1])
-    dispatch(getCurrentTrack(tracks[index - 1]))
-  }
-
   return (
-    <StyledBar>
+    <StyledBar visible={visibleBar}>
       <StyledBarContent>
         <PlayerProgress ref={progressRef} onClick={getWidth}>
           <div style={{ width: `${songProgress}%` }} />
@@ -148,10 +134,11 @@ function Bar() {
           handleRepeat={() => setRepeat((repeat) => !repeat)}
           handleShuffle={() => setShuffle((shuffle) => !shuffle)}
           repeat={repeat}
-          nextTrack={nextTrack}
-          previousTrack={previousTrack}
           shuffle={shuffle}
           currentTrack={currentTrack}
+          index={index}
+          setCurrentTrack={setCurrentTrack}
+          tracks={tracks}
         />
       </StyledBarContent>
     </StyledBar>

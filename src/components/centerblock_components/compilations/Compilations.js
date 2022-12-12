@@ -14,18 +14,12 @@ import { useGetCompilationByIdQuery } from '../../../features/track/trackApiSlic
 const Compilations = () => {
   const { darkTheme } = useContext(ThemeContext)
   const { id } = useParams()
-  const userEmail = useSelector((state) => state.auth.user.email)
   const dispatch = useDispatch()
-  const playlistTracks = useSelector((state) => state.track.playlistTracks)
+  const playlistTracks = useSelector((state) => state.track?.playlistTracks)
   const searchValue = useSelector((state) => state.track.search)
-  const tracks = useSelector((state) => state.track?.tracks)
+  const allTracks = useSelector((state) => state.track?.tracks)
 
   let trackData
-  // console.log(
-  //   (trackData = tracks?.filter((track) =>
-  //     playlistTracks?.includes(track.name)
-  //   ))
-  // )
 
   if (searchValue) {
     trackData = playlistTracks?.filter(
@@ -34,14 +28,10 @@ const Compilations = () => {
         track.name.toLowerCase().includes(searchValue?.toLowerCase())
     )
   } else {
-    trackData = playlistTracks
+    trackData = allTracks?.filter((track) =>
+      playlistTracks?.some((playlistTrack) => track.id === playlistTrack.id)
+    )
   }
-
-  useEffect(() => {
-    if (playlistTracks) {
-      dispatch(getFilteredTracks(trackData))
-    }
-  }, [playlistTracks, dispatch, trackData])
 
   const {
     data = [],
@@ -59,31 +49,18 @@ const Compilations = () => {
     }
   }, [content, isSuccess, dispatch])
 
+  useEffect(() => {
+    if (playlistTracks) {
+      dispatch(getFilteredTracks(trackData))
+    }
+  }, [playlistTracks, dispatch, trackData])
+
   if (isLoading) {
     content = Array.from({ length: 10 }).map((item, i) => (
       <SkeletonPlaylistItem key={i} theme={darkTheme ? 'dark' : 'light'} />
     ))
   } else if (isSuccess) {
-    content = data.items.map((track) => {
-      if (track.stared_user) {
-        for (let i = 0; i < track.stared_user.length; i++) {
-          if (track.stared_user[i]?.email === userEmail) {
-            return {
-              ...track,
-              favorite: true,
-            }
-          }
-        }
-      } else {
-        return {
-          ...track,
-          favorite: false,
-        }
-      }
-      return track
-    })
-
-    // content = data.items
+    content = data.items
 
     return <PlaylistItem playlistData={trackData} />
   } else if (isError) {

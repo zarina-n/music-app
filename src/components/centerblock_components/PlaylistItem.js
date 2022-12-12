@@ -26,6 +26,8 @@ function PlaylistItem({ playlistData }) {
   const dispatch = useDispatch()
   const currentTrack = useSelector((state) => state.track?.currentTrack)
 
+  const route = document.location.pathname
+
   function convertToMinutes(value) {
     const mins = ~~((value % 3600) / 60)
     const secs = ~~value % 60
@@ -65,7 +67,6 @@ function PlaylistItem({ playlistData }) {
     }
 
     dispatch(setFavoriteTrack(id))
-    dispatch(setFavoriteTrackInsidePlaylist(id))
   }
 
   return (

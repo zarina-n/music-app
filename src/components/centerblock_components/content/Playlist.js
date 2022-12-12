@@ -11,56 +11,25 @@ import {
 } from '../../../features/track/trackSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { getTrackDataPlaylist } from './helper'
+
 function Playlist() {
   const { darkTheme } = useContext(ThemeContext)
   const dispatch = useDispatch()
+
   const userEmail = useSelector((state) => state.auth.user.email)
   const allTracks = useSelector((state) => state.track?.tracks)
   const filter = useSelector((state) => state.track.filter)
   const searchValue = useSelector((state) => state.track.search)
-  const shuffleState = useSelector((state) => state.track.shuffle)
+  const shuffleState = useSelector((state) => state.track.search)
 
-  let trackData
-
-  if (filter && filter.filterBy === 'genre') {
-    trackData = allTracks.filter((track) => track.genre === filter.option)
-  } else if (filter && filter.filterBy === 'author') {
-    trackData = allTracks.filter((track) => track.author === filter.option)
-  } else if (filter && filter.filterBy === 'year') {
-    filter.option === 'Более новые'
-      ? (trackData = allTracks
-          .map((item) => {
-            return { ...item, release_date: new Date(item.release_date) }
-          })
-          .sort((a, b) => Number(b.release_date) - Number(a.release_date)))
-      : (trackData = allTracks
-          .map((item) => {
-            return { ...item, release_date: new Date(item.release_date) }
-          })
-          .sort((a, b) => Number(a.release_date) - Number(b.release_date)))
-  } else {
-    trackData = allTracks
-  }
-
-  if (searchValue) {
-    trackData = allTracks?.filter(
-      (track) =>
-        track.author.toLowerCase().includes(searchValue?.toLowerCase()) ||
-        track.name.toLowerCase().includes(searchValue?.toLowerCase())
-    )
-  }
+  let trackData = getTrackDataPlaylist(filter, allTracks, searchValue)
 
   useEffect(() => {
     if (allTracks) {
       dispatch(getFilteredTracks(trackData))
     }
   }, [allTracks, dispatch, trackData])
-
-  // if (shuffleState) {
-  //   trackData = [...allTracks].sort(() => Math.random() - 0.5)
-  // } else {
-  //   trackData = allTracks
-  // }
 
   const {
     data = [],
@@ -101,8 +70,6 @@ function Playlist() {
       }
       return track
     })
-
-    //console.log(content)
 
     return <PlaylistItem playlistData={trackData} />
   } else if (isError) {
