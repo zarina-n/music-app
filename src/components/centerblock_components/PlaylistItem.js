@@ -66,6 +66,10 @@ function PlaylistItem({ playlistData }) {
       addTrack(id)
     }
 
+    if (route.includes('/my-tracks')) {
+      dispatch(setFavoriteTrackInsidePlaylist(id))
+      dispatch(setFavoriteTrack(id))
+    }
     dispatch(setFavoriteTrack(id))
   }
 

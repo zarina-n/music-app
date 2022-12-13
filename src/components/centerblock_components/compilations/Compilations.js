@@ -9,6 +9,7 @@ import {
   getPlaylistTracks,
   getFilteredTracks,
 } from '../../../features/track/trackSlice'
+import { getTrackDataPlaylist } from './helper'
 
 import { useGetCompilationByIdQuery } from '../../../features/track/trackApiSlice'
 const Compilations = () => {
@@ -18,20 +19,14 @@ const Compilations = () => {
   const playlistTracks = useSelector((state) => state.track?.playlistTracks)
   const searchValue = useSelector((state) => state.track.search)
   const allTracks = useSelector((state) => state.track?.tracks)
+  const shuffleState = useSelector((state) => state.track.shuffle)
 
-  let trackData
-
-  if (searchValue) {
-    trackData = playlistTracks?.filter(
-      (track) =>
-        track.author.toLowerCase().includes(searchValue?.toLowerCase()) ||
-        track.name.toLowerCase().includes(searchValue?.toLowerCase())
-    )
-  } else {
-    trackData = allTracks?.filter((track) =>
-      playlistTracks?.some((playlistTrack) => track.id === playlistTrack.id)
-    )
-  }
+  let trackData = getTrackDataPlaylist(
+    playlistTracks,
+    allTracks,
+    searchValue,
+    shuffleState
+  )
 
   const {
     data = [],

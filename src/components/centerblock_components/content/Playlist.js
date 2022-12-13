@@ -21,9 +21,14 @@ function Playlist() {
   const allTracks = useSelector((state) => state.track?.tracks)
   const filter = useSelector((state) => state.track.filter)
   const searchValue = useSelector((state) => state.track.search)
-  const shuffleState = useSelector((state) => state.track.search)
+  const shuffleState = useSelector((state) => state.track.shuffle)
 
-  let trackData = getTrackDataPlaylist(filter, allTracks, searchValue)
+  let trackData = getTrackDataPlaylist(
+    filter,
+    allTracks,
+    searchValue,
+    shuffleState
+  )
 
   useEffect(() => {
     if (allTracks) {

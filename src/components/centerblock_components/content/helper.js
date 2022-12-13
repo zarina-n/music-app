@@ -1,4 +1,9 @@
-export const getTrackDataPlaylist = (filter, allTracks, searchValue) => {
+export const getTrackDataPlaylist = (
+  filter,
+  allTracks,
+  searchValue,
+  shuffleState
+) => {
   let trackData
 
   if (filter && filter.filterBy === 'genre') {
@@ -17,16 +22,16 @@ export const getTrackDataPlaylist = (filter, allTracks, searchValue) => {
             return { ...item, release_date: new Date(item.release_date) }
           })
           .sort((a, b) => Number(a.release_date) - Number(b.release_date)))
-  } else {
-    trackData = allTracks
-  }
-
-  if (searchValue) {
+  } else if (shuffleState) {
+    trackData = [...allTracks]?.sort(() => Math.random() - 0.5)
+  } else if (searchValue) {
     trackData = allTracks?.filter(
       (track) =>
         track.author.toLowerCase().includes(searchValue?.toLowerCase()) ||
         track.name.toLowerCase().includes(searchValue?.toLowerCase())
     )
+  } else {
+    trackData = allTracks
   }
 
   return trackData
