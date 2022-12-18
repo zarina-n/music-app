@@ -71,16 +71,13 @@ function Bar() {
     }
   }, [volume])
 
-  const nextTrack = () => {
-    setCurrentTrack(tracks[index + 1])
-    dispatch(getCurrentTrack(tracks[index + 1]))
-  }
-
   useEffect(() => {
     let timeOut = null
 
     const onEnded = () => {
-      nextTrack()
+      console.log(index)
+      setCurrentTrack(tracks[index + 1])
+      dispatch(getCurrentTrack(tracks[index + 1]))
     }
 
     const onPlaying = () => {
@@ -113,15 +110,13 @@ function Bar() {
       }
       if (audioRef.current) {
         audioRef.current.pause()
-        audioRef.current.addEventListener('ended', onEnded)
       }
 
       if (audioRef.current) {
         audioRef.current.removeEventListener('ended', onEnded)
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [track, currentTrack?.track_file])
+  }, [track, currentTrack?.track_file, index, dispatch])
 
   const getWidth = (event) => {
     const width = progressRef.current.clientWidth

@@ -34,20 +34,11 @@ function Player({
   const dispatch = useDispatch()
 
   const nextTrack = () => {
-    if (index === tracks?.length - 1) {
-      setCurrentTrack(tracks[0])
-      dispatch(getCurrentTrack(tracks[0]))
-    }
-
     setCurrentTrack(tracks[index + 1])
     dispatch(getCurrentTrack(tracks[index + 1]))
   }
 
   const previousTrack = () => {
-    if (index === 0) {
-      setCurrentTrack(tracks[tracks.length - 1])
-      dispatch(getCurrentTrack(tracks[index - 1]))
-    }
     setCurrentTrack(tracks[index - 1])
     dispatch(getCurrentTrack(tracks[index - 1]))
   }

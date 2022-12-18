@@ -30,6 +30,8 @@ export const PlayerProgress = styled.div`
   div {
     background: #ad61ff;
     height: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
   }
 `
 
