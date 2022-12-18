@@ -74,7 +74,7 @@ export const MenuLink = styled(NavLink)`
   line-height: 24px;
 
   &.active {
-    border-bottom: 1px solid white;
+    color: ${({ theme }) => theme.colors.filterActiveColor};
   }
 `
 

@@ -16,7 +16,6 @@ import {
 import {
   getCurrentTrack,
   setFavoriteTrack,
-  setFavoriteTrackInsidePlaylist,
 } from '../../features/track/trackSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -25,8 +24,6 @@ function PlaylistItem({ playlistData }) {
   const [deleteTrack] = useDeleteFavoriteTrackMutation()
   const dispatch = useDispatch()
   const currentTrack = useSelector((state) => state.track?.currentTrack)
-
-  const route = document.location.pathname
 
   function convertToMinutes(value) {
     const mins = ~~((value % 3600) / 60)

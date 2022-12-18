@@ -59,13 +59,6 @@ const trackSlice = createSlice({
           : track
       )
     },
-    setFavoriteTrackInsidePlaylist(state, action) {
-      state.playlistTracks = state.playlistTracks?.map((track) =>
-        track.id === action.payload
-          ? { ...track, favorite: !track.favorite }
-          : track
-      )
-    },
     setFavoriteTrackInsidePlayer(state, action) {
       state.tracks = state.tracks.map((track) =>
         track.id === action.payload ? { ...track, favorite: true } : track
@@ -129,7 +122,6 @@ export const {
   shuffleFilteredTracks,
   setFavoriteTrackInsidePlayer,
   deleteFavoriteTrackInsidePlayer,
-  setFavoriteTrackInsidePlaylist,
   setShuffleState,
 } = trackSlice.actions
 

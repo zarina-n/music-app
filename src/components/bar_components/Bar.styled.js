@@ -28,7 +28,7 @@ export const PlayerProgress = styled.div`
   cursor: pointer;
 
   div {
-    background: #2e2e2e;
+    background: #ad61ff;
     height: 5px;
   }
 `
@@ -219,25 +219,25 @@ export const NameAlbumContainer = styled.div`
 
   color: ${({ theme }) => theme.colors.text};
 
-  @-moz-keyframes my-animation {
+  /* @-moz-keyframes trackTextAnimation {
     from {
-      -moz-transform: translateX(100%);
-    }
-    to {
       -moz-transform: translateX(-100%);
     }
+    to {
+      -moz-transform: translateX(100%);
+    }
   }
 
-  @-webkit-keyframes my-animation {
+  @-webkit-keyframes trackTextAnimation {
     from {
-      -webkit-transform: translateX(100%);
-    }
-    to {
       -webkit-transform: translateX(-100%);
     }
-  }
+    to {
+      -webkit-transform: translateX(100%);
+    }
+  } */
 
-  @keyframes my-animation {
+  @keyframes trackTextAnimation {
     from {
       -moz-transform: translateX(100%);
       -webkit-transform: translateX(100%);
@@ -260,9 +260,9 @@ export const NameAlbumContainer = styled.div`
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
 
-    -moz-animation: my-animation 15s linear infinite;
-    -webkit-animation: my-animation 15s linear infinite;
-    animation: my-animation 15s linear infinite;
+    -moz-animation: trackTextAnimation 15s linear infinite;
+    -webkit-animation: trackTextAnimation 15s linear infinite;
+    animation: trackTextAnimation 15s linear infinite;
   }
 `
 
