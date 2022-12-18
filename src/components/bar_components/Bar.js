@@ -95,11 +95,12 @@ function Bar() {
 
     if (audioRef.current) {
       audioRef.current.pause()
-      audioRef.current.addEventListener('ended', onEnded)
     }
 
     if (track) {
       audioRef.current = new Audio(currentTrack?.track_file)
+      audioRef.current.addEventListener('ended', onEnded)
+
       timeOut = setInterval(onPlaying, 100)
       audioRef.current.play()
       audioRef.current.volume = volume / 100
@@ -109,6 +110,10 @@ function Bar() {
     return () => {
       if (timeOut) {
         clearInterval(timeOut)
+      }
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current.addEventListener('ended', onEnded)
       }
 
       if (audioRef.current) {
