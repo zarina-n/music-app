@@ -71,8 +71,18 @@ function Bar() {
     }
   }, [volume])
 
+  const nextTrack = () => {
+    setCurrentTrack(tracks[index + 1])
+    dispatch(getCurrentTrack(tracks[index + 1]))
+  }
+
   useEffect(() => {
     let timeOut = null
+
+    const onEnded = () => {
+      nextTrack()
+    }
+
     const onPlaying = () => {
       if (!audioRef.current.paused) {
         const { duration } = audioRef.current
@@ -82,9 +92,12 @@ function Bar() {
         setSongLength(duration)
       }
     }
+
     if (audioRef.current) {
       audioRef.current.pause()
+      audioRef.current.addEventListener('ended', onEnded)
     }
+
     if (track) {
       audioRef.current = new Audio(currentTrack?.track_file)
       timeOut = setInterval(onPlaying, 100)
@@ -96,6 +109,10 @@ function Bar() {
     return () => {
       if (timeOut) {
         clearInterval(timeOut)
+      }
+
+      if (audioRef.current) {
+        audioRef.current.removeEventListener('ended', onEnded)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -22,8 +22,8 @@ const Compilations = () => {
   const shuffleState = useSelector((state) => state.track.shuffle)
 
   let trackData = getTrackDataPlaylist(
-    playlistTracks,
     allTracks,
+    playlistTracks,
     searchValue,
     shuffleState
   )

@@ -4,6 +4,7 @@ export const trackApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllTracks: builder.query({
       query: () => '/catalog/track/all/',
+      providesTags: ['Tracks'],
     }),
     getCompilationById: builder.query({
       query: (id) => `/catalog/selection/${id}`,
@@ -16,12 +17,14 @@ export const trackApiSlice = apiSlice.injectEndpoints({
         url: `catalog/track/${id}/favorite/`,
         method: 'POST',
       }),
+      invalidatesTags: ['Tracks'],
     }),
     deleteFavoriteTrack: builder.mutation({
       query: (id) => ({
         url: `catalog/track/${id}/favorite/`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Tracks'],
     }),
   }),
 })
