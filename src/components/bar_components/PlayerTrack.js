@@ -2,25 +2,26 @@ import {
   ContainContainer,
   ContainImage,
   ContainAuthor,
-  ContainAlbum,
-} from "./Bar.styled";
+  ContainName,
+  NameAlbumContainer,
+} from './Bar.styled'
 
-function PlayerTrack(props) {
+import Note from '../../assets/Note'
+
+function PlayerTrack({ author, name }) {
   return (
     <ContainContainer>
       <ContainImage>
-        <svg alt="music">
-          <use xlinkHref="img/icon/sprite.svg#icon-note" />
-        </svg>
+        <Note alt="music" />
       </ContainImage>
-      <ContainAuthor>
-        <a href="http://">{props.author}</a>
-      </ContainAuthor>
-      <ContainAlbum>
-        <a href="http://">{props.album}</a>
-      </ContainAlbum>
+      <NameAlbumContainer>
+        <div>
+          {author ? <ContainAuthor>{author}</ContainAuthor> : ''}
+          {name ? <ContainName>{name}</ContainName> : ''}
+        </div>
+      </NameAlbumContainer>
     </ContainContainer>
-  );
+  )
 }
 
-export default PlayerTrack;
+export default PlayerTrack

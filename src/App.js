@@ -1,26 +1,27 @@
-// import { Routes, Route } from "react-router-dom";
-// import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import MyTracks from "./pages/MyTracks";
-// import Compilations from "./pages/Compilations";
-// import Signup from "./pages/Signup";
-// import NotFound from "./pages/NotFound";
-// import ProtectedRoute from "./pages/ProtectedRoute";
-// import { useState } from "react";
+import React, { useState, useMemo } from 'react'
+import AppRoutes from './pages/AppRoutes'
+import { ThemeProvider } from 'styled-components'
+import { dark, light } from './styles/Theme.styled'
+import GlobalStyles from './styles/GlobalStyles'
 
-import AppRoutes from "./pages/AppRoutes";
+export const ThemeContext = React.createContext('theme')
 
 function App() {
-  const cookieValue = document.cookie.replace(
-    /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-    "$1"
-  );
+  const [darkTheme, setDarkTheme] = useState(true)
+
+  const themeValue = useMemo(
+    () => ({ darkTheme, setDarkTheme }),
+    [darkTheme, setDarkTheme]
+  )
 
   return (
-    <>
-      <AppRoutes user={cookieValue} />
-    </>
-  );
+    <ThemeContext.Provider value={themeValue}>
+      <ThemeProvider theme={darkTheme ? dark : light}>
+        <GlobalStyles />
+        <AppRoutes />
+      </ThemeProvider>
+    </ThemeContext.Provider>
+  )
 }
 
-export default App;
+export default App

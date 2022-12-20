@@ -1,14 +1,23 @@
-import Container from "./Container.styles";
-import Main from "../components/Main";
-import Bar from "../components/Bar";
+import { Routes, Route } from 'react-router-dom'
+import HomeContainer from './HomeContainer.styles'
+import Bar from '../components/bar_components/Bar'
+import Navigation from '../components/nav_components/Navigation'
+import Centerblock from '../components/centerblock_components/Centerblock'
+import Sidebar from '../components/sidebar_components/Sidebar'
 
 function Home() {
   return (
-    <Container>
-      <Main />
+    <HomeContainer>
+      <Navigation />
+      <Centerblock />
+
+      <Routes>
+        <Route path="/" element={<Sidebar />} />
+      </Routes>
+
       <Bar />
-    </Container>
-  );
+    </HomeContainer>
+  )
 }
 
-export default Home;
+export default Home

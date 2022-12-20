@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -13,10 +13,11 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Stratos LC Web', sans-serif;
-  color: #ffffff;
-  background-color: #383838;
+  color:  ${({ theme }) => theme.colors.text};
+  background-color:  ${({ theme }) => theme.colors.backGrColor};
 
 }
+
 
 *:before,
 *:after {
@@ -42,54 +43,6 @@ button{
 ul li {
   list-style: none;
 }
+`
 
-/* @font-face {
-    font-family: 'Stratos LC Web';
-    src: url('StratosLCWeb-Light.eot');
-    src: local('Stratos LC Web Light'), local('StratosLCWeb-Light'),
-        url('StratosLCWeb-Light.eot?#iefix') format('embedded-opentype'),
-        url('StratosLCWeb-Light.woff2') format('woff2'),
-        url('StratosLCWeb-Light.woff') format('woff'),
-        url('StratosLCWeb-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Stratos LC Web';
-    src: url('StratosLCWeb-Bold.eot');
-    src: local('Stratos LC Web Bold'), local('StratosLCWeb-Bold'),
-        url('StratosLCWeb-Bold.eot?#iefix') format('embedded-opentype'),
-        url('StratosLCWeb-Bold.woff2') format('woff2'),
-        url('StratosLCWeb-Bold.woff') format('woff'),
-        url('StratosLCWeb-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Stratos LC Web';
-    src: url('StratosLCWeb-Medium.eot');
-    src: local('Stratos LC Web Medium'), local('StratosLCWeb-Medium'),
-        url('StratosLCWeb-Medium.eot?#iefix') format('embedded-opentype'),
-        url('StratosLCWeb-Medium.woff2') format('woff2'),
-        url('StratosLCWeb-Medium.woff') format('woff'),
-        url('StratosLCWeb-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-} */
-
-/* @font-face {
-    font-family: 'Stratos LC Web';
-    src: url('./fonts/StratosLCWeb-Regular.eot');
-    src: local('./fonts/Stratos LC Web'), local('./fonts/StratosLCWeb-Regular'),
-        url('./fonts/StratosLCWeb-Regular.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/StratosLCWeb-Regular.woff2') format('woff2'),
-        url('./fonts/StratosLCWeb-Regular.woff') format('woff'),
-        url('./fonts/StratosLCWeb-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}*/
-`;
-
-export default GlobalStyles;
+export default GlobalStyles
