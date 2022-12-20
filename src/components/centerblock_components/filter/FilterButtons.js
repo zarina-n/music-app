@@ -33,10 +33,7 @@ function FilterButtons() {
   const filterByYear = {
     id: 3,
     filterBy: 'году выпуска',
-    options: [
-      { option: 'Более новые', chosen: false },
-      { option: 'Более старые', chosen: false },
-    ],
+    options: [{ option: 'Более новые' }, { option: 'Более старые' }],
     filterByKey: 'year',
     clicked: false,
   }
@@ -85,7 +82,6 @@ function FilterButtons() {
                   : {}
               }
               key={i}
-              chosen={option.chosen ? 1 : 0}
               onClick={() => {
                 filterHandler(option.option, filterByGenre.filterByKey)
               }}

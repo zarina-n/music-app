@@ -179,8 +179,7 @@ export const FilterOptions = styled.ul`
   li {
     color: ${({ chosen, theme }) =>
       chosen ? theme.colors.filterActiveColor : theme.colors.text};
-    text-decoration-line: ${({ chosen, theme }) =>
-      chosen ? 'underline' : 'none'};
+    text-decoration-line: ${({ chosen }) => (chosen ? 'underline' : 'none')};
   }
 
   &::-webkit-scrollbar {

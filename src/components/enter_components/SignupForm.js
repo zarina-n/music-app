@@ -62,7 +62,6 @@ function SignUpForm() {
         navigate('/login')
       } catch (err) {
         setErrMsg(err)
-        console.log(err)
       }
     } else {
       event.currentTarget.disabled = true

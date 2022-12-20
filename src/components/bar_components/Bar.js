@@ -75,7 +75,6 @@ function Bar() {
     let timeOut = null
 
     const onEnded = () => {
-      console.log(index)
       setCurrentTrack(tracks[index + 1])
       dispatch(getCurrentTrack(tracks[index + 1]))
     }
