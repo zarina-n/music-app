@@ -73,7 +73,7 @@ function LoginForm() {
         required
       ></input>
 
-      {errMsg && <p>{errMsg.data.email}</p>}
+      {errMsg && <p>{errMsg.data?.email}</p>}
 
       <input
         onChange={handlePassword}
@@ -86,8 +86,8 @@ function LoginForm() {
         autoComplete="off"
       ></input>
 
-      {errMsg && <p>{errMsg.data.password}</p>}
-      {errMsg && <p>{errMsg.data.non_field_errors}</p>}
+      {errMsg && <p>{errMsg.data?.password}</p>}
+      {errMsg && <p>{errMsg.data?.non_field_errors}</p>}
 
       <ModalButton onClick={handleSubmit}>
         <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
