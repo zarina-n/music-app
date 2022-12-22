@@ -1,5 +1,4 @@
-# music-app (ongoing project, will be finished soon)
-
+# music-app
 ## Summary
 
 This is a custom music player app  which I am building as a part of Fron-end Developer course while learning React JS and Redux
