@@ -5,7 +5,6 @@ import {
   setFilter,
   resetFilter,
   setFilterOptions,
-  setChosenFilterOption,
 } from '../../../features/track/trackSlice'
 import { getFilter } from './helper'
 
@@ -33,7 +32,7 @@ function FilterButtons() {
   const filterByYear = {
     id: 3,
     filterBy: 'году выпуска',
-    options: [{ option: 'Более новые' }, { option: 'Более старые' }],
+    options: ['Более новые', 'Более старые'],
     filterByKey: 'year',
     clicked: false,
   }
@@ -49,7 +48,6 @@ function FilterButtons() {
   const filterHandler = (option, filterBy) => {
     const filterData = { option, filterBy }
     dispatch(setFilter({ ...filterData }))
-    dispatch(setChosenFilterOption(option))
 
     if (filterFromSate?.option === filterData.option) {
       dispatch(resetFilter(option))
@@ -77,16 +75,16 @@ function FilterButtons() {
           {filterOptions?.map((option, i) => (
             <li
               style={
-                option.option === filterToCheck?.option
+                option === filterToCheck?.option
                   ? { color: '#AD61FF', textDecoration: 'underline' }
                   : {}
               }
               key={i}
               onClick={() => {
-                filterHandler(option.option, filterByGenre.filterByKey)
+                filterHandler(option, filterByGenre.filterByKey)
               }}
             >
-              {option.option}
+              {option}
             </li>
           ))}
         </FilterOptions>
@@ -109,16 +107,14 @@ function FilterButtons() {
           {filterOptions?.map((option, i) => (
             <li
               style={
-                option.option === filterToCheck?.option
+                option === filterToCheck?.option
                   ? { color: '#AD61FF', textDecoration: 'underline' }
                   : {}
               }
               key={`${i} option`}
-              onClick={() =>
-                filterHandler(option.option, filterByAuthor.filterByKey)
-              }
+              onClick={() => filterHandler(option, filterByAuthor.filterByKey)}
             >
-              {option.option}
+              {option}
             </li>
           ))}
         </FilterOptions>
@@ -141,16 +137,14 @@ function FilterButtons() {
           {filterOptions?.map((option, i) => (
             <li
               style={
-                option.option === filterToCheck?.option
+                option === filterToCheck?.option
                   ? { color: '#AD61FF', textDecoration: 'underline' }
                   : {}
               }
               key={`${i} option`}
-              onClick={() =>
-                filterHandler(option.option, filterByYear.filterByKey)
-              }
+              onClick={() => filterHandler(option, filterByYear.filterByKey)}
             >
-              {option.option}
+              {option}
             </li>
           ))}
         </FilterOptions>

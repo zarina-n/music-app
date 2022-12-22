@@ -77,13 +77,6 @@ const trackSlice = createSlice({
       state.options = action.payload
     },
 
-    setChosenFilterOption(state, action) {
-      state.options = state.options.map((option) =>
-        option.option === action.payload
-          ? { ...option, chosen: true }
-          : { ...option, chosen: false }
-      )
-    },
     resetFilter(state, action) {
       state.filter = null
     },
@@ -95,11 +88,6 @@ const trackSlice = createSlice({
     },
     setShuffleState(state, action) {
       state.shuffle = action.payload
-    },
-    shuffleFilteredTracks(state, action) {
-      state.filteredTracks = [...state.filteredTracks].sort(
-        () => Math.random() - 0.5
-      )
     },
   },
 })
@@ -115,11 +103,9 @@ export const {
   setFilterOptions,
   setSearchedValue,
   resetSearchedValue,
-  setChosenFilterOption,
   setIsPlayingTrack,
   setIsNotPlayingTrack,
   getFilteredTracks,
-  shuffleFilteredTracks,
   setFavoriteTrackInsidePlayer,
   deleteFavoriteTrackInsidePlayer,
   setShuffleState,

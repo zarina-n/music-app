@@ -4,11 +4,8 @@ export const getFilter = (tracks, { id, filterBy, filterByKey }) => {
     id,
     filterBy,
     filterByKey,
-    options: [],
+    options: filters,
   }
 
-  for (let i = 0; i < filters.length; i++) {
-    filter.options.push({ option: filters[i], chosen: false })
-  }
   return filter
 }
