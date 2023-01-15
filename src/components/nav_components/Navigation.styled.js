@@ -6,14 +6,36 @@ export const StyledNav = styled.nav`
   width: 244px;
   background-color: ${({ theme }) => theme.colors.navBackGrColor};
   padding: 20px 0 20px 36px;
+
+  @media (max-height: 1000px) {
+    width: 215px;
+  }
+
+  @media (max-width: 1080px) {
+    width: 200px;
+  }
+
+  @media (max-width: 920px) {
+    width: 170px;
+  }
+
+  @media (max-width: 900px) {
+    width: 150px;
+  }
 `
 
 export const Logo = styled.img`
-  width: 113.33px;
+  width: 113px;
   height: 17px;
   color: #181818;
   background-color: transparent;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+
+  @media (max-width: 900px) {
+    width: 100px;
+    height: 17px;
+  }
 `
 
 export const NavBurger = styled.div`
@@ -69,9 +91,6 @@ export const Menu = styled.div`
 
 export const MenuLink = styled(NavLink)`
   color: ${({ theme }) => theme.colors.text};
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
 
   &.active {
     color: ${({ theme }) => theme.colors.filterActiveColor};

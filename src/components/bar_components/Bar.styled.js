@@ -7,7 +7,7 @@ export const StyledBar = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  max-width: 1920px;
+  max-width: 100%;
   margin: 0 auto;
   background: ${({ theme }) => theme.colors.bar};
 `
@@ -32,6 +32,10 @@ export const PlayerProgress = styled.div`
     height: 5px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+
+    @media (max-height: 768px) {
+      height: 3px;
+    }
   }
 `
 
@@ -49,6 +53,10 @@ export const PlayerBlock = styled.div`
   -ms-flex-pack: justify;
   justify-content: space-between;
   height: 100%;
+
+  @media (max-height: 768px) {
+    height: 65px;
+  }
 `
 
 export const ControlLikeContainer = styled.div`
@@ -221,24 +229,6 @@ export const NameAlbumContainer = styled.div`
 
   color: ${({ theme }) => theme.colors.text};
 
-  /* @-moz-keyframes trackTextAnimation {
-    from {
-      -moz-transform: translateX(-100%);
-    }
-    to {
-      -moz-transform: translateX(100%);
-    }
-  }
-
-  @-webkit-keyframes trackTextAnimation {
-    from {
-      -webkit-transform: translateX(-100%);
-    }
-    to {
-      -webkit-transform: translateX(100%);
-    }
-  } */
-
   @keyframes trackTextAnimation {
     from {
       -moz-transform: translateX(100%);
@@ -269,11 +259,18 @@ export const NameAlbumContainer = styled.div`
 `
 
 export const ContainAuthor = styled.p`
-  font-size: 0.8rem;
+  font-size: 13px;
+
+  @media (max-width: 994px) {
+    font-size: 10px;
+  }
 `
 
 export const ContainName = styled.p`
-  font-size: 0.8rem;
+  font-size: 13px;
+  @media (max-width: 994px) {
+    font-size: 10px;
+  }
 `
 
 export const LikeDislikeDiv = styled.div`

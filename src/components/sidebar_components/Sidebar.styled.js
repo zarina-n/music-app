@@ -37,6 +37,18 @@ export const StyledSidebarBlock = styled.div`
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+
+  @media (max-height: 960px) {
+    padding-top: 150px;
+  }
+
+  @media (max-height: 840px) {
+    padding-top: 100px;
+  }
+
+  @media (max-height: 768px) {
+    padding-top: 50px;
+  }
 `
 
 export const SidebarList = styled.div`
@@ -64,6 +76,26 @@ export const SidebarListItem = styled.div`
   &:not(:last-child) {
     margin-bottom: 30px;
   }
+
+  /* @media (max-width: 1024px) {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    width: 230px;
+    height: 130px;
+  } */
+
+  @media (max-height: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  /* @media (max-height: 840px) {
+    width: 200px;
+    height: 100px;
+  } */
 `
 
 export const SidebarLink = styled(Link)`
@@ -75,6 +107,14 @@ export const SidebarImg = styled.img`
   width: 100%;
   height: auto;
   border-radius: 5px;
+
+  @media (max-height: 840px) {
+    width: 90%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 80%;
+  }
 `
 
 export const Name = styled.p`

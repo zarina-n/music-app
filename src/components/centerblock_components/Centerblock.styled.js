@@ -21,7 +21,7 @@ export const StyledSearch = styled.form`
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  background-color: rgba(24, 24, 24, 1);
+  background-color: ${({ theme }) => theme.colors.centerblockBckGr};
 
   svg {
     width: 17px;
@@ -57,46 +57,27 @@ export const SearchInput = styled.input`
   background-color: transparent;
   border: none;
   padding: 13px 30px 14px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+
   color: ${({ theme }) => theme.colors.text};
 
   &::placeholder {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.text};
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
   }
 
   &::-webkit-input-placeholder {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.text};
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
   }
 
   &:-ms-input-placeholder {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.text};
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
   }
 
   &::-ms-input-placeholder {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.text};
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
   }
 `
 
@@ -107,12 +88,20 @@ export const CenterblockHeading = styled.h2`
   line-height: 72px;
   letter-spacing: -0.8px;
   margin-bottom: 45px;
+
+  @media (max-height: 768px) {
+    font-size: 52px;
+  }
+
+  @media (max-width: 994px) {
+    font-size: 52px;
+  }
 `
 
 export const ContainerForHeadingAndFilters = styled.div`
   position: sticky;
   top: 0;
-  background-color: rgba(24, 24, 24, 1);
+  background-color: ${({ theme }) => theme.colors.centerblockBckGr};
 `
 
 export const StyledFilter = styled.div`
@@ -130,10 +119,6 @@ export const StyledFilter = styled.div`
 `
 
 export const FilterTitle = styled.div`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
   margin-right: 15px;
 `
 export const FilterButton = styled.div`
@@ -157,6 +142,18 @@ export const FilterButton = styled.div`
     color: ${({ theme }) => theme.colors.filterHoverColor};
     cursor: pointer;
   }
+
+  @media (max-width: 994px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 860px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 815px) {
+    font-size: 8px;
+  }
 `
 
 export const FilterOptions = styled.ul`
@@ -169,6 +166,10 @@ export const FilterOptions = styled.ul`
   max-height: 305px;
   overflow: hidden;
   overflow-y: scroll;
+
+  @media (max-width: 994px) {
+    font-size: 13px;
+  }
 
   visibility: ${({ id, clickedId }) =>
     clickedId === id ? 'visible' : 'hidden'};
@@ -227,9 +228,13 @@ export const StyledContent = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
 
-  height: 100vh;
+  height: 80vh;
   overflow: scroll;
   margin-bottom: 20px;
+
+  @media (max-height: 960px) {
+    height: 75vh;
+  }
 
   &::-webkit-scrollbar {
     width: 0px;
@@ -265,13 +270,15 @@ export const StyledContentTitle = styled.div`
 `
 
 export const ContentColumn = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 2px;
   color: ${({ theme }) => theme.colors.centerBlockLinks};
   text-transform: uppercase;
+
+  @media (max-width: 994px) {
+    font-size: 12px;
+  }
 
   &:first-child {
     width: 447px;
@@ -372,11 +379,9 @@ export const TitleImage = styled.div`
 
 export const TitleText = styled.div`
   a {
-    font-size: 16px;
     color: ${({ theme }) => theme.colors.text};
 
     span {
-      font-size: 16px;
       color: ${({ theme }) => theme.colors.centerBlockLinks};
       margin-left: 10px;
     }
@@ -393,7 +398,6 @@ export const Author = styled.div`
   justify-content: flex-start;
 
   a {
-    font-size: 16px;
     color: ${({ theme }) => theme.colors.text};
     text-align: left;
   }
@@ -403,8 +407,11 @@ export const Album = styled.div`
   width: 245px;
 
   a {
-    font-size: 16px;
     color: ${({ theme }) => theme.colors.centerBlockLinks};
+  }
+
+  @media (max-width: 880px) {
+    display: none;
   }
 `
 
@@ -433,7 +440,6 @@ export const SongTime = styled.div`
   }
 
   span {
-    font-size: 16px;
     text-align: right;
     color: ${({ theme }) => theme.colors.centerBlockLinks};
   }

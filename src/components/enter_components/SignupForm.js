@@ -71,7 +71,7 @@ function SignUpForm() {
   return (
     <ModalForm>
       <ModalLogo>
-        <img src="img/logo_modal.png" alt="logo" />
+        <img src="img/logo.png" alt="logo" />
       </ModalLogo>
       <input
         ref={userRef}
