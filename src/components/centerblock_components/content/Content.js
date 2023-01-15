@@ -1,14 +1,19 @@
-import { StyledContent } from '../Centerblock.styled'
+import {
+  StyledContent,
+  CenterblockHeading,
+  ContainerForHeadingAndFilters,
+} from '../Centerblock.styled'
 import ContentTitle from '../ContentTitle'
 import Playlist from './Playlist'
-import { CenterblockHeading } from '../Centerblock.styled'
 import Filter from '../filter/Filter'
 
 function Content() {
   return (
     <StyledContent>
-      <CenterblockHeading>Треки</CenterblockHeading>
-      <Filter />
+      <ContainerForHeadingAndFilters>
+        <CenterblockHeading>Треки</CenterblockHeading>
+        <Filter />
+      </ContainerForHeadingAndFilters>
       <ContentTitle />
       <Playlist />
     </StyledContent>

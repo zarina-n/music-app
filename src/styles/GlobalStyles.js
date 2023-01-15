@@ -8,14 +8,14 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-html,
+
 body {
   width: 100%;
   height: 100%;
   font-family: 'Stratos LC Web', sans-serif;
   color:  ${({ theme }) => theme.colors.text};
   background-color:  ${({ theme }) => theme.colors.backGrColor};
-
+  overflow: hidden;
 }
 
 
@@ -32,7 +32,7 @@ a:visited {
   cursor: pointer;
   font-style: normal;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 1.5rem;
 }
 
 button{

@@ -21,6 +21,7 @@ export const StyledSearch = styled.form`
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  background-color: rgba(24, 24, 24, 1);
 
   svg {
     width: 17px;
@@ -106,6 +107,12 @@ export const CenterblockHeading = styled.h2`
   line-height: 72px;
   letter-spacing: -0.8px;
   margin-bottom: 45px;
+`
+
+export const ContainerForHeadingAndFilters = styled.div`
+  position: sticky;
+  top: 0;
+  background-color: rgba(24, 24, 24, 1);
 `
 
 export const StyledFilter = styled.div`
@@ -219,6 +226,18 @@ export const StyledContent = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+
+  height: 100vh;
+  overflow: scroll;
+  margin-bottom: 20px;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  * {
+    scrollbar-width: none;
+  }
 `
 
 export const StyledContentTitle = styled.div`
@@ -294,7 +313,6 @@ export const PlaylistItemContainer = styled.div`
 
   &:hover {
     border: 1px solid #888;
-    scale: 1.03;
   }
 
   div {

@@ -81,11 +81,7 @@ function PlaylistItem({ playlistData }) {
           favorite,
         }) => (
           <PlaylistItemContainer
-            style={
-              id === currentTrack?.id
-                ? { border: '1px solid #888', scale: '1.05' }
-                : {}
-            }
+            style={id === currentTrack?.id ? { border: '1px solid #888' } : {}}
             key={id}
             id={id}
             currentTrack={currentTrack}

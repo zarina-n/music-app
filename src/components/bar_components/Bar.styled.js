@@ -269,11 +269,11 @@ export const NameAlbumContainer = styled.div`
 `
 
 export const ContainAuthor = styled.p`
-  font-size: 16px;
+  font-size: 0.8rem;
 `
 
 export const ContainName = styled.p`
-  font-size: 13px;
+  font-size: 0.8rem;
 `
 
 export const LikeDislikeDiv = styled.div`
