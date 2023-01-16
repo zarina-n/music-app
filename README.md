@@ -2,6 +2,7 @@
 ## Summary
 
 This is a custom music player app  which I am building as a part of Fron-end Developer course while learning React JS and Redux
+You can try this app here: https://music-app-by-z.netlify.app/login
 
 #### Installation
 To run this application, download the GitHub zip file or clone the repository. Open it with VSCode, open the terminal, install all dependencies by running "npm install", run "npm run start" command. Signup or login and enjoy the music!
@@ -18,7 +19,7 @@ To run this application, download the GitHub zip file or clone the repository. O
 * Understanding what is transpilation, state and lifecycle of React-components
 * Understanding of SPA development approaches, architecture and component approach
 * Ability to build JSX components
-* Ability to work with the Redux library
+* Ability to work with the RTK Query library
 * Ability to use React Hooks
 	
 	
