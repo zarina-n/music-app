@@ -40,8 +40,7 @@ function PlaylistItem({ playlistData }) {
     album,
     duration_in_seconds,
     track_file,
-    favorite,
-    isPlaying
+    favorite
   ) => {
     const trackData = {
       name,
@@ -51,7 +50,6 @@ function PlaylistItem({ playlistData }) {
       duration_in_seconds,
       track_file,
       favorite,
-      isPlaying,
     }
     dispatch(getCurrentTrack(trackData))
   }

@@ -77,25 +77,11 @@ export const SidebarListItem = styled.div`
     margin-bottom: 30px;
   }
 
-  /* @media (max-width: 1024px) {
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-
-    width: 230px;
-    height: 130px;
-  } */
-
   @media (max-height: 768px) {
     &:not(:last-child) {
       margin-bottom: 20px;
     }
   }
-
-  /* @media (max-height: 840px) {
-    width: 200px;
-    height: 100px;
-  } */
 `
 
 export const SidebarLink = styled(Link)`

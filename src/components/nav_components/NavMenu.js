@@ -25,7 +25,12 @@ function NavMenu({ open }) {
           <MenuLink to="/my-tracks">Мой плейлист</MenuLink>
         </li>
         <li key={3}>
-          <MenuLink to="/login" onClick={() => dispatch(logOut())}>
+          <MenuLink
+            to="/login"
+            onClick={() => {
+              dispatch(logOut())
+            }}
+          >
             Выйти
           </MenuLink>
         </li>

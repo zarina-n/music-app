@@ -34,6 +34,11 @@ function Bar() {
   }, [currentTrack])
 
   useEffect(() => {
+    setCurrentTrack(track)
+    dispatch(getCurrentTrack(track))
+  }, [track, dispatch])
+
+  useEffect(() => {
     if (route === '/') {
       setTracks(allTracks)
     }
@@ -43,10 +48,7 @@ function Bar() {
     if (route.includes('/compilations/')) {
       setTracks(playlistTracks)
     }
-
-    setCurrentTrack(track)
-    dispatch(getCurrentTrack(track))
-  }, [route, allTracks, favoriteTracks, playlistTracks, track, dispatch])
+  }, [])
 
   useEffect(() => {
     const index = tracks?.findIndex((track) => track.id === currentTrack?.id)
