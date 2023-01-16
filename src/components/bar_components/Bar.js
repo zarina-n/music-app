@@ -48,7 +48,7 @@ function Bar() {
     if (route.includes('/compilations/')) {
       setTracks(playlistTracks)
     }
-  }, [])
+  }, [track])
 
   useEffect(() => {
     const index = tracks?.findIndex((track) => track.id === currentTrack?.id)
@@ -117,7 +117,7 @@ function Bar() {
         audioRef.current.removeEventListener('ended', onEnded)
       }
     }
-  }, [track, currentTrack?.track_file, index, dispatch])
+  }, [track, currentTrack?.track_file, index, dispatch, tracks])
 
   const getWidth = (event) => {
     const width = progressRef.current.clientWidth
