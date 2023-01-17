@@ -29,7 +29,6 @@ function NavMenu({ open }) {
             to="/login"
             onClick={() => {
               dispatch(logOut())
-              localStorage.removeItem('refresh')
             }}
           >
             Выйти

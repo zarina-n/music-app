@@ -32,7 +32,6 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
     )
     if (refreshResult?.data) {
       api.dispatch(setAccessToken(refreshResult.data.access))
-      localStorage.setItem('access', refreshResult.data.access)
 
       result = await baseQuery(args, api, extraOptions)
     } else {

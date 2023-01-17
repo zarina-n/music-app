@@ -42,7 +42,6 @@ function LoginForm() {
     try {
       const userData = await getUser({ email, password }).unwrap()
       const userToken = await getToken({ email, password }).unwrap()
-      localStorage.setItem('refresh', userToken.refresh)
 
       dispatch(setUser({ ...userData }))
       dispatch(setAccessToken(userToken.access))
