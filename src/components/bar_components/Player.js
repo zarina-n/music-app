@@ -32,8 +32,6 @@ function Player({
 }) {
   const dispatch = useDispatch()
 
-  //console.log(tracks)
-
   const nextTrack = () => {
     setCurrentTrack(tracks[index + 1])
     dispatch(getCurrentTrack(tracks[index + 1]))

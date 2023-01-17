@@ -3,17 +3,9 @@ import { NavLink } from 'react-router-dom'
 
 export const StyledNav = styled.nav`
   grid-area: 1 / 1 / 2 / 2;
-  width: 244px;
+  width: 200px;
   background-color: ${({ theme }) => theme.colors.navBackGrColor};
   padding: 20px 0 20px 36px;
-
-  @media (max-height: 1000px) {
-    width: 215px;
-  }
-
-  @media (max-width: 1080px) {
-    width: 200px;
-  }
 
   @media (max-width: 920px) {
     width: 170px;
@@ -94,6 +86,10 @@ export const MenuLink = styled(NavLink)`
 
   &.active {
     color: ${({ theme }) => theme.colors.filterActiveColor};
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.filterHoverColor};
   }
 `
 

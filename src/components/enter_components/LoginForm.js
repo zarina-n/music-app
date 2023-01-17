@@ -9,7 +9,11 @@ import {
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setUser, setToken } from '../../features/auth/authSlice'
+import {
+  setUser,
+  setAccessToken,
+  setRefreshToken,
+} from '../../features/auth/authSlice'
 import {
   useGetUserMutation,
   useGetTokenMutation,
@@ -38,9 +42,11 @@ function LoginForm() {
     try {
       const userData = await getUser({ email, password }).unwrap()
       const userToken = await getToken({ email, password }).unwrap()
+      localStorage.setItem('refresh', userToken.refresh)
 
       dispatch(setUser({ ...userData }))
-      dispatch(setToken({ ...userToken }))
+      dispatch(setAccessToken(userToken.access))
+      dispatch(setRefreshToken(userToken.refresh))
 
       setEmail('')
       setPassword('')
