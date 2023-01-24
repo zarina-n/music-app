@@ -2,7 +2,7 @@
 ## Summary
 
 This is a custom music player app  which I am building as a part of Fron-end Developer course while learning React JS and Redux
-You can try this app here: https://music-app-by-z.netlify.app/login
+You can try this app here: https://music-app-by-z.netlify.app
 
 #### Installation
 To run this application, download the GitHub zip file or clone the repository. Open it with VSCode, open the terminal, install all dependencies by running "npm install", run "npm run start" command. Signup or login and enjoy the music!
