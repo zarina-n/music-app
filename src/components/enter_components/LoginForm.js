@@ -22,7 +22,7 @@ import {
 import { useTranslation } from 'react-i18next'
 
 function LoginForm() {
-  const { t } = useTranslation(["auth"])
+  const { t } = useTranslation(['auth'])
 
   const userRef = useRef()
   const navigate = useNavigate()
@@ -30,14 +30,12 @@ function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
-  const [getUser] = useGetUserMutation()
-  const [getToken] = useGetTokenMutation()
+  const [getUser, { isLoading: isUserLoading }] = useGetUserMutation()
+  const [getToken, { isLoading: isTokenLoading }] = useGetTokenMutation()
 
   useEffect(() => {
     userRef.current.focus()
   }, [])
-
- 
 
   const handleLogin = (event) => setEmail(event.target.value)
   const handlePassword = (event) => setPassword(event.target.value)
@@ -79,7 +77,7 @@ function LoginForm() {
         type="text"
         name="login"
         id="formlogin"
-        placeholder={t("email")}
+        placeholder={t('email')}
         value={email}
         required
       ></input>
@@ -91,7 +89,7 @@ function LoginForm() {
         type="password"
         name="password"
         id="formpassword"
-        placeholder={t("password")}
+        placeholder={t('password')}
         value={password}
         required
         autoComplete="off"
@@ -102,13 +100,13 @@ function LoginForm() {
 
       <ModalButton onClick={handleSubmit}>
         <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
-        {t("login")}
+          {isUserLoading || isTokenLoading ? t('loading') : t('login')}
         </ModalLink>
       </ModalButton>
 
       <GoTo onClick={handleSignUpButton}>
         <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={'/signup'}>
-        {t("signUp")}
+          {t('signUp')}
         </ModalLink>
       </GoTo>
     </ModalForm>

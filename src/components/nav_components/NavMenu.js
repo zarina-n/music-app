@@ -1,5 +1,5 @@
 import { Menu, MenuLink, ThemeButton, LngButton } from './Navigation.styled'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { ThemeContext } from '../../App'
 import Dark from '../../assets/Dark'
 import Light from '../../assets/Light'
