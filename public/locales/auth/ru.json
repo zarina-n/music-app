@@ -1,0 +1,12 @@
+{
+    "login": "Войти",
+    "signUp": "Зарегистрироваться",
+    "email": "Email",
+    "password": "Пароль",
+    "passwordRepeat": "Повторите пароль",
+    "userName": "Логин",
+    "cannotBeEmpty": "Это поле не может быть пустым.",
+    "wrongPassword": "Пароли не совпадают",
+    "wrongEmail":"Неверный формат",
+    "userError": "Неверный логин или пароль"
+}

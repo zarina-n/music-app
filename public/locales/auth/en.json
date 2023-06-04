@@ -1,0 +1,12 @@
+{
+    "login": "Login",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "passwordRepeat": "Repeat Password",
+    "userName": "Username",
+    "cannotBeEmpty": "This field cannot be empty",
+    "wrongPassword": "Passwords do not match",
+    "wrongEmail":"Email is incorrect",
+    "userError": "Incorrect email or password"
+}

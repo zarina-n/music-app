@@ -5,8 +5,9 @@ import Navigation from '../components/nav_components/Navigation'
 import Centerblock from '../components/centerblock_components/Centerblock'
 import Sidebar from '../components/sidebar_components/Sidebar'
 
+
 function Home() {
-  return (
+   return (
     <HomeContainer>
       <Navigation />
       <Centerblock />

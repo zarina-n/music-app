@@ -118,4 +118,5 @@ export const Avatar = styled.img`
   height: 43px;
   background-color: ${({ theme }) => theme.colors.avatar};
   border-radius: 50%;
+  border: 1px solid ${({ theme }) => theme.colors.text};
 `

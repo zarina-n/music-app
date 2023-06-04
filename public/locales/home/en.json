@@ -1,0 +1,21 @@
+{
+  "main": "Home",
+  "myPlaylist": "My playlist",
+  "logOut": "Log out",
+  "lng": "Russian (Русский)",
+  "ru": "Russian (Русский)",
+  "search": "Search",
+  "songs": "Songs",
+  "searchBy": "Search by:",
+  "byGenre": "genre",
+  "singer": "singer",
+  "releaseDate": "release date",
+  "newer": "More  recent",
+  "older": "More old",
+  "song": "song",
+  "genre": "genre",
+  "album": "album",
+  "classic": "Classic Music",
+  "dance": "Dance Music",
+  "rock": "Rock music"
+}

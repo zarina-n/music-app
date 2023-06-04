@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, Suspense } from 'react'
 import AppRoutes from './pages/AppRoutes'
 import { ThemeProvider } from 'styled-components'
 import { dark, light } from './styles/Theme.styled'
@@ -15,12 +15,14 @@ function App() {
   )
 
   return (
+    <Suspense fallback={null}>
     <ThemeContext.Provider value={themeValue}>
       <ThemeProvider theme={darkTheme ? dark : light}>
         <GlobalStyles />
         <AppRoutes />
       </ThemeProvider>
     </ThemeContext.Provider>
+    </Suspense>
   )
 }
 

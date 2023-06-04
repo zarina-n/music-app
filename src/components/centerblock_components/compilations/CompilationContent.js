@@ -3,13 +3,16 @@ import ContentTitle from '../ContentTitle'
 import Compilations from './Compilations'
 import { useParams } from 'react-router-dom'
 
+import { useTranslation } from 'react-i18next'
+
 const CompilationContent = () => {
   const { id } = useParams()
+  const { t } = useTranslation(['home'])
 
   const compilationNames = {
-    1: 'Плейлист дня',
-    2: '100 танцевальных хитов',
-    3: 'Инди-заряд',
+    1: t('classic'),
+    2: t('dance'),
+    3: t('rock'),
   }
 
   let compilationName = compilationNames[id]
