@@ -96,3 +96,16 @@ export const MenuLink = styled(NavLink)`
 export const ThemeButton = styled.div`
   cursor: pointer;
 `
+
+export const LngButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.navBackGrColor};
+  color: ${({ theme }) => theme.colors.text};
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.filterHoverColor};
+  }
+`

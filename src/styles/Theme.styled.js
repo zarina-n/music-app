@@ -1,7 +1,7 @@
 export const dark = {
   name: 'dark-theme',
   colors: {
-    backGrColor: '#383838',
+    backGrColorbackGrColor: '#383838',
     text: '#FFFFFF',
     navBackGrColor: '#1c1c1c',
     noteSvgBackground: '#313131',

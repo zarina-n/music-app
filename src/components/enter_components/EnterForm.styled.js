@@ -135,7 +135,7 @@ export const ModalButton = styled.button`
   }
 `;
 
-export const SignupButton = styled.button`
+export const GoTo = styled.button`
   width: 278px;
   height: 52px;
   background-color: transparent;

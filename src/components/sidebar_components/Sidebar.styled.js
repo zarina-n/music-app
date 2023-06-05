@@ -68,6 +68,17 @@ export const SidebarListItem = styled.div`
   width: 250px;
   height: 150px;
   transition: all 0.5s linear;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+  }
 
   &:hover {
     transform: scale(1.04);
@@ -87,6 +98,9 @@ export const SidebarListItem = styled.div`
 export const SidebarLink = styled(Link)`
   width: 100%;
   height: 100%;
+  color: ${({ theme }) => theme.colors.text};
+  font-family: inherit;
+  font-size: 30px;
 `
 
 export const SidebarImg = styled.img`
@@ -118,4 +132,5 @@ export const Avatar = styled.img`
   height: 43px;
   background-color: ${({ theme }) => theme.colors.avatar};
   border-radius: 50%;
+  border: 1px solid ${({ theme }) => theme.colors.text};
 `

@@ -15,9 +15,12 @@ import {
 import SearchSvg from '../../assets/SearchSvg'
 import Cross from '../../assets/Cross'
 
+import { useTranslation } from 'react-i18next'
+
 function Search() {
   const [search, setSearch] = useState('')
   const dispatch = useDispatch()
+  const { t } = useTranslation(['home'])
 
   return (
     <StyledSearch
@@ -30,7 +33,7 @@ function Search() {
         <SearchSvg />
       </SearchButton>
       <SearchInput
-        placeholder="Поиск"
+        placeholder={t('search')}
         name="search"
         type="text"
         value={search}

@@ -3,6 +3,7 @@ import {
   ModalLogo,
   ModalButton,
   ModalLink,
+  GoTo,
 } from './EnterForm.styled'
 
 import { useRef, useState, useEffect } from 'react'
@@ -10,8 +11,12 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { signUp } from '../../features/auth/authSlice'
 import { useSignUserUpMutation } from '../../features/auth/authApiSlice'
+import Login from '../../pages/Login'
+
+import { useTranslation } from 'react-i18next'
 
 function SignUpForm() {
+  const { t } = useTranslation(['auth'])
   const userRef = useRef()
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -21,7 +26,8 @@ function SignUpForm() {
   const [repeatPassword, setRepeatPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
 
-  const [signUserUp] = useSignUserUpMutation()
+  const [signUserUp, { isLoading: isSignUpUserLoading }] =
+    useSignUserUpMutation()
 
   useEffect(() => {
     userRef.current.focus()
@@ -38,7 +44,7 @@ function SignUpForm() {
   if (isValid) {
     wrongPasswordError = ''
   } else {
-    wrongPasswordError = 'Пароли не совпадают'
+    wrongPasswordError = t('wrongPassword')
   }
 
   const handleSubmit = async (event) => {
@@ -68,6 +74,11 @@ function SignUpForm() {
     }
   }
 
+  const handleLoginButton = (event) => {
+    event.preventDefault()
+    navigate('/login')
+  }
+
   return (
     <ModalForm>
       <ModalLogo>
@@ -79,7 +90,7 @@ function SignUpForm() {
         type="text"
         name="login"
         id="formlogin"
-        placeholder="Логин"
+        placeholder={t('userName')}
         required
       ></input>
 
@@ -90,7 +101,7 @@ function SignUpForm() {
         type="text"
         name="username"
         id="formemail"
-        placeholder="Email"
+        placeholder={t('email')}
         required
       ></input>
       {errMsg && <p>{errMsg.data.email}</p>}
@@ -100,7 +111,7 @@ function SignUpForm() {
         type="password"
         name="password"
         id="formpassword"
-        placeholder="Пароль"
+        placeholder={t('password')}
         required
         autoComplete="off"
       ></input>
@@ -111,7 +122,7 @@ function SignUpForm() {
         type="password"
         name="password"
         id="formrepeatpassword"
-        placeholder="Повторите пароль"
+        placeholder={t('passwordRepeat')}
         required
         autoComplete="off"
       ></input>
@@ -120,9 +131,15 @@ function SignUpForm() {
 
       <ModalButton padding={'30px'} onClick={handleSubmit}>
         <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
-          Зарегистрироваться
+          {isSignUpUserLoading ? t('loading') : t('login')}
         </ModalLink>
       </ModalButton>
+
+      <GoTo onClick={handleLoginButton}>
+        <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={'/login'}>
+          {t('login')}
+        </ModalLink>
+      </GoTo>
     </ModalForm>
   )
 }

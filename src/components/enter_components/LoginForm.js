@@ -3,7 +3,7 @@ import {
   ModalLogo,
   ModalButton,
   ModalLink,
-  SignupButton,
+  GoTo,
 } from './EnterForm.styled'
 
 import { useRef, useState, useEffect } from 'react'
@@ -19,15 +19,19 @@ import {
   useGetTokenMutation,
 } from '../../features/auth/authApiSlice'
 
+import { useTranslation } from 'react-i18next'
+
 function LoginForm() {
+  const { t } = useTranslation(['auth'])
+
   const userRef = useRef()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
-  const [getUser] = useGetUserMutation()
-  const [getToken] = useGetTokenMutation()
+  const [getUser, { isLoading: isUserLoading }] = useGetUserMutation()
+  const [getToken, { isLoading: isTokenLoading }] = useGetTokenMutation()
 
   useEffect(() => {
     userRef.current.focus()
@@ -73,7 +77,7 @@ function LoginForm() {
         type="text"
         name="login"
         id="formlogin"
-        placeholder="Email"
+        placeholder={t('email')}
         value={email}
         required
       ></input>
@@ -85,7 +89,7 @@ function LoginForm() {
         type="password"
         name="password"
         id="formpassword"
-        placeholder="Пароль"
+        placeholder={t('password')}
         value={password}
         required
         autoComplete="off"
@@ -96,15 +100,15 @@ function LoginForm() {
 
       <ModalButton onClick={handleSubmit}>
         <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
-          Войти
+          {isUserLoading || isTokenLoading ? t('loading') : t('login')}
         </ModalLink>
       </ModalButton>
 
-      <SignupButton onClick={handleSignUpButton}>
+      <GoTo onClick={handleSignUpButton}>
         <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={'/signup'}>
-          Зарегистрироваться
+          {t('signUp')}
         </ModalLink>
-      </SignupButton>
+      </GoTo>
     </ModalForm>
   )
 }

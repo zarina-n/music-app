@@ -7,10 +7,12 @@ import {
   setFilterOptions,
 } from '../../../features/track/trackSlice'
 import { getFilter } from './helper'
+import { useTranslation } from 'react-i18next'
 
 function FilterButtons() {
   const dispatch = useDispatch()
   const [clickedId, setClickedId] = useState(0)
+  const { t } = useTranslation(['home'])
 
   const tracks = useSelector((state) => state.track.tracks)
   const filterFromSate = useSelector((state) => state.track.filter)
@@ -19,20 +21,20 @@ function FilterButtons() {
 
   const filterByGenre = getFilter(tracks, {
     id: 1,
-    filterBy: 'жанру',
+    filterBy: t('byGenre'),
     filterByKey: 'genre',
   })
 
   const filterByAuthor = getFilter(tracks, {
     id: 2,
-    filterBy: 'исполнителю',
+    filterBy: t('singer'),
     filterByKey: 'author',
   })
 
   const filterByYear = {
     id: 3,
-    filterBy: 'году выпуска',
-    options: ['Более новые', 'Более старые'],
+    filterBy: t('releaseDate'),
+    options: [t('newer'), t('older')],
     filterByKey: 'year',
     clicked: false,
   }
