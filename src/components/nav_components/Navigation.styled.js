@@ -23,6 +23,7 @@ export const Logo = styled.img`
   background-color: transparent;
   margin-bottom: 15px;
   margin-top: 20px;
+  cursor: pointer;
 
   @media (max-width: 900px) {
     width: 100px;

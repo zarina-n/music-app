@@ -11,7 +11,7 @@ export const getTrackDataPlaylist = (
   } else if (filter && filter.filterBy === 'author') {
     trackData = allTracks.filter((track) => track.author === filter.option)
   } else if (filter && filter.filterBy === 'year') {
-    filter.option === 'Более новые'
+    filter.option === 'Более новые' || filter.option === 'More recent'
       ? (trackData = allTracks
           .map((item) => {
             return { ...item, release_date: new Date(item.release_date) }

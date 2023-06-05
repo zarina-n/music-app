@@ -100,7 +100,15 @@ export const SidebarLink = styled(Link)`
   height: 100%;
   color: ${({ theme }) => theme.colors.text};
   font-family: inherit;
-  font-size: 30px;
+  font-size: 25px;
+
+  @media (max-height: 840px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 15px;
+  }
 `
 
 export const SidebarImg = styled.img`
