@@ -249,6 +249,7 @@ export const StyledContentTitle = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-right: 5px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -281,20 +282,20 @@ export const ContentColumn = styled.div`
   }
 
   &:first-child {
-    width: 447px;
+    width: 40%;
   }
 
   &:nth-child(2) {
-    width: 321px;
+    width: 30%;
   }
 
   &:nth-child(3) {
-    width: 245px;
+    width: 20%;
   }
 
   &:nth-child(4) {
-    width: 60px;
-    text-align: end;
+    width: 10%;
+    text-align: center;
   }
 `
 
@@ -350,7 +351,7 @@ export const Title = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 447px;
+  width: 40%;
 `
 
 export const TitleImage = styled.div`
@@ -389,7 +390,7 @@ export const TitleText = styled.div`
 `
 
 export const Author = styled.div`
-  width: 321px;
+  width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -404,7 +405,7 @@ export const Author = styled.div`
 `
 
 export const Album = styled.div`
-  width: 245px;
+  width: 20%;
 
   a {
     color: ${({ theme }) => theme.colors.centerBlockLinks};
@@ -417,6 +418,7 @@ export const Album = styled.div`
 
 export const SongTime = styled.div`
   color: ${({ theme }) => theme.colors.centerBlockLinks};
+  width: 10%;
 
   svg {
     width: 18px;

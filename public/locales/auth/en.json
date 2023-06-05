@@ -8,6 +8,10 @@
   "cannotBeEmpty": "This field cannot be empty",
   "wrongPassword": "Passwords do not match",
   "wrongEmail": "Email is incorrect",
-  "userError": "Incorrect email or password",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "userError": "No user found with this email or password",
+  "emptyField": "This field cannot be empty",
+  "emailError": "Enter correct email address",
+  "incorrectEmail": "Please enter a valid email address",
+  "incorrectPassword": "Your password must contain a letter, a number and be at least 6 characters long"
 }

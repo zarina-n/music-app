@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledWrapper = styled.div`
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-`;
+`
 
 export const EnterContainer = styled.div`
   max-width: 100%;
@@ -12,7 +12,7 @@ export const EnterContainer = styled.div`
   margin: 0 auto;
   position: relative;
   background-color: rgba(0, 0, 0, 0.85);
-`;
+`
 
 export const ModalBlock = styled.div`
   position: absolute;
@@ -20,7 +20,7 @@ export const ModalBlock = styled.div`
   left: calc(50% - (366px / 2));
   top: calc(50% - (439px / 2));
   opacity: 1;
-`;
+`
 
 export const ModalForm = styled.form`
   min-width: 366px;
@@ -39,13 +39,6 @@ export const ModalForm = styled.form`
   -ms-flex-align: center;
   align-items: center;
   padding: 43px 47px 47px 40px;
-
-  p {
-    color: salmon;
-    font-size: 15px;
-    margin-bottom: 10px;
-    width: 300px;
-  }
 
   input {
     width: 100%;
@@ -97,7 +90,7 @@ export const ModalForm = styled.form`
     outline: none;
     border-bottom: #000 solid 2px;
   }
-`;
+`
 
 export const ModalLogo = styled.div`
   width: 140px;
@@ -109,7 +102,7 @@ export const ModalLogo = styled.div`
     width: 140px;
     height: auto;
   }
-`;
+`
 
 export const ModalButton = styled.button`
   width: 278px;
@@ -133,9 +126,9 @@ export const ModalButton = styled.button`
   &:hover {
     background-color: #3f007d;
   }
-`;
+`
 
-export const GoTo = styled.button`
+export const Button = styled.button`
   width: 278px;
   height: 52px;
   background-color: transparent;
@@ -156,11 +149,12 @@ export const GoTo = styled.button`
   -ms-flex-pack: center;
   justify-content: center;
   color: ${({ color }) => color};
+  margin-bottom: 20px;
 
   &:hover {
     background-color: #f4f5f6;
   }
-`;
+`
 
 export const ModalLink = styled.a`
   width: 100%;
@@ -182,4 +176,12 @@ export const ModalLink = styled.a`
     background-color: ${({ backgroundcolor }) => backgroundcolor};
     border-radius: 6px;
   }
-`;
+`
+
+export const ErrorMsg = styled.p`
+  text-align: center;
+  color: salmon;
+  font-size: 15px;
+  margin-bottom: 10px;
+  width: 300px;
+`

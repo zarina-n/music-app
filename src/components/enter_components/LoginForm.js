@@ -3,7 +3,8 @@ import {
   ModalLogo,
   ModalButton,
   ModalLink,
-  GoTo,
+  Button,
+  ErrorMsg,
 } from './EnterForm.styled'
 
 import { useRef, useState, useEffect } from 'react'
@@ -20,9 +21,10 @@ import {
 } from '../../features/auth/authApiSlice'
 
 import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 
 function LoginForm() {
-  const { t } = useTranslation(['auth'])
+  const { i18n, t } = useTranslation(['auth', 'home'])
 
   const userRef = useRef()
   const navigate = useNavigate()
@@ -30,6 +32,9 @@ function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
+  const [errEmailMsg, setErrEmailMsg] = useState('')
+  const [errPasswordMsg, setErrPasswordMsg] = useState('')
+
   const [getUser, { isLoading: isUserLoading }] = useGetUserMutation()
   const [getToken, { isLoading: isTokenLoading }] = useGetTokenMutation()
 
@@ -37,8 +42,24 @@ function LoginForm() {
     userRef.current.focus()
   }, [])
 
-  const handleLogin = (event) => setEmail(event.target.value)
-  const handlePassword = (event) => setPassword(event.target.value)
+  useEffect(() => {
+    if (localStorage.getItem('i18nextLng')?.length > 2) {
+      i18next.changeLanguage('en')
+    }
+  }, [])
+
+  const handleLanguageChange = (lng) => {
+    i18n.changeLanguage(lng)
+  }
+
+  const handleLogin = (event) => {
+    setEmail(event.target.value)
+    setErrEmailMsg('')
+  }
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+    setErrPasswordMsg('')
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -65,6 +86,23 @@ function LoginForm() {
     navigate('/signup')
   }
 
+  useEffect(() => {
+    if (errMsg?.data?.email?.[0] === 'Это поле не может быть пустым.') {
+      setErrEmailMsg(t('emptyField'))
+    }
+
+    if (errMsg?.data?.password?.[0] === 'Это поле не может быть пустым.') {
+      setErrPasswordMsg(t('emptyField'))
+    }
+
+    if (
+      errMsg?.data?.detail ===
+      'Пользователь с таким email или паролем не найден'
+    ) {
+      setErrPasswordMsg(t('userError'))
+    }
+  }, [errMsg, t])
+
   return (
     <ModalForm>
       <ModalLogo>
@@ -82,7 +120,7 @@ function LoginForm() {
         required
       ></input>
 
-      {errMsg && <p>{errMsg.data?.email}</p>}
+      {errEmailMsg && <ErrorMsg>{errEmailMsg}</ErrorMsg>}
 
       <input
         onChange={handlePassword}
@@ -95,8 +133,7 @@ function LoginForm() {
         autoComplete="off"
       ></input>
 
-      {errMsg && <p>{errMsg.data?.password}</p>}
-      {errMsg && <p>{errMsg.data?.non_field_errors}</p>}
+      {errPasswordMsg && <ErrorMsg>{errPasswordMsg}</ErrorMsg>}
 
       <ModalButton onClick={handleSubmit}>
         <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
@@ -104,11 +141,31 @@ function LoginForm() {
         </ModalLink>
       </ModalButton>
 
-      <GoTo onClick={handleSignUpButton}>
+      <Button onClick={handleSignUpButton}>
         <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={'/signup'}>
           {t('signUp')}
         </ModalLink>
-      </GoTo>
+      </Button>
+
+      {localStorage.getItem('i18nextLng') === 'en' ? (
+        <Button
+          onClick={(event) => {
+            handleLanguageChange('ru')
+            event.preventDefault()
+          }}
+        >
+          {t('home:lng')}
+        </Button>
+      ) : (
+        <Button
+          onClick={(event) => {
+            handleLanguageChange('en')
+            event.preventDefault()
+          }}
+        >
+          {t('home:lng')}
+        </Button>
+      )}
     </ModalForm>
   )
 }

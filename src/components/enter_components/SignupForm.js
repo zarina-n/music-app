@@ -3,7 +3,8 @@ import {
   ModalLogo,
   ModalButton,
   ModalLink,
-  GoTo,
+  Button,
+  ErrorMsg,
 } from './EnterForm.styled'
 
 import { useRef, useState, useEffect } from 'react'
@@ -11,12 +12,12 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { signUp } from '../../features/auth/authSlice'
 import { useSignUserUpMutation } from '../../features/auth/authApiSlice'
-import Login from '../../pages/Login'
 
 import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 
 function SignUpForm() {
-  const { t } = useTranslation(['auth'])
+  const { i18n, t } = useTranslation(['auth'])
   const userRef = useRef()
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -25,6 +26,9 @@ function SignUpForm() {
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
+  const [errEmailMsg, setErrEmailMsg] = useState('')
+  const [errPasswordMsg, setErrPasswordMsg] = useState('')
+  const [errUserNameMsg, setErrUserNameMsg] = useState('')
 
   const [signUserUp, { isLoading: isSignUpUserLoading }] =
     useSignUserUpMutation()
@@ -33,10 +37,23 @@ function SignUpForm() {
     userRef.current.focus()
   }, [])
 
-  const handleEmail = (event) => setEmail(event.target.value)
-  const handleLogin = (event) => setUserName(event.target.value)
-  const handlePassword = (event) => setPassword(event.target.value)
-  const handleRepeatPassword = (event) => setRepeatPassword(event.target.value)
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+    setErrEmailMsg('')
+  }
+
+  const handleLogin = (event) => {
+    setUserName(event.target.value)
+    setErrUserNameMsg('')
+  }
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+    setErrPasswordMsg('')
+  }
+  const handleRepeatPassword = (event) => {
+    setRepeatPassword(event.target.value)
+    setErrPasswordMsg('')
+  }
 
   const isValid = password === repeatPassword
   let wrongPasswordError
@@ -45,6 +62,16 @@ function SignUpForm() {
     wrongPasswordError = ''
   } else {
     wrongPasswordError = t('wrongPassword')
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem('i18nextLng')?.length > 2) {
+      i18next.changeLanguage('en')
+    }
+  }, [])
+
+  const handleLanguageChange = (lng) => {
+    i18n.changeLanguage(lng)
   }
 
   const handleSubmit = async (event) => {
@@ -79,6 +106,38 @@ function SignUpForm() {
     navigate('/login')
   }
 
+  useEffect(() => {
+    console.log(errMsg)
+  }, [errMsg])
+
+  useEffect(() => {
+    if (errMsg?.data?.username?.[0] === 'Это поле не может быть пустым.') {
+      setErrUserNameMsg(t('emptyField'))
+    }
+
+    if (errMsg?.data?.email?.[0] === 'Это поле не может быть пустым.') {
+      setErrEmailMsg(t('emptyField'))
+    } else if (
+      errMsg?.data?.email?.[0] === 'Введите правильный адрес электронной почты.'
+    ) {
+      setErrEmailMsg(t('incorrectEmail'))
+    }
+
+    if (errMsg?.data?.password?.[0] === 'Это поле не может быть пустым.') {
+      setErrPasswordMsg(t('emptyField'))
+    } else if (
+      errMsg?.data?.password?.map(
+        (msg) =>
+          msg ===
+            'Введённый пароль слишком короткий. Он должен содержать как минимум 8 символов.' ||
+          msg === 'Введённый пароль слишком широко распространён.' ||
+          msg === 'Введённый пароль состоит только из цифр.'
+      )
+    ) {
+      setErrPasswordMsg(t('incorrectPassword'))
+    }
+  }, [errMsg, t])
+
   return (
     <ModalForm>
       <ModalLogo>
@@ -94,7 +153,7 @@ function SignUpForm() {
         required
       ></input>
 
-      {errMsg && <p>{errMsg.data.username}</p>}
+      {errUserNameMsg && <ErrorMsg>{errUserNameMsg}</ErrorMsg>}
 
       <input
         onChange={handleEmail}
@@ -104,7 +163,8 @@ function SignUpForm() {
         placeholder={t('email')}
         required
       ></input>
-      {errMsg && <p>{errMsg.data.email}</p>}
+
+      {errEmailMsg && <ErrorMsg>{errEmailMsg}</ErrorMsg>}
 
       <input
         onChange={handlePassword}
@@ -115,7 +175,8 @@ function SignUpForm() {
         required
         autoComplete="off"
       ></input>
-      {errMsg && <p>{errMsg.data.password}</p>}
+
+      {errPasswordMsg && <ErrorMsg>{errPasswordMsg}</ErrorMsg>}
 
       <input
         onChange={handleRepeatPassword}
@@ -127,19 +188,40 @@ function SignUpForm() {
         autoComplete="off"
       ></input>
 
-      <p>{wrongPasswordError}</p>
+      {wrongPasswordError && <ErrorMsg>{wrongPasswordError}</ErrorMsg>}
+      {errPasswordMsg && <ErrorMsg>{errPasswordMsg}</ErrorMsg>}
 
       <ModalButton padding={'30px'} onClick={handleSubmit}>
         <ModalLink color="#FFFFFF" backgroundcolor="#271A58" to={'#'}>
-          {isSignUpUserLoading ? t('loading') : t('login')}
+          {isSignUpUserLoading ? t('loading') : t('signUp')}
         </ModalLink>
       </ModalButton>
 
-      <GoTo onClick={handleLoginButton}>
+      <Button onClick={handleLoginButton}>
         <ModalLink color="#000000" backgroundcolor="#D9D9D9" to={'/login'}>
           {t('login')}
         </ModalLink>
-      </GoTo>
+      </Button>
+
+      {localStorage.getItem('i18nextLng') === 'en' ? (
+        <Button
+          onClick={(event) => {
+            handleLanguageChange('ru')
+            event.preventDefault()
+          }}
+        >
+          {t('home:lng')}
+        </Button>
+      ) : (
+        <Button
+          onClick={(event) => {
+            handleLanguageChange('en')
+            event.preventDefault()
+          }}
+        >
+          {t('home:lng')}
+        </Button>
+      )}
     </ModalForm>
   )
 }
