@@ -13,5 +13,7 @@
   "emptyField": "This field cannot be empty",
   "emailError": "Enter correct email address",
   "incorrectEmail": "Please enter a valid email address",
-  "incorrectPassword": "Your password must contain a letter, a number and be at least 6 characters long"
+  "incorrectPassword": "Your password must contain a letter, a number and be at least 8 characters long",
+  "existingUser": "A user with the same name already exists",
+  "existingEmail": "A user with this email address already exists"
 }

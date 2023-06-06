@@ -113,6 +113,11 @@ function SignUpForm() {
   useEffect(() => {
     if (errMsg?.data?.username?.[0] === 'Это поле не может быть пустым.') {
       setErrUserNameMsg(t('emptyField'))
+    } else if (
+      errMsg?.data?.username?.[0] ===
+      'Пользователь с таким именем уже существует.'
+    ) {
+      setErrUserNameMsg(t('existingUser'))
     }
 
     if (errMsg?.data?.email?.[0] === 'Это поле не может быть пустым.') {
@@ -121,6 +126,11 @@ function SignUpForm() {
       errMsg?.data?.email?.[0] === 'Введите правильный адрес электронной почты.'
     ) {
       setErrEmailMsg(t('incorrectEmail'))
+    } else if (
+      errMsg?.data?.email?.[0] ===
+      'Пользователь с таким адрес электронной почты уже существует.'
+    ) {
+      setErrEmailMsg(t('existingEmail'))
     }
 
     if (errMsg?.data?.password?.[0] === 'Это поле не может быть пустым.') {
