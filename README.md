@@ -1,7 +1,8 @@
 # music-app
 ## Summary
 
-This is a custom music player app  which I built as a part of Frontend Development course while learning React JS and Redux
+This is a custom music player app  which I built as a part of Frontend Development course while learning React JS and Redux.
+
 You can try this app [here](https://music-app-by-z.netlify.app)
 
 ### Start the project
