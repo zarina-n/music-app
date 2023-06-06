@@ -14,10 +14,9 @@ import { signUp } from '../../features/auth/authSlice'
 import { useSignUserUpMutation } from '../../features/auth/authApiSlice'
 
 import { useTranslation } from 'react-i18next'
-import i18next from 'i18next'
 
 function SignUpForm() {
-  const { i18n, t } = useTranslation(['auth'])
+  const { t } = useTranslation(['auth'])
   const userRef = useRef()
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -62,16 +61,6 @@ function SignUpForm() {
     wrongPasswordError = ''
   } else {
     wrongPasswordError = t('wrongPassword')
-  }
-
-  useEffect(() => {
-    if (localStorage.getItem('i18nextLng')?.length > 2) {
-      i18next.changeLanguage('en')
-    }
-  }, [])
-
-  const handleLanguageChange = (lng) => {
-    i18n.changeLanguage(lng)
   }
 
   const handleSubmit = async (event) => {
@@ -212,26 +201,6 @@ function SignUpForm() {
           {t('login')}
         </ModalLink>
       </Button>
-
-      {localStorage.getItem('i18nextLng') === 'en' ? (
-        <Button
-          onClick={(event) => {
-            handleLanguageChange('ru')
-            event.preventDefault()
-          }}
-        >
-          {t('home:lng')}
-        </Button>
-      ) : (
-        <Button
-          onClick={(event) => {
-            handleLanguageChange('en')
-            event.preventDefault()
-          }}
-        >
-          {t('home:lng')}
-        </Button>
-      )}
     </ModalForm>
   )
 }
