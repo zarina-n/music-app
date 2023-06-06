@@ -1,7 +1,7 @@
 # music-app
 ## Summary
 
-This is a custom music player app  which I built as a part of Fron-end Developer course while learning React JS and Redux
+This is a custom music player app  which I built as a part of Frontend Development course while learning React JS and Redux
 You can try this app [here](https://music-app-by-z.netlify.app)
 
 ### Start the project
@@ -21,8 +21,8 @@ $ npm start
 
 ### App functionality:
 * Login/Signup logic
-* Songs search and filter
-* Creating own playlist and listening to songs compilations
+* Song search and filter
+* Playlists
 * Song like/dislike functionality
 * Localization (choice of 2 languages: English and Russian)
 * Built in player (with play, pause, repeat, shuffle and rewind functionality)
