@@ -303,6 +303,7 @@ export const StyledContentPlaylist = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -379,6 +380,10 @@ export const TitleImage = styled.div`
 `
 
 export const TitleText = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   a {
     color: ${({ theme }) => theme.colors.text};
 
@@ -397,6 +402,9 @@ export const Author = styled.div`
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   a {
     color: ${({ theme }) => theme.colors.text};
@@ -406,6 +414,9 @@ export const Author = styled.div`
 
 export const Album = styled.div`
   width: 20%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   a {
     color: ${({ theme }) => theme.colors.centerBlockLinks};

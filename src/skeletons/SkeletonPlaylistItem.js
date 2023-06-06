@@ -1,8 +1,8 @@
-import Shimmer from "./Shimmer";
-import SkeletonElement from "./SkeletonElement";
+import Shimmer from './Shimmer'
+import SkeletonElement from './SkeletonElement'
 
 function SkeletonPlaylistItem({ theme }) {
-  const themeClass = theme || "dark";
+  const themeClass = theme || 'dark'
   return (
     <div className={`skeleton-wrapper ${themeClass}`}>
       <div className="skeleton-playlist-item">
@@ -13,7 +13,7 @@ function SkeletonPlaylistItem({ theme }) {
       </div>
       <Shimmer />
     </div>
-  );
+  )
 }
 
-export default SkeletonPlaylistItem;
+export default SkeletonPlaylistItem

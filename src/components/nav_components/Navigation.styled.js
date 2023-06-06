@@ -105,6 +105,7 @@ export const LngButton = styled.button`
   font-size: inherit;
   border: none;
   cursor: pointer;
+  text-align: start;
 
   &:hover {
     color: ${({ theme }) => theme.colors.filterHoverColor};
