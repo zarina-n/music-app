@@ -77,7 +77,14 @@ $ npm start
 * Ability to build JSX components
 * Ability to work with the RTK Query library
 * Ability to use React Hooks
+
+ ### Tech stack
 	
+- [x] React
+- [x] Redux + Redux Toolkit + RTK Query
+- [x] React Router DOM
+- [x] styled-components
+- [x] i18next 
 	
 
 
