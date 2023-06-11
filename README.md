@@ -43,6 +43,9 @@ $ npm start
 
 ![image](https://github.com/zarina-n/music-app/assets/101009726/64f872b3-8541-4573-ba38-dde13c7e40d7)
 
+![image](https://github.com/zarina-n/music-app/assets/101009726/55402d3c-f54e-4cfe-a707-fcec7c5887e7)
+
+
 4. Dropdown Menu 
 
 ![image](https://github.com/zarina-n/music-app/assets/101009726/0eec35db-e515-4a4c-ad11-f39071739d8d)
