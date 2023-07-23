@@ -33,11 +33,13 @@ $ npm start
 
 1. Starting page - Login Screen
 
-![image](https://github.com/zarina-n/music-app/assets/101009726/7f26c91f-637a-40cd-bbec-21a848ecd57a)
+![image](https://github.com/zarina-n/music-app/assets/101009726/7c03ba45-f71a-4936-9dd9-e149de57018a)
 
-2. Sign In screen
 
-![image](https://github.com/zarina-n/music-app/assets/101009726/0dadd0c4-643d-4deb-ad45-22a192ec3606)
+2. Sign Up screen
+
+![image](https://github.com/zarina-n/music-app/assets/101009726/70ad6af5-2f8f-4f6b-a3a5-0f96e2a471cc)
+
 
 
 3. Home page
